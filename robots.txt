@@ -6,7 +6,7 @@ User-agent: *
 Allow: /
 
 # Sitemap - Indique où trouver la carte du site
-Sitemap: https://pontsti.ca/sitemap.xml
+Sitemap: https://pontsti.github.io/sitemap.xml
 
 # Robots spécifiques - Optimisation
 User-agent: Googlebot
