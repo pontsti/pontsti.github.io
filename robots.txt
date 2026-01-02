@@ -1,4 +1,54 @@
+# Robots.txt optimisé pour pontsti.github.io
+# Dernière mise à jour : 2025-01-02
+
+# Règles pour tous les robots
 User-agent: *
 Allow: /
+Crawl-delay: 0
 
+# Permettre l'indexation complète
+Allow: /#article-complet
+Allow: /#article-ia
+Allow: /#articles
+Allow: /#apropos
+Allow: /#concretement
+Allow: /#questions
+Allow: /#contact
+
+# Optimisations spécifiques moteurs de recherche
+
+# Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Googlebot pour images
+User-agent: Googlebot-Image
+Allow: /
+
+# Googlebot pour mobile
+User-agent: Googlebot-Mobile
+Allow: /
+
+# Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# Baidu (pour audience chinoise internationale)
+User-agent: Baiduspider
+Allow: /
+
+# Sitemap (CRITIQUE pour indexation)
 Sitemap: https://pontsti.github.io/sitemap.xml
+
+# Host directive pour clarifier le domaine principal
+Host: pontsti.github.io
