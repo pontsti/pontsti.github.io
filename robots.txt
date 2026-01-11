@@ -1,28 +1,54 @@
-# Robots.txt pour pontsti.github.io
+# Fichier robots.txt pour pontsti.github.io
 # Dernière mise à jour : 2026-01-10
 
 # Règles pour tous les robots
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
-# Googlebot
+# Googlebot - moteur de recherche principal
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
-# Googlebot pour images
+# Googlebot pour les images
 User-agent: Googlebot-Image
 Allow: /
 
-# Bingbot
+# Bingbot - moteur Microsoft
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 # DuckDuckGo
 User-agent: DuckDuckBot
 Allow: /
 
-# Sitemap
+# Yandex (moteur russe, utile pour la visibilité internationale)
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Baidu (moteur chinois)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Bloquer les robots malveillants connus
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Emplacement du plan du site
 Sitemap: https://pontsti.github.io/sitemap.xml
 
-# Host
-Host: pontsti.github.io
+# Hôte principal
+Host: https://pontsti.github.io

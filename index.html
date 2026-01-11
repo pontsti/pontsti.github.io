@@ -36,12 +36,23 @@
     <meta property="og:locale" content="fr_CA">
     <meta property="og:site_name" content="Ponts TI">
     
+    <!-- Image Open Graph (IMPORTANT pour les partages sur réseaux sociaux) -->
+    <!-- Créez une image de 1200x630 pixels et placez-la dans /images/ponts-ti-social.png -->
+    <meta property="og:image" content="https://pontsti.github.io/images/ponts-ti-social.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ponts TI - Entraide informatique au Québec">
+    
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Ponts TI - Entraide informatique Québec">
     <meta name="twitter:description" content="Conseils gratuits pour intégrer le marché TI au Québec. CV, entrevues, articles techniques.">
+    <meta name="twitter:image" content="https://pontsti.github.io/images/ponts-ti-social.png">
     
     <meta name="theme-color" content="#0d1b2a">
+    
+    <!-- Vérification Google Search Console (remplacez par votre code) -->
+    <!-- <meta name="google-site-verification" content="VOTRE_CODE_ICI"> -->
     
     <!-- Schema.org Person -->
     <script type="application/ld+json">
@@ -138,14 +149,16 @@
       "blogPost": [
         {
           "@type": "BlogPosting",
-          "headline": "L'IA en TI : Java, outils de programmation et analyse de logs",
+          "headline": "L'IA en TI : entre possibilité et illusion",
           "datePublished": "2026-01-01",
+          "dateModified": "2026-01-10",
           "author": {"@type": "Person", "name": "Hilal Goutas"},
-          "keywords": "IA, Java, GitHub Copilot, Claude, analyse logs, outils développement"
+          "description": "Mon expérience après 13 ans en TI : ce que l'IA fait bien et où elle se complique.",
+          "keywords": "intelligence artificielle, TI, développement, Java, outils programmation, Québec"
         },
         {
           "@type": "BlogPosting",
-          "headline": "La course technologique : spécialisation vs fondamentaux",
+          "headline": "La course technologique : spécialisation ou fondamentaux",
           "datePublished": "2026-01-01",
           "author": {"@type": "Person", "name": "Hilal Goutas"},
           "keywords": "carrière TI, technologies, fondamentaux programmation"
@@ -269,11 +282,19 @@
         .feature-list li { padding: var(--space-3) 0; padding-left: var(--space-6); position: relative; color: var(--text-light); line-height: 1.6; }
         .feature-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
         
-        .parcours { display: grid; grid-template-columns: 1fr; gap: var(--space-4); padding: var(--space-5) 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: var(--space-6) 0; }
-        @media (min-width: 480px) { .parcours { grid-template-columns: repeat(3, 1fr); text-align: center; } }
-        .parcours-item { padding: var(--space-3); text-align: center; }
-        .parcours-item strong { display: block; font-size: var(--text-lg); color: var(--text); margin-bottom: var(--space-2); }
-        .parcours-item span { font-size: var(--text-sm); color: var(--text-muted); }
+        /* === SECTION PARCOURS AMÉLIORÉE === */
+        .parcours { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin: var(--space-6) 0; }
+        @media (min-width: 480px) { .parcours { grid-template-columns: repeat(3, 1fr); } }
+        .parcours-card { background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 100%); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-5); text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+        .parcours-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        .parcours-icon { width: 56px; height: 56px; background: var(--accent-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-4); }
+        .parcours-icon svg { width: 28px; height: 28px; color: var(--accent); }
+        .parcours-number { font-family: var(--font-heading); font-size: var(--text-3xl); font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: var(--space-2); }
+        .parcours-label { font-size: var(--text-base); font-weight: 600; color: var(--text); margin-bottom: var(--space-2); }
+        .parcours-desc { font-size: var(--text-sm); color: var(--text-muted); line-height: 1.4; }
+        .parcours-route { display: flex; align-items: center; justify-content: center; gap: var(--space-2); flex-wrap: wrap; margin-bottom: var(--space-2); }
+        .parcours-country { font-size: var(--text-sm); font-weight: 500; color: var(--text); }
+        .parcours-arrow { color: var(--accent); font-size: var(--text-sm); }
         
         .article-card { padding: var(--space-5); border: 1px solid var(--border); border-radius: 8px; margin-bottom: var(--space-4); transition: box-shadow 0.2s; }
         @media (min-width: 480px) { .article-card { padding: var(--space-6); } }
@@ -330,6 +351,50 @@
         
         .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; padding: var(--space-4) var(--space-6); border-radius: 6px; text-decoration: none; font-weight: 600; min-height: 52px; transition: background 0.15s; }
         .btn:hover { background: var(--accent-dark); color: #fff; }
+        
+        /* === STYLES IHM AMÉLIORÉS === */
+        .concept-card { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: var(--space-5); margin: var(--space-5) 0; }
+        @media (min-width: 480px) { .concept-card { padding: var(--space-6); } }
+        .concept-header { display: flex; align-items: flex-start; gap: var(--space-4); margin-bottom: var(--space-4); }
+        .concept-icon { width: 48px; height: 48px; background: var(--accent-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .concept-icon svg { width: 24px; height: 24px; color: var(--accent); }
+        .concept-title { font-family: var(--font-heading); font-size: var(--text-lg); font-weight: 600; color: var(--text); margin: 0; }
+        .concept-subtitle { font-size: var(--text-sm); color: var(--text-muted); margin-top: 2px; }
+        .concept-content p { margin-bottom: var(--space-3); }
+        .concept-content p:last-child { margin-bottom: 0; }
+        
+        .tip-box { background: linear-gradient(135deg, #e8f4fc 0%, #f0f9ff 100%); border: 1px solid #b8dff7; border-radius: 8px; padding: var(--space-4); margin: var(--space-4) 0; display: flex; gap: var(--space-3); align-items: flex-start; }
+        .tip-box svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+        .tip-box p { margin: 0; font-size: var(--text-sm); color: var(--text); }
+        .tip-box strong { color: var(--accent-dark); }
+        
+        .f-pattern { background: var(--bg-alt); border-radius: 12px; padding: var(--space-5); margin: var(--space-6) 0; }
+        .f-pattern-title { font-weight: 600; color: var(--text); margin-bottom: var(--space-4); text-align: center; font-size: var(--text-sm); text-transform: uppercase; letter-spacing: 0.5px; }
+        .f-pattern-visual { display: flex; flex-direction: column; gap: var(--space-2); max-width: 280px; margin: 0 auto; }
+        .f-line { height: 12px; border-radius: 6px; background: var(--accent); opacity: 0.7; }
+        .f-line:nth-child(1) { width: 100%; opacity: 1; }
+        .f-line:nth-child(2) { width: 75%; opacity: 0.6; }
+        .f-line:nth-child(3) { width: 25%; margin-left: 0; }
+        .f-line:nth-child(4) { width: 25%; margin-left: 0; opacity: 0.5; }
+        .f-line:nth-child(5) { width: 25%; margin-left: 0; opacity: 0.4; }
+        .f-pattern-caption { text-align: center; font-size: var(--text-sm); color: var(--text-muted); margin-top: var(--space-4); }
+        
+        .access-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin: var(--space-5) 0; }
+        @media (min-width: 480px) { .access-grid { grid-template-columns: 1fr 1fr; } }
+        .access-card { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: var(--space-4); transition: box-shadow 0.2s; }
+        .access-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+        .access-card-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: var(--space-3); }
+        .access-card-icon svg { width: 20px; height: 20px; }
+        .access-card.visual .access-card-icon { background: #e8f4fc; }
+        .access-card.visual .access-card-icon svg { color: #1a5fb4; }
+        .access-card.audio .access-card-icon { background: #fef3e2; }
+        .access-card.audio .access-card-icon svg { color: #c64600; }
+        .access-card.motor .access-card-icon { background: #e8fce8; }
+        .access-card.motor .access-card-icon svg { color: #2e7d32; }
+        .access-card.cognitive .access-card-icon { background: #f3e8fc; }
+        .access-card.cognitive .access-card-icon svg { color: #7b1fa2; }
+        .access-card h5 { font-size: var(--text-sm); font-weight: 600; color: var(--text); margin: 0 0 var(--space-2); }
+        .access-card p { font-size: var(--text-sm); color: var(--text-muted); margin: 0; line-height: 1.5; }
         
         footer { background: var(--bg-alt); padding: var(--space-8) 0; text-align: center; border-top: 1px solid var(--border); margin-top: var(--space-10); }
         footer p { font-size: var(--text-sm); color: var(--text-muted); margin: 0 auto var(--space-2); }
@@ -413,17 +478,40 @@
             </div>
             
             <div class="parcours">
-                <div class="parcours-item">
-                    <strong>13 ans</strong>
-                    <span>en informatique au Québec</span>
+                <!-- Carte 1 : Expérience -->
+                <div class="parcours-card">
+                    <div class="parcours-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
+                    <div class="parcours-number">13</div>
+                    <div class="parcours-label">années</div>
+                    <div class="parcours-desc">en informatique au Québec</div>
                 </div>
-                <div class="parcours-item">
-                    <strong>Algérie — France — Canada</strong>
-                    <span>Mon parcours</span>
+                
+                <!-- Carte 2 : Parcours géographique -->
+                <div class="parcours-card">
+                    <div class="parcours-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <div class="parcours-route">
+                        <span class="parcours-country">Algérie</span>
+                        <span class="parcours-arrow">→</span>
+                        <span class="parcours-country">France</span>
+                        <span class="parcours-arrow">→</span>
+                        <span class="parcours-country">Canada</span>
+                    </div>
+                    <div class="parcours-label">Mon parcours</div>
+                    <div class="parcours-desc">18 ans d'immigration</div>
                 </div>
-                <div class="parcours-item">
-                    <strong>Bénévole</strong>
-                    <span>et gratuit</span>
+                
+                <!-- Carte 3 : Bénévolat -->
+                <div class="parcours-card">
+                    <div class="parcours-icon">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                    </div>
+                    <div class="parcours-number">100%</div>
+                    <div class="parcours-label">Bénévole</div>
+                    <div class="parcours-desc">Service entièrement gratuit</div>
                 </div>
             </div>
             
@@ -484,10 +572,10 @@
             <article class="article-card">
                 <div class="article-meta">
                     <time datetime="2026-01">Janvier 2026</time>
-                    <span class="read-time">8 min</span>
+                    <span class="read-time">6 min</span>
                 </div>
-                <h3 class="article-title">L'IA en TI : outils de programmation, Java et analyse de logs</h3>
-                <p>GitHub Copilot, Claude, Cursor — ces outils transforment le développement. Guide pratique sur l'IA appliquée à Java et à l'analyse de logs.</p>
+                <h3 class="article-title">L'IA en TI : entre possibilité et illusion</h3>
+                <p>Après 13 ans dans le domaine, je partage mon expérience quotidienne avec les outils d'IA. Ce qu'ils font bien, et où ça se complique.</p>
                 <a href="#article-ia" class="read-more">Lire l'article</a>
             </article>
             
@@ -496,7 +584,7 @@
                     <time datetime="2026-01">Janvier 2026</time>
                     <span class="read-time">6 min</span>
                 </div>
-                <h3 class="article-title">La course technologique : spécialisation vs fondamentaux</h3>
+                <h3 class="article-title">La course technologique : spécialisation ou fondamentaux</h3>
                 <p>La spécialisation pousse à apprendre toujours plus de technologies. Mais les fondamentaux restent. Une réflexion sur ce qui dure vraiment.</p>
                 <a href="#article-spec" class="read-more">Lire l'article</a>
             </article>
@@ -523,12 +611,13 @@
         </section>
 
         <!-- ARTICLE IA -->
+        <!-- ARTICLE IA - VERSION PERSONNELLE -->
         <article id="article-ia" class="section">
-            <h2>L'IA en TI : outils de programmation, Java et analyse de logs</h2>
+            <h2>L'IA en TI : entre possibilité et illusion</h2>
             <div class="article-meta">
                 <span>Par Hilal Goutas</span>
                 <time datetime="2026-01">Janvier 2026</time>
-                <span class="read-time">8 min</span>
+                <span class="read-time">6 min</span>
             </div>
             
             <div class="share-buttons">
@@ -536,7 +625,7 @@
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:?subject=Article%20-%20IA%20en%20programmation&body=https://pontsti.github.io/%23article-ia" class="share-btn share-email">
+                <a href="mailto:goutas.hilal@gmail.com?subject=Article%20IA%20en%20TI&amp;body=J'ai%20lu%20votre%20article%20sur%20l'IA..." class="share-btn share-email">
                     <svg fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
                     Courriel
                 </a>
@@ -544,160 +633,95 @@
             
             <div class="article-full">
                 <p>
-                    L'intelligence artificielle transforme notre métier de développeur. GitHub Copilot, Claude, 
-                    Cursor, Cody — ces outils ne sont plus des gadgets, mais des assistants quotidiens. 
-                    Voici mon expérience après plus d'un an d'utilisation.
+                    Les outils d'intelligence artificielle s'imposent partout. Après 13 ans dans le domaine, 
+                    je les utilise quotidiennement. Parlons franchement de ce que ça change vraiment.
                 </p>
 
-                <h3>Les outils IA pour le développement</h3>
+                <h3>Ce que l'IA fait bien</h3>
                 
                 <p>
-                    Les assistants de code IA ont beaucoup évolué. Ils transforment la façon dont on développe. 
-                    Je les utilise quotidiennement.
+                    Pour le code technique pur, l'IA m'aide beaucoup. Générer du code Java, analyser 
+                    du JSON, examiner des journaux d'erreurs, créer des tests unitaires. Elle me fait 
+                    gagner du temps sur ces tâches répétitives.
                 </p>
 
-                <h4>Principaux outils disponibles</h4>
+                <p>
+                    Exemple concret : je lui donne des journaux d'erreurs complexes, elle m'aide à repérer 
+                    le schéma récurrent rapidement. Ou je lui demande une fonction Java précise, elle me 
+                    la génère. Pour ces tâches ciblées, ça fonctionne bien.
+                </p>
+
+                <h3>Où ça se complique</h3>
+                
+                <h4>La logique d'affaires</h4>
+                
+                <p>
+                    L'IA ne comprend pas votre contexte d'entreprise. Quand elle commence à construire 
+                    une logique et à proposer des solutions, c'est là que les erreurs arrivent. Elle fait 
+                    des suppositions qui semblent logiques, mais qui ne correspondent pas à votre réalité.
+                </p>
+
+                <h4>La validation des données</h4>
+                
+                <p>
+                    L'IA génère des résultats qui peuvent contenir des erreurs. Parfois subtiles, parfois 
+                    évidentes. C'est à vous de vérifier la cohérence de ce qu'elle produit. Ne jamais 
+                    accepter un résultat sans l'avoir validé.
+                </p>
+
+                <h4>La perte de contexte</h4>
+                
+                <p>
+                    Sur des problèmes complexes, l'IA oublie ce qu'on a discuté. Elle propose une solution 
+                    qui contredit ce qu'elle vient de recommander. C'est frustrant, surtout quand on a passé 
+                    du temps à lui expliquer l'architecture du projet.
+                </p>
+
+                <h4>Elle n'admet jamais ses erreurs</h4>
+                
+                <p>
+                    C'est le point le plus dangereux. Si vous ne détectez pas l'erreur vous-même, l'IA 
+                    continue comme si tout allait bien. Elle ne dit pas « désolé, je me suis trompé ». 
+                    Elle présente ses erreurs avec la même assurance que ses bonnes réponses. 
+                    C'est à vous de valider, toujours.
+                </p>
+
+                <h3>Mon utilisation au quotidien</h3>
+                
+                <p>
+                    Code technique simple ? L'IA m'accélère. Mais pour la logique d'affaires et la 
+                    validation des données ? Je vérifie tout, ligne par ligne. C'est là que les vrais 
+                    problèmes se cachent.
+                </p>
+                
+                <p>
+                    Pourrais-je travailler sans ? Oui. Mais ce serait plus lent. L'IA me fait gagner 
+                    du temps sur les tâches répétitives. Elle ne remplace pas ma compréhension du problème.
+                </p>
+
+                <h3>Les outils que j'utilise</h3>
                 
                 <ul class="feature-list">
-                    <li><strong>GitHub Copilot</strong> — Intégration dans VS Code et les IDE JetBrains. Bon pour l'autocomplétion contextuelle.</li>
-                    <li><strong>Claude (Anthropic)</strong> — Conversations sur l'architecture, revue de code, explication de concepts.</li>
-                    <li><strong>Cursor</strong> — IDE basé sur VS Code avec IA intégrée. Utile pour le refactoring.</li>
-                    <li><strong>Cody (Sourcegraph)</strong> — Efficace pour naviguer dans de grandes bases de code.</li>
-                    <li><strong>Amazon CodeWhisperer</strong> — Optimisé pour les services AWS.</li>
+                    <li><strong>GitHub Copilot</strong> — Intégré à mon environnement de développement. Bon pour la complétion de code contextuelle.</li>
+                    <li><strong>Claude (Anthropic)</strong> — Pour les conversations sur l'architecture, la révision de code, l'explication de concepts.</li>
+                    <li><strong>Cursor</strong> — Environnement basé sur VS Code avec IA intégrée. Utile pour la restructuration de code.</li>
                 </ul>
 
-                <h3>L'IA et Java : cas pratiques</h3>
+                <h3>En résumé</h3>
                 
                 <p>
-                    Java reste un des langages les plus utilisés en entreprise au Québec. 
-                    Voici comment l'IA peut aider concrètement dans les projets Java.
-                </p>
-
-                <h4>Génération de code répétitif</h4>
-                
-                <p>
-                    Java est connu pour sa verbosité. Les getters, setters, constructeurs, 
-                    patterns Builder... L'IA génère ce code répétitif rapidement. Un commentaire 
-                    comme <code>// Create a User class with name, email, and validation</code> 
-                    produit une classe complète en quelques secondes.
-                </p>
-
-                <h4>Tests unitaires</h4>
-                
-                <p>
-                    L'IA peut générer des tests JUnit, Mockito, ou TestNG à partir de vos classes. 
-                    Elle identifie les cas limites et propose des scénarios de test. 
-                    Il faut toutefois valider la pertinence des assertions générées.
-                </p>
-
-                <h4>Migration et refactoring</h4>
-                
-                <p>
-                    Migrer de Java 8 à Java 17+ ? L'IA peut identifier les patterns obsolètes 
-                    et proposer des versions modernisées du code.
-                </p>
-
-                <h3>Analyse de logs avec l'IA</h3>
-                
-                <p>
-                    L'analyse de logs est une tâche chronophage mais importante. L'IA peut 
-                    aider à traiter cette tâche plus efficacement.
-                </p>
-
-                <h4>Ce que l'IA peut faire</h4>
-                
-                <ul class="feature-list">
-                    <li><strong>Identifier les patterns d'erreurs</strong> — L'IA repère les exceptions récurrentes et suggère des causes probables.</li>
-                    <li><strong>Corréler les événements</strong> — Elle peut lier des logs de différents services pour retracer un problème.</li>
-                    <li><strong>Résumer des fichiers volumineux</strong> — Transformer des milliers de lignes en résumé actionnable.</li>
-                    <li><strong>Générer des requêtes</strong> — Créer des requêtes Splunk, ELK, ou Datadog à partir d'une description.</li>
-                </ul>
-
-                <h4>Exemple concret</h4>
-                
-                <p>
-                    Un fichier de log de 50 000 lignes après un incident en production. 
-                    Au lieu de le parcourir manuellement, on peut demander à l'IA : 
-                    « Quelles sont les erreurs critiques et quelle est la séquence 
-                    d'événements qui a mené à l'échec ? »
-                </p>
-
-                <p>
-                    L'IA identifie les <code>ERROR</code> et <code>FATAL</code>, les ordonne 
-                    chronologiquement, et propose une hypothèse sur la cause. 
-                    On passe de heures d'analyse à quelques minutes de validation.
-                </p>
-
-                <h3>Autres outils utiles pour le développement</h3>
-                
-                <h4>Environnements de développement (IDE)</h4>
-                
-                <ul class="feature-list">
-                    <li><strong>IntelliJ IDEA</strong> — IDE de référence pour Java, avec refactoring puissant.</li>
-                    <li><strong>VS Code</strong> — Léger, extensible, bon support multi-langages.</li>
-                    <li><strong>Eclipse</strong> — Toujours utilisé en entreprise pour les projets Java EE.</li>
-                </ul>
-
-                <h4>Outils de débogage et profiling</h4>
-                
-                <ul class="feature-list">
-                    <li><strong>VisualVM</strong> — Analyse de la JVM, détection des fuites mémoire.</li>
-                    <li><strong>JProfiler</strong> — Profiling avancé pour applications Java.</li>
-                </ul>
-
-                <h4>Gestion de versions et CI/CD</h4>
-                
-                <ul class="feature-list">
-                    <li><strong>Git</strong> — Incontournable. Branches, rebase, cherry-pick.</li>
-                    <li><strong>Jenkins / GitHub Actions</strong> — Automatisation des builds et déploiements.</li>
-                    <li><strong>SonarQube</strong> — Analyse statique du code.</li>
-                </ul>
-
-                <h3>Les limites à connaître</h3>
-                
-                <p>
-                    <strong>La perte de contexte :</strong> Vous passez du temps à expliquer votre architecture. 
-                    L'IA semble comprendre. Puis, quelques échanges plus tard, elle propose une solution 
-                    qui ignore ce que vous avez dit.
-                </p>
-
-                <p>
-                    <strong>Le volume généré :</strong> L'IA produit du contenu facilement — parfois trop. 
-                    Tout doit être relu, validé, testé. Le temps gagné à la génération peut être perdu 
-                    à la vérification.
-                </p>
-
-                <p>
-                    <strong>La confiance excessive :</strong> L'IA présente ses erreurs avec la même assurance 
-                    que ses bonnes réponses. Sans vigilance, les erreurs passent et se propagent.
-                </p>
-
-                <p>
-                    <strong>Les hallucinations :</strong> L'IA peut inventer des méthodes qui n'existent pas 
-                    ou des syntaxes incorrectes. Toujours vérifier dans la documentation officielle.
-                </p>
-
-                <h3>Mon approche</h3>
-                
-                <p>
-                    J'utilise l'IA pour des tâches ciblées : génération de code répétitif, 
-                    tests unitaires, refactoring, documentation, analyse de logs. Pour les problèmes 
-                    complexes, je découpe en petites étapes.
-                </p>
-                
-                <p>
-                    Ces outils vont continuer à s'améliorer. Les maîtriser devient une compétence 
-                    professionnelle utile. Mais ils restent des assistants — le jugement et la 
-                    validation, c'est toujours nous.
+                    Utilisez ces outils, profitez-en. Mais gardez en tête que c'est un assistant, 
+                    pas un pilote automatique. Le contrôle de qualité, c'est toujours votre responsabilité.
                 </p>
 
                 <div class="quote-box">
-                    L'IA amplifie vos compétences, elle ne les remplace pas. Un développeur junior 
-                    avec l'IA reste junior. Un développeur senior avec l'IA devient plus productif.
+                    L'IA amplifie vos compétences, elle ne les remplace pas. Un développeur débutant 
+                    avec l'IA reste débutant. Un développeur expérimenté avec l'IA devient plus productif.
                 </div>
 
                 <div class="cta-box">
-                    <h3>Des questions sur l'IA en contexte professionnel ?</h3>
+                    <h3>Et vous, comment utilisez-vous l'IA dans votre travail ?</h3>
+                    <p>Partagez votre expérience</p>
                     <p><a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a></p>
                 </div>
             </div>
@@ -706,7 +730,7 @@
                 <h3>Articles liés</h3>
                 <a href="#article-spec" class="related-link">
                     <strong>La course technologique</strong>
-                    <span>Spécialisation vs fondamentaux</span>
+                    <span>Spécialisation ou fondamentaux</span>
                 </a>
                 <a href="#article-ihm" class="related-link">
                     <strong>IHM et ergonomie cognitive</strong>
@@ -714,10 +738,9 @@
                 </a>
             </div>
         </article>
-
         <!-- ARTICLE SPÉCIALISATION -->
         <article id="article-spec" class="section">
-            <h2>La course technologique : spécialisation vs fondamentaux</h2>
+            <h2>La course technologique : spécialisation ou fondamentaux</h2>
             <div class="article-meta">
                 <span>Par Hilal Goutas</span>
                 <time datetime="2026-01">Janvier 2026</time>
@@ -729,7 +752,7 @@
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:?subject=Article%20-%20Spécialisation%20vs%20fondamentaux&body=https://pontsti.github.io/%23article-spec" class="share-btn share-email">
+                <a href="/cdn-cgi/l/email-protection#86b9f5f3e4ece3e5f2bbc7f4f2efe5eae3a3b4b6aba3b4b6d5f6452fe5efe7eaeff5e7f2efe9e8a3b4b6f0f5a3b4b6e0e9e8e2e7ebe3e8f2e7f3fea0e4e9e2ffbbeef2f2f6f5bca9a9f6e9e8f2f5f2efa8e1eff2eef3e4a8efe9a9a3b4b5e7f4f2efe5eae3abf5f6e3e5" class="share-btn share-email">
                     <svg fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
                     Courriel
                 </a>
@@ -766,7 +789,7 @@
                     En pratique, chaque langage optimise certains cas d'usage : Python excelle dans le traitement 
                     de données, JavaScript domine le web, C offre un contrôle bas niveau, Java brille dans les 
                     systèmes distribués. Mais les concepts fondamentaux — structures de données, 
-                    algorithmes, patterns de conception — restent les mêmes.
+                    algorithmes, motifs de conception — restent les mêmes.
                 </p>
 
                 <h3>Ce qui dure vraiment</h3>
@@ -785,7 +808,7 @@
 
                 <div class="cta-box">
                     <h3>Questions sur votre parcours technologique ?</h3>
-                    <p><a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#baddd5cfcedbc994d2d3d6dbd6faddd7dbd3d694d9d5d7"><span class="__cf_email__" data-cfemail="72151d070613015c1a1b1e131e32151f131b1e5c111d1f">[email&#160;protected]</span></a></p>
                 </div>
             </div>
             
@@ -793,7 +816,7 @@
                 <h3>Articles liés</h3>
                 <a href="#article-ia" class="related-link">
                     <strong>L'IA en TI</strong>
-                    <span>Outils de programmation, Java et analyse de logs</span>
+                    <span>Entre possibilité et illusion</span>
                 </a>
                 <a href="#article-ihm" class="related-link">
                     <strong>IHM et ergonomie cognitive</strong>
@@ -816,7 +839,7 @@
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:?subject=Article%20-%20IHM%20et%20ergonomie%20cognitive&body=https://pontsti.github.io/%23article-ihm" class="share-btn share-email">
+                <a href="mailto:goutas.hilal@gmail.com?subject=Article%20IHM&amp;body=J'ai%20lu%20votre%20article%20sur%20l'IHM..." class="share-btn share-email">
                     <svg fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
                     Courriel
                 </a>
@@ -836,56 +859,116 @@
                     Ces principes s'appliquent directement au développement logiciel.
                 </p>
 
-                <h4>La charge cognitive</h4>
-                
-                <p>
-                    Notre mémoire de travail est limitée — environ 7 éléments peuvent être traités 
-                    simultanément. C'est pourquoi les interfaces surchargées nous fatiguent. Chaque élément 
-                    visuel, chaque option, chaque notification consomme de la capacité cognitive.
-                </p>
+                <!-- Concept 1 : Charge cognitive -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <div class="concept-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="concept-title">La charge cognitive</h4>
+                            <span class="concept-subtitle">Limite : ~7 éléments simultanés</span>
+                        </div>
+                    </div>
+                    <div class="concept-content">
+                        <p>
+                            Notre mémoire de travail est limitée. C'est pourquoi les interfaces surchargées 
+                            nous fatiguent. Chaque élément visuel, chaque option, chaque notification 
+                            consomme de la capacité cognitive.
+                        </p>
+                    </div>
+                    <div class="tip-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <p><strong>À faire :</strong> Simplifiez vos interfaces. Groupez les informations logiquement. Utilisez la divulgation progressive — ne montrez que ce qui est nécessaire à chaque étape.</p>
+                    </div>
+                </div>
 
-                <p>
-                    <strong>Application pratique :</strong> Simplifiez vos interfaces. Groupez les informations 
-                    logiquement. Utilisez la divulgation progressive — ne montrez que ce qui est nécessaire 
-                    à chaque étape.
-                </p>
-
-                <h4>Les patterns de lecture</h4>
-                
-                <p>
-                    Les études de eye-tracking montrent que nous ne lisons pas les écrans comme des livres. 
-                    Nous « scannons » en forme de F : d'abord horizontalement en haut, 
-                    puis verticalement le long de la gauche.
-                </p>
-
-                <p>
-                    <strong>Application pratique :</strong> Placez les informations importantes en haut à gauche. 
-                    Les actions principales doivent être visibles sans défiler.
-                </p>
+                <!-- Concept 2 : Schémas de lecture -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <div class="concept-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="concept-title">Les schémas de lecture</h4>
+                            <span class="concept-subtitle">Comment l'œil parcourt l'écran</span>
+                        </div>
+                    </div>
+                    <div class="concept-content">
+                        <p>
+                            Les études d'oculométrie montrent que nous ne lisons pas les écrans comme des livres. 
+                            Nous « balayons » en forme de F : d'abord horizontalement en haut, 
+                            puis verticalement le long de la gauche.
+                        </p>
+                    </div>
+                    
+                    <!-- Visualisation du schéma en F -->
+                    <div class="f-pattern">
+                        <div class="f-pattern-title">Schéma de lecture en F</div>
+                        <div class="f-pattern-visual">
+                            <div class="f-line"></div>
+                            <div class="f-line"></div>
+                            <div class="f-line"></div>
+                            <div class="f-line"></div>
+                            <div class="f-line"></div>
+                        </div>
+                        <p class="f-pattern-caption">L'attention diminue vers le bas et la droite</p>
+                    </div>
+                    
+                    <div class="tip-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <p><strong>À faire :</strong> Placez les informations importantes en haut à gauche. Les actions principales doivent être visibles sans défiler.</p>
+                    </div>
+                </div>
 
                 <h3>Ce que les neurosciences nous apprennent</h3>
-                
-                <h4>Le système de récompense</h4>
-                
-                <p>
-                    La dopamine est libérée lors d'expériences positives. Les notifications, 
-                    les barres de progression qui se remplissent... tout cela active notre circuit de récompense. 
-                    Cette connaissance peut être utilisée pour rendre l'apprentissage engageant, 
-                    mais aussi pour manipuler. C'est une responsabilité pour les développeurs.
-                </p>
 
-                <h4>La fatigue décisionnelle</h4>
-                
-                <p>
-                    Chaque décision épuise notre énergie mentale. À la fin d'une journée de travail, 
-                    notre capacité de décision est diminuée. C'est pourquoi les interfaces 
-                    qui demandent trop de choix sont frustrantes.
-                </p>
+                <!-- Concept 3 : Système de récompense -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <div class="concept-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="concept-title">Le système de récompense</h4>
+                            <span class="concept-subtitle">Dopamine et engagement</span>
+                        </div>
+                    </div>
+                    <div class="concept-content">
+                        <p>
+                            La dopamine est libérée lors d'expériences positives. Les notifications, 
+                            les barres de progression qui se remplissent... tout cela active notre circuit de récompense.
+                        </p>
+                        <p>
+                            Cette connaissance peut être utilisée pour rendre l'apprentissage engageant, 
+                            mais aussi pour manipuler. C'est une responsabilité pour les développeurs.
+                        </p>
+                    </div>
+                </div>
 
-                <p>
-                    <strong>Application pratique :</strong> Proposez des défauts intelligents. Réduisez 
-                    le nombre de décisions nécessaires pour accomplir une tâche.
-                </p>
+                <!-- Concept 4 : Fatigue décisionnelle -->
+                <div class="concept-card">
+                    <div class="concept-header">
+                        <div class="concept-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="concept-title">La fatigue décisionnelle</h4>
+                            <span class="concept-subtitle">Chaque choix épuise</span>
+                        </div>
+                    </div>
+                    <div class="concept-content">
+                        <p>
+                            Chaque décision épuise notre énergie mentale. À la fin d'une journée de travail, 
+                            notre capacité de décision est diminuée. C'est pourquoi les interfaces 
+                            qui demandent trop de choix sont frustrantes.
+                        </p>
+                    </div>
+                    <div class="tip-box">
+                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <p><strong>À faire :</strong> Proposez des valeurs par défaut intelligentes. Réduisez le nombre de décisions nécessaires pour accomplir une tâche.</p>
+                    </div>
+                </div>
 
                 <h3>Accessibilité</h3>
                 
@@ -894,14 +977,40 @@
                     quelles que soient leurs capacités.
                 </p>
 
-                <h4>Les points importants</h4>
-                
-                <ul class="feature-list">
-                    <li><strong>Déficiences visuelles</strong> — Contrastes suffisants, textes alternatifs pour les images, compatibilité avec les lecteurs d'écran.</li>
-                    <li><strong>Déficiences auditives</strong> — Sous-titres pour les vidéos, alternatives textuelles aux alertes sonores.</li>
-                    <li><strong>Déficiences motrices</strong> — Navigation au clavier, zones de clic suffisamment grandes.</li>
-                    <li><strong>Difficultés cognitives</strong> — Langage simple, instructions claires, processus prévisibles.</li>
-                </ul>
+                <!-- Grille accessibilité -->
+                <div class="access-grid">
+                    <div class="access-card visual">
+                        <div class="access-card-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                        </div>
+                        <h5>Déficiences visuelles</h5>
+                        <p>Contrastes suffisants, textes alternatifs pour les images, compatibilité avec les lecteurs d'écran.</p>
+                    </div>
+                    
+                    <div class="access-card audio">
+                        <div class="access-card-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+                        </div>
+                        <h5>Déficiences auditives</h5>
+                        <p>Sous-titres pour les vidéos, alternatives textuelles aux alertes sonores.</p>
+                    </div>
+                    
+                    <div class="access-card motor">
+                        <div class="access-card-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11"/></svg>
+                        </div>
+                        <h5>Déficiences motrices</h5>
+                        <p>Navigation au clavier, zones de clic suffisamment grandes.</p>
+                    </div>
+                    
+                    <div class="access-card cognitive">
+                        <div class="access-card-icon">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+                        </div>
+                        <h5>Difficultés cognitives</h5>
+                        <p>Langage simple, instructions claires, processus prévisibles.</p>
+                    </div>
+                </div>
 
                 <div class="quote-box">
                     Un bon logiciel ne force pas l'utilisateur à s'adapter. 
@@ -910,6 +1019,7 @@
 
                 <div class="cta-box">
                     <h3>L'IHM et l'accessibilité vous intéressent ?</h3>
+                    <p>Échangeons sur le sujet</p>
                     <p><a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a></p>
                 </div>
             </div>
@@ -918,11 +1028,11 @@
                 <h3>Articles liés</h3>
                 <a href="#article-ia" class="related-link">
                     <strong>L'IA en TI</strong>
-                    <span>Outils de programmation, Java et analyse de logs</span>
+                    <span>Entre possibilité et illusion</span>
                 </a>
                 <a href="#article-spec" class="related-link">
                     <strong>La course technologique</strong>
-                    <span>Spécialisation vs fondamentaux</span>
+                    <span>Spécialisation ou fondamentaux</span>
                 </a>
             </div>
         </article>
@@ -941,7 +1051,7 @@
                     <svg fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:?subject=Article%20-%20Mon%20parcours&body=https://pontsti.github.io/%23article-parcours" class="share-btn share-email">
+                <a href="/cdn-cgi/l/email-protection#e8d79b9d8a828d8b9cd5a99a9c818b848dcddad8c5cddad8a58786cddad898899a8b879d9a9bce8a878c91d5809c9c989bd2c7c79887869c9b9c81c68f819c809d8ac68187c7cddadb899a9c818b848dc598899a8b879d9a9b" class="share-btn share-email">
                     <svg fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
                     Courriel
                 </a>
@@ -1017,7 +1127,7 @@
                 <div class="cta-box">
                     <h3>Vous vivez un parcours similaire ?</h3>
                     <p>Partagez votre expérience ou posez vos questions</p>
-                    <p><a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a></p>
+                    <p><a href="/cdn-cgi/l/email-protection#34535b414055471a5c5d585558745359555d581a575b59"><span class="__cf_email__" data-cfemail="a8cfc7dddcc9db86c0c1c4c9c4e8cfc5c9c1c486cbc7c5">[email&#160;protected]</span></a></p>
                 </div>
             </div>
             
@@ -1025,11 +1135,11 @@
                 <h3>Articles liés</h3>
                 <a href="#article-spec" class="related-link">
                     <strong>La course technologique</strong>
-                    <span>Spécialisation vs fondamentaux</span>
+                    <span>Spécialisation ou fondamentaux</span>
                 </a>
                 <a href="#article-ia" class="related-link">
                     <strong>L'IA en TI</strong>
-                    <span>Outils de programmation, Java et analyse de logs</span>
+                    <span>Entre possibilité et illusion</span>
                 </a>
             </div>
         </article>
@@ -1146,7 +1256,7 @@
             <div class="contact-box">
                 <p>
                     <strong>Courriel</strong><br>
-                    <a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a>
+                    <a href="/cdn-cgi/l/email-protection#47202832332634692f2e2b262b07202a262e2b6924282a"><span class="__cf_email__" data-cfemail="b3d4dcc6c7d2c09ddbdadfd2dff3d4ded2dadf9dd0dcde">[email&#160;protected]</span></a>
                 </p>
                 <p>
                     <strong>LinkedIn</strong><br>
@@ -1173,35 +1283,5 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
     </button>
 
-    <script>
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.parentElement;
-                const isOpen = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                if (!isOpen) item.classList.add('active');
-                btn.setAttribute('aria-expanded', !isOpen);
-            });
-        });
-
-        const backTop = document.getElementById('backTop');
-        window.addEventListener('scroll', () => {
-            backTop.classList.toggle('visible', window.scrollY > 400);
-        });
-        backTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
-                    history.pushState(null, null, this.getAttribute('href'));
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        
