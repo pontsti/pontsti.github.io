@@ -1,28 +1,24 @@
-# Robots.txt pour pontsti.github.io
-# Dernière mise à jour : 2026-01-13
+# Robots.txt pour Ponts TI
+# https://pontsti.github.io/
 
-# Règles pour tous les robots
 User-agent: *
-Allow: /
-
-# Googlebot
-User-agent: Googlebot
-Allow: /
-
-# Googlebot pour images
-User-agent: Googlebot-Image
-Allow: /
-
-# Bingbot
-User-agent: Bingbot
-Allow: /
-
-# DuckDuckGo
-User-agent: DuckDuckBot
 Allow: /
 
 # Sitemap
 Sitemap: https://pontsti.github.io/sitemap.xml
 
-# Host
-Host: pontsti.github.io
+# Délai entre les requêtes (optionnel, courtoisie)
+Crawl-delay: 1
+
+# Autoriser tous les robots de recherche
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Qwantbot
+Allow: /
