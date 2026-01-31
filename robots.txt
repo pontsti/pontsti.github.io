@@ -7,18 +7,5 @@ Allow: /
 # Sitemap
 Sitemap: https://pontsti.github.io/sitemap.xml
 
-# Délai entre les requêtes (optionnel, courtoisie)
+# Crawl-delay (optionnel, respecté par certains robots)
 Crawl-delay: 1
-
-# Autoriser tous les robots de recherche
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Qwantbot
-Allow: /
