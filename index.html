@@ -30,6 +30,11 @@
     <link rel="canonical" href="https://pontsti.github.io/">
     <link rel="sitemap" type="application/xml" href="https://pontsti.github.io/sitemap.xml">
     
+    <!-- Performance & SEO supplémentaire -->
+    <meta name="image" content="https://pontsti.github.io/og-image.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
     <!-- Langues -->
     <meta http-equiv="content-language" content="fr-CA">
     <link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/">
@@ -1089,6 +1094,41 @@
             margin: 0;
         }
         
+        .email-link {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            padding: 2px 4px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+        
+        .email-link:hover {
+            background: var(--accent-light);
+            color: var(--accent-dark);
+            text-decoration: underline;
+        }
+        
+        .cta-box a {
+            text-decoration: none;
+        }
+        
+        .cta-box p a .email-link {
+            display: inline-block;
+            padding: var(--space-2) var(--space-3);
+            font-size: var(--text-base);
+            border: 2px solid var(--accent);
+            border-radius: 6px;
+            background: transparent;
+            color: var(--accent);
+        }
+        
+        .cta-box p a .email-link:hover {
+            background: var(--accent-light);
+            border-color: var(--accent-dark);
+            color: var(--accent-dark);
+        }
+        
         .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--accent); color: #fff; padding: var(--space-4) var(--space-6); border-radius: 6px; text-decoration: none; font-weight: 600; min-height: 52px; transition: background 0.15s, transform 0.1s; }
         .btn:hover { background: var(--accent-dark); color: #fff; transform: translateY(-1px); }
         .btn:active { transform: translateY(0); }
@@ -1539,9 +1579,22 @@
             
             <div class="articles-grid">
             <article class="article-card">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80" 
+                     alt="Carrefour professionnel - choix de carrière en informatique et directions multiples" 
+                     class="article-card-img" loading="lazy" decoding="async" width="800" height="450">
+                <div class="article-meta">
+                    <time datetime="2026-02">Février 2026</time>
+                    <span class="read-time">8 min</span>
+                </div>
+                <h3 class="article-title">Développeur, analyste, architecte : comment choisir ?</h3>
+                <p>Il n'existe pas de « bonne » réponse unique. Mais il existe votre réponse. Guide pour naviguer les différentes directions en informatique.</p>
+                <a href="#article-carriere" class="read-more">Lire l'article</a>
+            </article>
+            
+            <article class="article-card">
                 <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80" 
                      alt="Intelligence artificielle et programmation - robot et code informatique" 
-                     class="article-card-img" loading="lazy" width="800" height="450">
+                     class="article-card-img" loading="lazy" decoding="async" width="800" height="450">
                 <div class="article-meta">
                     <time datetime="2026-01">Janvier 2026</time>
                     <span class="read-time">8 min</span>
@@ -1554,7 +1607,7 @@
             <article class="article-card">
                 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" 
                      alt="Technologies informatiques - circuit imprimé et composants électroniques" 
-                     class="article-card-img" loading="lazy" width="800" height="450">
+                     class="article-card-img" loading="lazy" decoding="async" width="800" height="450">
                 <div class="article-meta">
                     <time datetime="2026-01">Janvier 2026</time>
                     <span class="read-time">6 min</span>
@@ -1567,7 +1620,7 @@
             <article class="article-card">
                 <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80" 
                      alt="Conception d'interface utilisateur UX UI - maquettes et wireframes" 
-                     class="article-card-img" loading="lazy" width="800" height="450">
+                     class="article-card-img" loading="lazy" decoding="async" width="800" height="450">
                 <div class="article-meta">
                     <time datetime="2026-01">Janvier 2026</time>
                     <span class="read-time">6 min</span>
@@ -1580,7 +1633,7 @@
             <article class="article-card">
                 <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=800&q=80" 
                      alt="Voyage et immigration - avion et globe terrestre représentant le parcours migratoire" 
-                     class="article-card-img" loading="lazy" width="800" height="450">
+                     class="article-card-img" loading="lazy" decoding="async" width="800" height="450">
                 <div class="article-meta">
                     <time datetime="2025-12">Décembre 2025</time>
                     <span class="read-time">5 min</span>
@@ -1606,15 +1659,15 @@
                     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:?subject=Article%20Ponts%20TI%20-%20L%27IA%20en%20TI&amp;body=https://pontsti.github.io/%23article-ia" class="share-btn share-email" aria-label="Partager par courriel">
+                <a href="mailto:goutas.hilal@gmail.com" class="share-btn share-email" aria-label="Partager par courriel">
                     <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                    Courriel
+                    <span>Courriel</span>
                 </a>
             </div>
             
             <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" 
                  alt="Intelligence artificielle et outils de développement - visualisation IA pour programmeurs" 
-                 class="article-hero-img" loading="lazy" width="1200" height="600">
+                 class="article-hero-img" loading="lazy" decoding="async" width="1200" height="600">
             <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
             
             <div class="article-full">
@@ -1773,7 +1826,7 @@
 
                 <div class="cta-box">
                     <h3>Des questions sur l'IA en contexte professionnel ?</h3>
-                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Question%20sur%20l%27IA%20en%20TI">goutas.hilal@gmail.com</a></p>
+                    <p><a href="mailto:goutas.hilal@gmail.com"><span class="email-link">goutas.hilal@gmail.com</span></a></p>
                 </div>
             </div>
             
@@ -1808,15 +1861,15 @@
                     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:?subject=Article%20Ponts%20TI%20-%20Sp%C3%A9cialisation%20vs%20fondamentaux&amp;body=https://pontsti.github.io/%23article-spec" class="share-btn share-email" aria-label="Partager par courriel">
+                <a href="mailto:goutas.hilal@gmail.com" class="share-btn share-email" aria-label="Partager par courriel">
                     <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                    Courriel
+                    <span>Courriel</span>
                 </a>
             </div>
             
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" 
                  alt="Technologies et circuit imprimé - évolution constante des outils informatiques" 
-                 class="article-hero-img" loading="lazy" width="1200" height="600">
+                 class="article-hero-img" loading="lazy" decoding="async" width="1200" height="600">
             <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
             
             <div class="article-full">
@@ -1869,7 +1922,7 @@
 
                 <div class="cta-box">
                     <h3>Questions sur votre parcours technologique ?</h3>
-                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Question%20parcours%20technologique">goutas.hilal@gmail.com</a></p>
+                    <p><a href="mailto:goutas.hilal@gmail.com"><span class="email-link">goutas.hilal@gmail.com</span></a></p>
                 </div>
             </div>
             
@@ -1900,15 +1953,15 @@
                     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:?subject=Article%20Ponts%20TI%20-%20IHM%20et%20ergonomie%20cognitive&amp;body=https://pontsti.github.io/%23article-ihm" class="share-btn share-email" aria-label="Partager par courriel">
+                <a href="mailto:goutas.hilal@gmail.com" class="share-btn share-email" aria-label="Partager par courriel">
                     <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                    Courriel
+                    <span>Courriel</span>
                 </a>
             </div>
             
             <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80" 
                  alt="Conception UX UI - maquettes d'interface utilisateur et ergonomie cognitive" 
-                 class="article-hero-img" loading="lazy" width="1200" height="600">
+                 class="article-hero-img" loading="lazy" decoding="async" width="1200" height="600">
             <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
             
             <div class="article-full">
@@ -1999,7 +2052,7 @@
 
                 <div class="cta-box">
                     <h3>L'IHM et l'accessibilité vous intéressent ?</h3>
-                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Question%20sur%20l%27IHM">goutas.hilal@gmail.com</a></p>
+                    <p><a href="mailto:goutas.hilal@gmail.com"><span class="email-link">goutas.hilal@gmail.com</span></a></p>
                 </div>
             </div>
             
@@ -2030,15 +2083,15 @@
                     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:?subject=Article%20Ponts%20TI%20-%20Mon%20parcours&amp;body=https://pontsti.github.io/%23article-parcours" class="share-btn share-email" aria-label="Partager par courriel">
+                <a href="mailto:goutas.hilal@gmail.com" class="share-btn share-email" aria-label="Partager par courriel">
                     <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
-                    Courriel
+                    <span>Courriel</span>
                 </a>
             </div>
             
             <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200&q=80" 
                  alt="Voyage et immigration - parcours migratoire de l'Algérie vers le Québec Canada" 
-                 class="article-hero-img" loading="lazy" width="1200" height="600">
+                 class="article-hero-img" loading="lazy" decoding="async" width="1200" height="600">
             <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
             
             <div class="article-full">
@@ -2111,7 +2164,7 @@
                 <div class="cta-box">
                     <h3>Vous vivez un parcours similaire ?</h3>
                     <p>Partagez votre expérience ou posez vos questions</p>
-                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Mon%20parcours%20d%27immigration">goutas.hilal@gmail.com</a></p>
+                    <p><a href="mailto:goutas.hilal@gmail.com"><span class="email-link">goutas.hilal@gmail.com</span></a></p>
                 </div>
             </div>
             
@@ -2124,6 +2177,222 @@
                 <a href="#article-ia" class="related-link">
                     <strong>L'IA en TI</strong>
                     <span>Outils de programmation, Java et analyse de logs</span>
+                </a>
+            </div>
+        </article>
+
+        <!-- ARTICLE CARRIÈRE -->
+        <article id="article-carriere" class="section">
+            <h2>Développeur, analyste, architecte : comment choisir ?</h2>
+            <div class="article-meta">
+                <span>Par Hilal Goutas</span>
+                <time datetime="2026-02">Février 2026</time>
+                <span class="read-time">8 min</span>
+            </div>
+            
+            <div class="share-buttons">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pontsti.github.io/%23article-carriere" target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Partager sur LinkedIn">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:goutas.hilal@gmail.com" class="share-btn share-email" aria-label="Partager par courriel">
+                    <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                    <span>Courriel</span>
+                </a>
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80" 
+                 alt="Carrefour professionnel - trois directions et choix de carrière en informatique" 
+                 class="article-hero-img" loading="lazy" decoding="async" width="1200" height="600">
+            <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
+            
+            <div class="article-full">
+                <p>
+                    Si vous travaillez en informatique — ou si vous envisagez d'y entrer — vous avez probablement 
+                    entendu parler de ces titres : développeur, analyste, architecte. Parfois, vous vous demandez 
+                    quelle direction prendre. Ou si vous avez déjà choisi, vous vous posez des questions.
+                </p>
+
+                <p>
+                    La bonne nouvelle ? Il n'existe pas de « bonne » réponse unique. Mais il existe 
+                    <strong>votre</strong> réponse.
+                </p>
+
+                <h3>Le défi : une forêt d'appellations</h3>
+                
+                <p>
+                    En informatique, contrairement à d'autres domaines, il n'y a pas de parcours d'évolution 
+                    « standard ». Sur le marché québécois, ce que j'observe, c'est :
+                </p>
+
+                <ul class="feature-list">
+                    <li><strong>Beaucoup de titres pour des rôles similaires</strong> — Un « développeur senior » 
+                    chez une entreprise peut faire exactement le même travail qu'un « analyste-développeur » ailleurs.</li>
+                    <li><strong>Des frontières floues</strong> — DevOps, full-stack, analyste-développeur... 
+                    ces titres se chevauchent de plus en plus.</li>
+                    <li><strong>Des trajectoires imprévisibles</strong> — Certains changent de domaine trois fois 
+                    dans leur carrière. D'autres approfondissent une seule spécialité. Les deux réussissent.</li>
+                </ul>
+
+                <h3>Trois directions, trois réalités</h3>
+
+                <h4>📌 Si vous aimez la technique en profondeur : développeur ou architecte</h4>
+                
+                <p>
+                    Vous aimez résoudre des problèmes techniques complexes. Vous trouvez du plaisir 
+                    à maîtriser un framework, à optimiser du code, à comprendre les détails.
+                </p>
+
+                <p>
+                    <strong>Ce que cela apporte :</strong> Une expertise très recherchée sur le marché. 
+                    De meilleures salaires souvent. Une progression claire : junior → senior → lead technique → architecte.
+                </p>
+
+                <p>
+                    <strong>Les défis :</strong> La technologie change vite. Ce que vous avez maîtrisé peut 
+                    devenir obsolète. Il faut continuellement apprendre. Et à un moment, si vous voulez progresser, 
+                    il faudra penser « leadership technique » plutôt que simplement « code ».
+                </p>
+
+                <div class="quote-box">
+                    Un développeur senior ne code pas forcément plus. Il aide les autres à coder mieux.
+                </div>
+
+                <h4>📌 Si vous aimez comprendre le métier : analyste d'affaires</h4>
+                
+                <p>
+                    Vous aimez comprendre comment fonctionne une entreprise. Vous posez des questions : 
+                    « Pourquoi faites-vous ça ? » « Qui a besoin de ça ? » « Quel est le problème réel ? ». 
+                    Et vous trouvez à transformer ces besoins en solutions informatiques.
+                </p>
+
+                <p>
+                    <strong>Ce que cela apporte :</strong> Vous êtes moins exposé aux changements technologiques 
+                    rapides. Vos compétences en écoute et en analyse sont transférables partout — dans n'importe 
+                    quel secteur. Vous pouvez progresser vers la gestion de projet, le product management, 
+                    voire le leadership d'entreprise.
+                </p>
+
+                <p>
+                    <strong>Les défis :</strong> Vous avez moins de crédit technique auprès des développeurs 
+                    (ils peuvent vous considérer comme « moins technique »). Et il faut vraiment savoir écouter 
+                    sans imposer de solutions — ce n'est pas facile pour tout le monde.
+                </p>
+
+                <h4>📌 Si vous aimez tout un peu : polyvalent (analyste-programmeur, full-stack)</h4>
+                
+                <p>
+                    Vous aimez avoir une vue d'ensemble. Vous voulez comprendre la technique ET le métier. 
+                    Vous ne voulez pas vous spécialiser trop étroitement.
+                </p>
+
+                <p>
+                    <strong>Ce que cela apporte :</strong> Une flexibilité énorme. Surtout en PME, ce profil 
+                    est très recherché. Vous pouvez vous adapter à différents rôles. Et vous découvrez 
+                    ce qui vous passionne vraiment en expérimentant.
+                </p>
+
+                <p>
+                    <strong>Les défis :</strong> Vous n'êtes peut-être pas aussi spécialisé que les autres. 
+                    Dans une grande entreprise structurée, on peut vous demander de « choisir un camp ». 
+                    Et il faut gérer l'impression parfois qu'on ne maîtrise vraiment rien en profondeur.
+                </p>
+
+                <h3>Ce que le terrain révèle vraiment</h3>
+
+                <p>
+                    Après plusieurs années en TI, voici ce que j'ai appris :
+                </p>
+
+                <p>
+                    <strong>Les changements de direction sont normaux.</strong> Beaucoup de professionnels 
+                    ne trouvent leur voie que en expérimentant. Quelqu'un qui a commencé comme développeur 
+                    découvre qu'il préfère analyser les besoins. Quelqu'un d'autre fait l'inverse. C'est okay.
+                </p>
+
+                <p>
+                    <strong>Il n'y a pas de lien automatique entre « progression linéaire » et succès.</strong> 
+                    Les parcours atypiques peuvent être tout aussi (ou plus) enrichissants. Quelqu'un qui a 
+                    travaillé en ressources humaines, puis en TI, apporte une perspective unique.
+                </p>
+
+                <p>
+                    <strong>La satisfaction dépend plus de l'alignement avec vos intérêts que du titre.</strong> 
+                    Un développeur heureux dans une petite équipe peut être plus satisfait qu'un architecte 
+                    dans une grosse machine bureaucratique.
+                </p>
+
+                <h3>Les parcours « atypiques » — la force cachée</h3>
+
+                <p>
+                    J'ai rencontré des personnes avec des trajectoires surprenantes. Quelqu'un en provenance 
+                    d'un domaine non-technique devenu développeur. Un professionnel d'un autre secteur devenu 
+                    architecte. Quelqu'un avec une formation créative devenu analyste.
+                </p>
+
+                <p>
+                    Ce qui frappe, c'est la combinaison de compétences qu'ils apportent : écoute + coordination 
+                    d'équipe + technique. C'est rare. Et c'est très recherché.
+                </p>
+
+                <p>
+                    Ces profils évoluent souvent vers des rôles comme Scrum Master, Product Owner, 
+                    ou gestionnaire de projet TI. Et devinez pourquoi ? Parce que ces rôles valorisent 
+                    exactement ce qu'ils apportent : l'écoute, l'analyse des besoins, et la capacité 
+                    à faire parler tout le monde ensemble.
+                </p>
+
+                <div class="quote-box">
+                    Votre parcours « atypique » n'est pas un handicap. C'est souvent votre meilleur atout.
+                </div>
+
+                <h3>Comment réfléchir à votre choix ?</h3>
+
+                <p>Posez-vous ces trois questions honnêtement :</p>
+
+                <ul class="feature-list">
+                    <li><strong>Qu'est-ce qui vous énergise vraiment ?</strong> Résoudre des problèmes techniques 
+                    complexes ? Comprendre les besoins des gens ? Avoir une vue d'ensemble ?</li>
+                    <li><strong>Comment voulez-vous apprendre ?</strong> Par la profondeur (devenir expert en une chose) 
+                    ou par la largeur (comprendre beaucoup de choses) ?</li>
+                    <li><strong>Comment vous voyez-vous dans 5-10 ans ?</strong> Plus technique ? Plus stratégique ? 
+                    En gestion d'équipe ? Indépendant ? Il n'y a pas de bonne réponse.</li>
+                </ul>
+
+                <h3>Le secret qu'on ne dit pas assez</h3>
+
+                <p>
+                    Personne n'a vraiment tout planifié. La plupart des professionnels découvrent leur voie 
+                    en la faisant. Vous allez apprendre en expérimentant. Vous allez changer d'idée. 
+                    Et c'est normal.
+                </p>
+
+                <p>
+                    Le « parcours idéal » n'existe que dans les manuels de carrière. Dans la réalité, 
+                    c'est beaucoup plus messy, plus human, et souvent — au final — beaucoup plus intéressant.
+                </p>
+
+                <p>
+                    Prenez votre temps. Faites ce qui vous intéresse maintenant. Les portes qui s'ouvriront 
+                    ensuite dépendront de ce que vous aurez appris, pas du titre exact que vous aviez.
+                </p>
+
+                <div class="cta-box">
+                    <h3>Vous navigez un choix de carrière en TI ?</h3>
+                    <p>Parlons-en. Je peux vous partager ce que j'ai appris.</p>
+                    <p><a href="mailto:goutas.hilal@gmail.com"><span class="email-link">goutas.hilal@gmail.com</span></a></p>
+                </div>
+            </div>
+            
+            <div class="related-box">
+                <h3>Articles liés</h3>
+                <a href="#article-parcours" class="related-link">
+                    <strong>Mon parcours : Algérie, France, Québec</strong>
+                    <span>Immigrer, s'adapter, réussir</span>
+                </a>
+                <a href="#article-spec" class="related-link">
+                    <strong>La course technologique</strong>
+                    <span>Spécialisation vs fondamentaux</span>
                 </a>
             </div>
         </article>
@@ -2525,43 +2794,4 @@
         </svg>
     </button>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script>
-        const backTop = document.querySelector(".back-top");
-        const nav = document.querySelector("nav");
-        
-        window.addEventListener("scroll", () => {
-            // Bouton retour en haut
-            if (window.scrollY > 400) {
-                backTop.classList.add("visible");
-            } else {
-                backTop.classList.remove("visible");
-            }
-            
-            // Ombre sur la navigation quand on scroll
-            if (window.scrollY > 10) {
-                nav.classList.add("scrolled");
-            } else {
-                nav.classList.remove("scrolled");
-            }
-        });
-        
-        backTop.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-        
-        // Fermer les accordéons FAQ quand on en ouvre un autre (optionnel)
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.addEventListener('toggle', function() {
-                if (this.open) {
-                    document.querySelectorAll('.faq-item').forEach(other => {
-                        if (other !== this && other.open) {
-                            other.open = false;
-                        }
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    <script data-cfasync="false" src="/c
