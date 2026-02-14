@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MENPL52956"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MENPL52956');</script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <title>L'IA en TI : outils de programmation, Java et analyse de logs | Ponts TI</title>
+    <meta name="description" content="Guide pratique sur l'IA appliquée au développement : GitHub Copilot, Claude, Cursor. Cas pratiques Java, analyse de logs avec IA, limites à connaître. Par un professionnel TI à Montréal.">
+    <meta name="author" content="Hilal Goutas">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://pontsti.github.io/articles/ia-outils-programmation.html">
+    <link rel="sitemap" type="application/xml" href="https://pontsti.github.io/sitemap.xml">
+    
+    <meta http-equiv="content-language" content="fr-CA">
+    <link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/ia-outils-programmation.html">
+    <link rel="alternate" hreflang="fr" href="https://pontsti.github.io/articles/ia-outils-programmation.html">
+    <link rel="alternate" hreflang="x-default" href="https://pontsti.github.io/articles/ia-outils-programmation.html">
+    
+    <meta name="geo.region" content="CA-QC">
+    <meta name="geo.placename" content="Montréal, Québec, Canada">
+    
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.json">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pontsti.github.io/articles/ia-outils-programmation.html">
+    <meta property="og:title" content="L'IA en TI : outils de programmation, Java et analyse de logs | Ponts TI">
+    <meta property="og:description" content="Guide pratique sur l'IA appliquée au développement : GitHub Copilot, Claude, Cursor. Cas pratiques Java, analyse de logs avec IA, limites à connaître. Par un professionnel TI à Montréal.">
+    <meta property="og:locale" content="fr_CA">
+    <meta property="og:site_name" content="Ponts TI">
+    <meta property="og:image" content="https://pontsti.github.io/og-image.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="L'IA en TI : outils de programmation, Java et analyse de logs | Ponts TI">
+    <meta name="twitter:description" content="Guide pratique sur l'IA appliquée au développement : GitHub Copilot, Claude, Cursor. Cas pratiques Java, analyse de logs avec IA, limites à connaître. Par un professionnel TI à Montréal.">
+    
+    <meta name="theme-color" content="#0d1b2a">
+    
+    <link rel="stylesheet" href="../style.css">
+    
+</head>
+<body>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    
+    <header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="../index.html" aria-label="Retour à l'accueil">
+                <svg class="logo-icon" viewBox="0 0 96 58" fill="none" aria-hidden="true" role="img">
+    <title>Logo Ponts TI</title>
+    <path d="M6 48 Q48 8 90 48" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <line x1="6" y1="48" x2="90" y2="48" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="26" y1="32" x2="26" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="48" y1="16" x2="48" y2="48" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="70" y1="32" x2="70" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="48" cy="12" r="4" fill="#5eead4"/>
+</svg>
+                <h1>Ponts <span>TI</span></h1>
+            </a>
+        </div>
+        <p class="tagline-main">Trouver un emploi en informatique au Québec</p>
+        <p class="tagline-services">
+            <span>CV</span><span class="separator" aria-hidden="true">•</span>
+            <span>Entrevue</span><span class="separator" aria-hidden="true">•</span>
+            <span>Intégration</span><span class="dash" aria-hidden="true">—</span>
+            <span class="target">Pour tous les parcours</span>
+        </p>
+        <div class="header-actions">
+            <span class="badge">Bénévole</span>
+            <a href="https://www.linkedin.com/in/hilal-goutas-65a7383b/" target="_blank" rel="noopener" class="linkedin-link" aria-label="Profil LinkedIn de Hilal Goutas">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn
+            </a>
+        </div>
+    </div>
+</header>
+    
+    <nav aria-label="Navigation principale">
+    <ul><li><a href="../index.html#apropos">À propos</a></li>
+<li><a href="../index.html#pourquoi-ponts">Pourquoi « Ponts »</a></li>
+<li><a href="../articles/marche-ti-quebec-2026.html">Marché TI</a></li>
+<li><a href="../index.html#articles" class="active">Articles</a></li>
+<li><a href="../ressources.html">Liens utiles</a></li>
+<li><a href="../index.html#faq">Questions</a></li>
+<li><a href="../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+    
+    <main id="main" class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane"><a href="../index.html">Accueil</a><span aria-hidden="true">›</span><a href="../index.html#articles">Articles</a><span aria-hidden="true">›</span><strong>L'IA en TI</strong></nav>
+<article class="section">
+
+            <h2>L'IA en TI : outils de programmation, Java et analyse de logs</h2>
+            <div class="article-meta">
+                <span>Par Hilal Goutas</span>
+                <time datetime="2026-01">Janvier 2026</time>
+                <span class="read-time">8 min</span>
+            </div>
+            
+            <div class="share-buttons">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pontsti.github.io/articles/ia-outils-programmation.html" target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Partager sur LinkedIn">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a>
+            </div>
+            
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80" 
+                 alt="Intelligence artificielle et outils de développement - visualisation IA pour programmeurs" 
+                 class="article-hero-img" loading="lazy" decoding="async" width="1200" height="600">
+            <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
+            
+            <div class="article-full">
+                <p>
+                    L'intelligence artificielle transforme notre métier de développeur. GitHub Copilot, Claude, 
+                    Cursor, Cody — ces outils ne sont plus des gadgets, mais des assistants quotidiens. 
+                    Voici mon expérience après plus d'un an d'utilisation.
+                </p>
+
+                <h3>Les outils IA pour le développement</h3>
+                
+                <p>
+                    Les assistants de code IA ont beaucoup évolué. Ils transforment la façon dont on développe. 
+                    Je les utilise quotidiennement.
+                </p>
+
+                <h4>Principaux outils disponibles</h4>
+                
+                <ul class="feature-list">
+                    <li><strong>GitHub Copilot</strong> — Intégration dans VS Code et les EDI JetBrains. Bon pour l'autocomplétion contextuelle.</li>
+                    <li><strong>Claude (Anthropic)</strong> — Conversations sur l'architecture, revue de code, explication de concepts.</li>
+                    <li><strong>Cursor</strong> — EDI basé sur VS Code avec IA intégrée. Utile pour le remaniement de code.</li>
+                    <li><strong>Cody (Sourcegraph)</strong> — Efficace pour naviguer dans de grandes bases de code.</li>
+                    <li><strong>Amazon CodeWhisperer</strong> — Optimisé pour les services AWS.</li>
+                </ul>
+
+                <h3>L'IA et Java : cas pratiques</h3>
+                
+                <p>
+                    Java reste un des langages les plus utilisés en entreprise au Québec. 
+                    Voici comment l'IA peut aider concrètement dans les projets Java.
+                </p>
+
+                <h4>Génération de code répétitif</h4>
+                
+                <p>
+                    Java est connu pour sa verbosité. Les accesseurs, mutateurs, constructeurs, 
+                    patrons Builder... L'IA génère ce code répétitif rapidement. Un commentaire 
+                    comme <code>// Créer une classe Utilisateur avec nom, courriel et validation</code> 
+                    produit une classe complète en quelques secondes.
+                </p>
+
+                <h4>Tests unitaires</h4>
+                
+                <p>
+                    L'IA peut générer des tests JUnit, Mockito, ou TestNG à partir de vos classes. 
+                    Elle identifie les cas limites et propose des scénarios de test. 
+                    Il faut toutefois valider la pertinence des assertions générées.
+                </p>
+
+                <h4>Migration et remaniement</h4>
+                
+                <p>
+                    Migrer de Java 8 à Java 17+ ? L'IA peut identifier les modèles obsolètes 
+                    et proposer des versions modernisées du code.
+                </p>
+
+                <h3>Analyse de logs avec l'IA</h3>
+                
+                <p>
+                    L'analyse de logs est une tâche chronophage mais importante. L'IA peut 
+                    aider à traiter cette tâche plus efficacement.
+                </p>
+
+                <h4>Ce que l'IA peut faire</h4>
+                
+                <ul class="feature-list">
+                    <li><strong>Identifier les modèles d'erreurs</strong> — L'IA repère les exceptions récurrentes et suggère des causes probables.</li>
+                    <li><strong>Corréler les événements</strong> — Elle peut lier des logs de différents services pour retracer un problème.</li>
+                    <li><strong>Résumer des fichiers volumineux</strong> — Transformer des milliers de lignes en résumé actionnable.</li>
+                    <li><strong>Générer des requêtes</strong> — Créer des requêtes Splunk, ELK, ou Datadog à partir d'une description.</li>
+                </ul>
+
+                <h4>Exemple concret</h4>
+                
+                <p>
+                    Un fichier de log de 50 000 lignes après un incident en production. 
+                    Au lieu de le parcourir manuellement, on peut demander à l'IA : 
+                    « Quelles sont les erreurs critiques et quelle est la séquence 
+                    d'événements qui a mené à l'échec ? »
+                </p>
+
+                <p>
+                    L'IA identifie les <code>ERROR</code> et <code>FATAL</code>, les ordonne 
+                    chronologiquement, et propose une hypothèse sur la cause. 
+                    On passe de heures d'analyse à quelques minutes de validation.
+                </p>
+
+                <h3>Autres outils utiles pour le développement</h3>
+                
+                <h4>Environnements de développement intégrés</h4>
+                
+                <ul class="feature-list">
+                    <li><strong>IntelliJ IDEA</strong> — EDI de référence pour Java, avec remaniement puissant.</li>
+                    <li><strong>VS Code</strong> — Léger, extensible, bon support multi-langages.</li>
+                    <li><strong>Eclipse</strong> — Toujours utilisé en entreprise pour les projets Java EE.</li>
+                </ul>
+
+                <h4>Outils de débogage et profiling</h4>
+                
+                <ul class="feature-list">
+                    <li><strong>VisualVM</strong> — Analyse de la JVM, détection des fuites mémoire.</li>
+                    <li><strong>JProfiler</strong> — Profiling avancé pour applications Java.</li>
+                </ul>
+
+                <h4>Gestion de versions et CI/CD</h4>
+                
+                <ul class="feature-list">
+                    <li><strong>Git</strong> — Incontournable. Branches, rebase, cherry-pick.</li>
+                    <li><strong>Jenkins / GitHub Actions</strong> — Automatisation des builds et déploiements.</li>
+                    <li><strong>SonarQube</strong> — Analyse statique du code.</li>
+                </ul>
+
+                <h3>Les limites à connaître</h3>
+                
+                <p>
+                    <strong>La perte de contexte :</strong> Vous passez du temps à expliquer votre architecture. 
+                    L'IA semble comprendre. Puis, quelques échanges plus tard, elle propose une solution 
+                    qui ignore ce que vous avez dit.
+                </p>
+
+                <p>
+                    <strong>Le volume généré :</strong> L'IA produit du contenu facilement — parfois trop. 
+                    Tout doit être relu, validé, testé. Le temps gagné à la génération peut être perdu 
+                    à la vérification.
+                </p>
+
+                <p>
+                    <strong>La confiance excessive :</strong> L'IA présente ses erreurs avec la même assurance 
+                    que ses bonnes réponses. Sans vigilance, les erreurs passent et se propagent.
+                </p>
+
+                <p>
+                    <strong>Les hallucinations :</strong> L'IA peut inventer des méthodes qui n'existent pas 
+                    ou des syntaxes incorrectes. Toujours vérifier dans la documentation officielle.
+                </p>
+
+                <h3>Mon approche</h3>
+                
+                <p>
+                    J'utilise l'IA pour des tâches ciblées : génération de code répétitif, 
+                    tests unitaires, remaniement, documentation, analyse de logs. Pour les problèmes 
+                    complexes, je découpe en petites étapes.
+                </p>
+                
+                <p>
+                    Ces outils vont continuer à s'améliorer. Les maîtriser devient une compétence 
+                    professionnelle utile. Mais ils restent des assistants — le jugement et la 
+                    validation, c'est toujours nous.
+                </p>
+
+                <div class="quote-box">
+                    L'IA amplifie vos compétences, elle ne les remplace pas. Un développeur débutant 
+                    avec l'IA reste débutant. Un développeur expérimenté avec l'IA devient plus productif.
+                </div>
+
+                <div class="cta-box">
+                    <h3>Des questions sur l'IA en contexte professionnel ?</h3>
+                    <p><a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a></p>
+                </div>
+            </div>
+            
+            <div class="related-box">
+                <h3>Articles liés</h3>
+                <a href="marche-ti-quebec-2026.html" class="related-link">
+                    <strong>Portrait du marché TI au Québec</strong>
+                    <span>Statistiques emploi, salaires et tendances 2026</span>
+                </a>
+                <a href="specialisation-vs-fondamentaux.html" class="related-link">
+                    <strong>La course technologique</strong>
+                    <span>Spécialisation vs fondamentaux</span>
+                </a>
+                <a href="ihm-ergonomie-cognitive.html" class="related-link">
+                    <strong>IHM et ergonomie cognitive</strong>
+                    <span>Concevoir pour l'utilisateur</span>
+                </a>
+            </div>
+        
+</article>
+    </main>
+    
+    <footer>
+    <div class="container">
+        <p><strong>Ponts TI</strong> — Aide gratuite emploi informatique Québec</p>
+        <p>Un projet bénévole de <strong>Hilal Goutas</strong> · Analyste informatique · Montréal, Québec</p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: var(--space-4); line-height: 1.8;">
+            Ponts TI aide les <strong>immigrants francophones</strong>, les <strong>PVTistes</strong> et les personnes en
+            <strong>reconversion professionnelle</strong> à trouver un <strong>emploi en informatique au Québec</strong>.
+        </p>
+        <p style="font-size: 0.8rem; margin-top: var(--space-3);">
+            <a href="../articles/marche-ti-quebec-2026.html">Marché TI Québec 2026</a> ·
+            <a href="../index.html#articles">Articles</a> ·
+            <a href="../ressources.html">Ressources</a> ·
+            <a href="../index.html#faq">FAQ</a> ·
+            <a href="../index.html#contact">Contact</a>
+        </p>
+        <p>© 2025-2026 Ponts TI. Contenu original.</p>
+    </div>
+</footer>
+
+<button class="back-top" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+const nav = document.querySelector('nav');
+if (nav) { window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true }); }
+const backTop = document.querySelector('.back-top');
+if (backTop) { window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); }, { passive: true }); }
+</script>
+</body>
+</html>
