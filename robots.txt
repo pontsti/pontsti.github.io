@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pontsti.github.io/sitemap.xml
+Sitemap: https://pontsti.github.io/sitemap.txt
