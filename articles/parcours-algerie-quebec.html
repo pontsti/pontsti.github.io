@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
     
     <title>Mon parcours : de l'Algérie au Québec en informatique | Ponts TI</title>
-    <meta name="description" content="Témoignage d'un immigrant algérien devenu analyste informatique à Montréal. 18 ans de parcours : Algérie, France, Québec. Les défis, l'adaptation, la réussite en TI.">
+    <meta name="description" content="Témoignage d'un immigrant algérien devenu analyste informatique à Montréal. Parcours : Algérie, France, Québec. Les défis, l'adaptation, la réussite en TI.">
     <meta name="author" content="Hilal Goutas">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://pontsti.github.io/articles/parcours-algerie-quebec.html">
@@ -35,21 +35,26 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://pontsti.github.io/articles/parcours-algerie-quebec.html">
     <meta property="og:title" content="Mon parcours : de l'Algérie au Québec en informatique | Ponts TI">
-    <meta property="og:description" content="Témoignage d'un immigrant algérien devenu analyste informatique à Montréal. 18 ans de parcours : Algérie, France, Québec. Les défis, l'adaptation, la réussite en TI.">
+    <meta property="og:description" content="Témoignage d'un immigrant algérien devenu analyste informatique à Montréal. Parcours : Algérie, France, Québec. Les défis, l'adaptation, la réussite en TI.">
     <meta property="og:locale" content="fr_CA">
     <meta property="og:site_name" content="Ponts TI">
     <meta property="og:image" content="https://pontsti.github.io/og-image.png">
     
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mon parcours : de l'Algérie au Québec en informatique | Ponts TI">
-    <meta name="twitter:description" content="Témoignage d'un immigrant algérien devenu analyste informatique à Montréal. 18 ans de parcours : Algérie, France, Québec. Les défis, l'adaptation, la réussite en TI.">
+    <meta name="twitter:description" content="Témoignage d'un immigrant algérien devenu analyste informatique à Montréal. Parcours : Algérie, France, Québec. Les défis, l'adaptation, la réussite en TI.">
     
     <meta name="theme-color" content="#0d1b2a">
     
     <link rel="stylesheet" href="../style.css">
     
+    <style>
+    #read-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#1a5fb4,#5eead4); width:0%; z-index:9999; transition:width 0.1s linear; }
+    </style>
 </head>
 <body>
+    <div id="read-progress"></div>
+
     <a href="#main" class="skip-link">Aller au contenu</a>
     
     <header class="header">
@@ -111,7 +116,9 @@
                     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a>
+                <a href="mailto:?subject=Article%20Ponts%20TI%20-%20Mon%20parcours%20Alg%C3%A9rie%20France%20Qu%C3%A9bec&amp;body=Je%20te%20partage%20cet%20article%20%3A%20https%3A//pontsti.github.io/articles/parcours-algerie-quebec.html" class="share-btn share-email" aria-label="Partager par courriel"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                    Courriel
+                </a>
             </div>
             
             <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1200&q=80" 
@@ -120,7 +127,7 @@
             <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
             
             <div class="article-full">
-                <p>18 ans de parcours, trois pays, fait d'apprentissages, d'erreurs et de résilience. Voici mon histoire.</p>
+                <p>Un parcours à travers trois pays, fait d'apprentissages, d'erreurs et de résilience. Voici mon histoire.</p>
 
                 <h3>Les débuts en Algérie</h3>
                 
@@ -189,7 +196,7 @@
                 <div class="cta-box">
                     <h3>Vous vivez un parcours similaire ?</h3>
                     <p>Partagez votre expérience ou posez vos questions</p>
-                    <p><a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a></p>
+                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Mon%20parcours%20%E2%80%94%20Ponts%20TI">goutas.hilal@gmail.com</a></p>
                 </div>
             </div>
             
@@ -232,10 +239,4 @@
 </button>
 
 <script>
-const nav = document.querySelector('nav');
-if (nav) { window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true }); }
-const backTop = document.querySelector('.back-top');
-if (backTop) { window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); }, { passive: true }); }
-</script>
-</body>
-</html>
+const

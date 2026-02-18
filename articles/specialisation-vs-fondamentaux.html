@@ -48,8 +48,13 @@
     
     <link rel="stylesheet" href="../style.css">
     
+    <style>
+    #read-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#1a5fb4,#5eead4); width:0%; z-index:9999; transition:width 0.1s linear; }
+    </style>
 </head>
 <body>
+    <div id="read-progress"></div>
+
     <a href="#main" class="skip-link">Aller au contenu</a>
     
     <header class="header">
@@ -111,7 +116,9 @@
                     <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     LinkedIn
                 </a>
-                <a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a>
+                <a href="mailto:?subject=Article%20Ponts%20TI%20-%20Sp%C3%A9cialisation%20vs%20fondamentaux&amp;body=Je%20te%20partage%20cet%20article%20%3A%20https%3A//pontsti.github.io/articles/specialisation-vs-fondamentaux.html" class="share-btn share-email" aria-label="Partager par courriel"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                    Courriel
+                </a>
             </div>
             
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80" 
@@ -169,7 +176,7 @@
 
                 <div class="cta-box">
                     <h3>Questions sur votre parcours technologique ?</h3>
-                    <p><a href="mailto:goutas.hilal@gmail.com">goutas.hilal@gmail.com</a></p>
+                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Question%20technologie%20%E2%80%94%20Ponts%20TI">goutas.hilal@gmail.com</a></p>
                 </div>
             </div>
             
@@ -212,10 +219,4 @@
 </button>
 
 <script>
-const nav = document.querySelector('nav');
-if (nav) { window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true }); }
-const backTop = document.querySelector('.back-top');
-if (backTop) { window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); }, { passive: true }); }
-</script>
-</body>
-</html>
+const
