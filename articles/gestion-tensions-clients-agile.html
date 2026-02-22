@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MENPL52956"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MENPL52956');</script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <title>Gérer les tensions avec les clients en mode agile | Santé mentale en TI | Ponts TI</title>
+    <meta name="description" content="Conflits client non gérés en TI : impact réel sur la santé mentale, l'épuisement professionnel et l'équipe. Conseils pratiques en mode agile et importance du soutien hiérarchique. Retour d'expérience honnête.">
+    <meta name="keywords" content="gestion client TI, client difficile agile, santé mentale travail informatique, épuisement professionnel TI, burnout développeur, communication projet agile, tensions équipe TI Québec, soutien hiérarchique, soft skills informatique">
+    <meta name="author" content="Hilal Goutas">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://pontsti.github.io/articles/gestion-tensions-clients-agile.html">
+    <link rel="sitemap" type="application/xml" href="https://pontsti.github.io/sitemap.xml">
+    
+    <meta http-equiv="content-language" content="fr-CA">
+    <link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/gestion-tensions-clients-agile.html">
+    <link rel="alternate" hreflang="fr" href="https://pontsti.github.io/articles/gestion-tensions-clients-agile.html">
+    <link rel="alternate" hreflang="x-default" href="https://pontsti.github.io/articles/gestion-tensions-clients-agile.html">
+    
+    <meta name="geo.region" content="CA-QC">
+    <meta name="geo.placename" content="Montréal, Québec, Canada">
+    
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.json">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pontsti.github.io/articles/gestion-tensions-clients-agile.html">
+    <meta property="og:title" content="Gérer les tensions avec les clients en mode agile | Santé mentale en TI | Ponts TI">
+    <meta property="og:description" content="Conflits client non gérés en TI : impact sur la santé mentale et l'équipe. Conseils pratiques en mode agile et importance du soutien hiérarchique.">
+    <meta property="og:locale" content="fr_CA">
+    <meta property="og:site_name" content="Ponts TI">
+    <meta property="og:image" content="https://pontsti.github.io/og-image.png">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gérer les tensions avec les clients en mode agile | Santé mentale en TI | Ponts TI">
+    <meta name="twitter:description" content="Conflits client non gérés en TI : impact sur la santé mentale. Conseils pratiques en mode agile et importance du soutien hiérarchique.">
+    
+    <meta name="theme-color" content="#0d1b2a">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Gérer les tensions avec les clients en mode agile",
+      "description": "Conflits client non gérés en TI : impact réel sur la santé mentale, l'épuisement professionnel et l'équipe. Conseils pratiques en mode agile et importance du soutien hiérarchique.",
+      "url": "https://pontsti.github.io/articles/gestion-tensions-clients-agile.html",
+      "datePublished": "2026-02-21",
+      "dateModified": "2026-02-21",
+      "author": {"@type": "Person", "name": "Hilal Goutas"},
+      "publisher": {"@type": "Person", "name": "Hilal Goutas"},
+      "keywords": "gestion client, agile, tensions, santé mentale, burnout, communication, TI, analyste affaires, soft skills"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../style.css">
+    
+    <style>
+    #read-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#1a5fb4,#5eead4); width:0%; z-index:9999; transition:width 0.1s linear; }
+
+    .mental-health-box {
+        background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+        padding: var(--space-5);
+        padding-left: calc(var(--space-8) + var(--space-2));
+        border-left: 4px solid #be185d;
+        border-radius: 0 12px 12px 0;
+        margin: var(--space-6) 0;
+        position: relative;
+    }
+    .mental-health-box::before {
+        content: "🧠";
+        position: absolute;
+        left: var(--space-4);
+        top: var(--space-5);
+        font-size: var(--text-lg);
+    }
+    .mental-health-box h4 {
+        color: #9d174d;
+        font-weight: 600;
+        margin-bottom: var(--space-3);
+        margin-top: 0;
+        font-size: var(--text-lg);
+    }
+    .mental-health-box p:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <div id="read-progress"></div>
+
+    <a href="#main" class="skip-link">Aller au contenu</a>
+    
+    <header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="../index.html" aria-label="Retour à l'accueil">
+                <svg class="logo-icon" viewBox="0 0 96 58" fill="none" aria-hidden="true" role="img">
+                    <title>Logo Ponts TI</title>
+                    <path d="M6 48 Q48 8 90 48" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+                    <line x1="6" y1="48" x2="90" y2="48" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+                    <line x1="26" y1="32" x2="26" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="48" y1="16" x2="48" y2="48" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="70" y1="32" x2="70" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="48" cy="12" r="4" fill="#5eead4"/>
+                </svg>
+                <h1>Ponts <span>TI</span></h1>
+            </a>
+        </div>
+        <p class="tagline-main">Trouver un emploi en informatique au Québec</p>
+        <p class="tagline-services">
+            <span>CV</span><span class="separator" aria-hidden="true">•</span>
+            <span>Entrevue</span><span class="separator" aria-hidden="true">•</span>
+            <span>Intégration</span><span class="dash" aria-hidden="true">—</span>
+            <span class="target">Pour tous les parcours</span>
+        </p>
+        <div class="header-actions">
+            <span class="badge">Bénévole</span>
+            <a href="https://www.linkedin.com/in/hilal-goutas-65a7383b/" target="_blank" rel="noopener" class="linkedin-link" aria-label="Profil LinkedIn de Hilal Goutas">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn
+            </a>
+        </div>
+    </div>
+    </header>
+    
+    <nav aria-label="Navigation principale">
+        <ul>
+            <li><a href="../index.html#apropos">À propos</a></li>
+            <li><a href="../index.html#pourquoi-ponts">Pourquoi « Ponts »</a></li>
+            <li><a href="../articles/marche-ti-quebec-2026.html">Marché TI</a></li>
+            <li><a href="../index.html#articles" class="active">Articles</a></li>
+            <li><a href="../ressources.html">Liens utiles</a></li>
+            <li><a href="../index.html#faq">Questions</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main id="main" class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <a href="../index.html">Accueil</a><span aria-hidden="true">›</span>
+            <a href="../index.html#articles">Articles</a><span aria-hidden="true">›</span>
+            <strong>Gérer les tensions clients en agile</strong>
+        </nav>
+
+        <article class="section">
+
+            <h2>Gérer les tensions avec les clients : mon expérience en mode agile</h2>
+            
+            <div class="article-meta">
+                <span>Par Hilal Goutas</span>
+                <time datetime="2026-02">Février 2026</time>
+                <span class="read-time">8 min</span>
+            </div>
+            
+            <div class="share-buttons">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pontsti.github.io/articles/gestion-tensions-clients-agile.html"
+                   target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Partager sur LinkedIn">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:?subject=Article Ponts TI - Tensions clients agile et santé mentale&body=Je te partage cet article : https://pontsti.github.io/articles/gestion-tensions-clients-agile.html"
+                   class="share-btn share-email" aria-label="Partager par courriel">
+                    <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                    Courriel
+                </a>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1200&q=80"
+                 alt="Réunion tendue autour d'une table - gestion des conflits client en mode agile et impact sur la santé mentale"
+                 class="article-hero-img" loading="lazy" decoding="async" width="1200" height="600">
+            <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
+
+            <div class="article-full">
+
+                <p>
+                    On ne vous le dit pas souvent dans les formations en TI, mais gérer des clients difficiles 
+                    fait partie du quotidien. Que vous soyez développeur, analyste d'affaires ou chef de projet, 
+                    vous avez probablement déjà vécu ces moments où la relation se tend — et où vous rentrez 
+                    chez vous avec la tête pleine.
+                </p>
+
+                <p>
+                    En méthode agile, on travaille en proximité constante avec le client. C'est justement 
+                    ce qui en fait la force. Mais cette même proximité peut générer des frictions répétées 
+                    qui, si elles ne sont pas bien gérées, finissent par peser lourd — sur le projet, 
+                    sur l'équipe, et sur la personne.
+                </p>
+
+                <div class="info-box">
+                    <h4>Les situations les plus courantes</h4>
+                    <p>
+                        Un client qui change de priorités à chaque sprint. Des attentes déconnectées 
+                        de la réalité technique. Une communication qui se dégrade avec le temps. 
+                        Ce sont des situations normales — pas des échecs personnels. Mais elles demandent 
+                        à être reconnues et traitées tôt.
+                    </p>
+                </div>
+
+                <h3>1. Essayer de comprendre avant de réagir</h3>
+                
+                <p>
+                    Derrière un client qualifié de « difficile », il y a le plus souvent une personne 
+                    sous pression : délais serrés imposés par sa direction, contexte politique interne, 
+                    ou simplement une mauvaise journée. Prendre le temps d'écouter vraiment — 
+                    pas juste attendre son tour pour parler — change souvent la dynamique.
+                </p>
+                
+                <p>
+                    L'écoute active, c'est reformuler ce qu'on entend, poser des questions ouvertes, 
+                    et éviter de sauter aux conclusions. Cette posture seule peut désamorcer beaucoup 
+                    de tensions avant qu'elles escaladent.
+                </p>
+
+                <h3>2. Revenir aux faits quand ça s'envenime</h3>
+
+                <p>
+                    Les tensions montent surtout quand la discussion reste dans le registre émotionnel 
+                    ou des perceptions subjectives. Ramener l'échange sur des éléments concrets aide 
+                    à retrouver un terrain commun :
+                </p>
+
+                <ul class="feature-list">
+                    <li>Ce que l'équipe peut <strong>réellement livrer</strong> dans la période donnée (capacité, vélocité)</li>
+                    <li>Les <strong>contraintes techniques</strong> réelles, exprimées sans jargon excessif</li>
+                    <li>Le <strong>périmètre initial</strong> convenu — la définition du « prêt » et du « terminé »</li>
+                    <li>Les <strong>impacts concrets</strong> d'un changement de direction en cours de sprint</li>
+                </ul>
+
+                <h3>3. Garder des traces de ce qui est décidé</h3>
+
+                <p>
+                    Confirmer par écrit les décisions importantes n'est pas de la méfiance — 
+                    c'est de la rigueur professionnelle. Un courriel récapitulatif après une réunion clé, 
+                    une note dans le ticket, une mise à jour du carnet de produit (backlog) : 
+                    ces traces évitent les malentendus du type « je pensais que tu avais dit... ».
+                </p>
+
+                <div class="quote-box">
+                    En agile, l'informel est une force pour la fluidité du travail quotidien. 
+                    Mais les décisions structurantes méritent toujours une trace écrite. 
+                    C'est se respecter mutuellement — et se protéger collectivement.
+                </div>
+
+                <h3>4. Savoir quand demander de l'aide</h3>
+
+                <p>
+                    Si une discussion tourne en rond ou que la relation s'est détériorée, 
+                    impliquer son gestionnaire ou un collègue expérimenté n'est pas un aveu d'échec. 
+                    C'est reconnaître qu'un regard extérieur peut débloquer ce qu'on n'arrive pas 
+                    à résoudre seul. Dans un contexte agile, le Scrum Master ou le gestionnaire de projet 
+                    a précisément ce rôle de facilitateur.
+                </p>
+
+                <div class="warning-box">
+                    <p>
+                        <strong>À éviter :</strong> Laisser une tension se dégrader en silence par peur 
+                        du conflit. Un problème ignoré ne disparaît pas — il s'accumule jusqu'à 
+                        ce qu'il éclate, souvent au pire moment, et souvent sur la personne 
+                        qui n'est pas en cause.
+                    </p>
+                </div>
+
+                <h3>5. Accepter que parfois, ça ne passe juste pas</h3>
+
+                <p>
+                    Malgré tous les efforts, il arrive que la relation soit trop abîmée pour 
+                    être réparée efficacement. Demander à ce qu'un autre membre de l'équipe prenne 
+                    le relais n'est pas abandonner son poste — c'est faire passer le succès du projet 
+                    avant son ego. Certaines dynamiques sont tout simplement incompatibles, 
+                    peu importe les compétences en communication des deux côtés.
+                </p>
+
+                <h3>Ce qu'on ne dit pas assez : l'impact sur la santé mentale</h3>
+
+                <p>
+                    Il y a un sujet qui reste trop souvent dans l'ombre dans le monde de la TI : 
+                    ce que des conflits clients répétés et mal gérés font à une personne sur la durée. 
+                    On parle beaucoup de livrables, de sprints, de vélocité. Mais on parle peu 
+                    de ce qui se passe dans la tête d'un développeur ou d'un analyste qui encaisse 
+                    semaine après semaine une relation client difficile — sans soutien de sa hiérarchie.
+                </p>
+
+                <div class="mental-health-box">
+                    <h4>Ce que dit la recherche</h4>
+                    <p>
+                        Selon l'Institut national de santé publique du Québec (INSPQ), l'exposition 
+                        prolongée à des conflits interpersonnels au travail est l'un des facteurs 
+                        de risque les mieux documentés pour la détresse psychologique, l'épuisement 
+                        professionnel (burnout) et les troubles anxieux. Ce risque est significativement 
+                        amplifié lorsque la personne perçoit un <strong>faible soutien de son supérieur</strong> — 
+                        c'est-à-dire qu'elle se sent seule à gérer la situation.
+                    </p>
+                    <p>
+                        Le modèle de Karasek, toujours cité dans la littérature en santé au travail, 
+                        montre que c'est la combinaison de <strong>fortes demandes</strong> et de 
+                        <strong>faible latitude décisionnelle</strong> qui crée le plus de dommages. 
+                        Un développeur qui fait face à un client exigeant mais qui a le soutien 
+                        de son gestionnaire et la capacité d'agir résiste bien mieux que quelqu'un 
+                        laissé à lui-même.
+                    </p>
+                </div>
+
+                <h3>Quand la hiérarchie ne soutient pas</h3>
+
+                <p>
+                    C'est peut-être la situation la plus difficile à vivre : vous gérez un client 
+                    difficile, vous remontez la situation à votre gestionnaire, et... rien. 
+                    Ou pire — on vous demande d'absorber, de faire avec, de « gérer ça ».
+                </p>
+
+                <p>
+                    Ce type de réponse n'est pas neutre. Le manque de soutien hiérarchique face 
+                    à des situations conflictuelles répétées est associé dans les études à :
+                </p>
+
+                <ul class="feature-list">
+                    <li><strong>Augmentation du niveau de cortisol</strong> sur le long terme — troubles du sommeil, système immunitaire affaibli, fatigue chronique</li>
+                    <li><strong>Détresse psychologique</strong> — sentiment d'injustice, perte de sens, démotivation progressive</li>
+                    <li><strong>Épuisement professionnel</strong> (burnout) — état de fatigue émotionnelle et cognitive qui peut nécessiter un arrêt de travail prolongé</li>
+                    <li><strong>Augmentation du taux de roulement</strong> — les bons employés partent en premier, parce qu'ils peuvent</li>
+                </ul>
+
+                <div class="quote-box">
+                    Un conflit avec un client, ça se règle. Un conflit que votre organisation 
+                    vous demande d'absorber seul, sans reconnaissance, sans soutien, sans limite — 
+                    ça, c'est un problème de culture organisationnelle. 
+                    Et c'est un problème qui appartient à l'organisation, pas à vous.
+                </div>
+
+                <h3>Ce que vous pouvez faire si vous n'êtes pas soutenu</h3>
+
+                <p>
+                    Certaines situations ne peuvent pas être résolues par un effort individuel 
+                    supplémentaire. Si vous vous retrouvez dans un contexte où les tensions reviennent 
+                    constamment, où votre hiérarchie minimise vos signaux d'alarme, où vous ressentez 
+                    de l'anxiété avant chaque réunion avec ce client, ou où le travail empiète 
+                    sur votre sommeil et votre espace personnel — il est important de nommer 
+                    ce que vous vivez, d'abord à vous-même.
+                </p>
+
+                <p>
+                    Parler à un médecin, à un professionnel en santé mentale, ou à une personne 
+                    de confiance hors du contexte de travail peut aider à retrouver de la clarté 
+                    et à décider de la suite avec la tête reposée.
+                </p>
+
+                <div class="mental-health-box">
+                    <h4>Ressources disponibles au Québec</h4>
+                    <p>
+                        Si vous traversez une période difficile au travail, plusieurs ressources 
+                        existent, souvent accessibles rapidement et sans frais :
+                    </p>
+                    <p>
+                        <strong>Télé-santé 811</strong> — Infirmière disponible 24h/24, peut orienter 
+                        vers un médecin ou un service de santé mentale.<br><br>
+                        <strong>Ligne Écoute-Entraide (1 855 AIDE-911)</strong> — Soutien émotionnel 
+                        par téléphone, gratuit, disponible en tout temps.<br><br>
+                        <strong>Programme d'aide aux employés (PAE)</strong> — Si votre employeur 
+                        en offre un, il donne accès à des consultations psychologiques confidentielles, 
+                        souvent gratuites (vérifiez avec vos ressources humaines).<br><br>
+                        <strong>Médecin de famille ou CLSC</strong> — Pour un suivi médical si 
+                        les symptômes persistent (troubles du sommeil, anxiété, fatigue).
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h4>💡 Ce que je retiens après des années en TI</h4>
+                    <p>
+                        Il n'y a pas de formule magique. Mais ce qui reste constant : 
+                        rester professionnel sans s'effacer, communiquer tôt plutôt que trop tard, 
+                        et surtout — ne pas s'oublier dans le processus.
+                    </p>
+                    <p>
+                        Un conflit bien géré peut même solidifier une relation client. 
+                        Un conflit qu'on laisse pourrir nuit à tout le monde. Et un conflit 
+                        qu'on vous demande d'absorber seul, sans soutien, finit par nuire 
+                        à vous en particulier. Ça mérite d'être dit clairement.
+                    </p>
+                </div>
+
+                <h3>En résumé : les réflexes utiles</h3>
+
+                <ul class="feature-list">
+                    <li><strong>Écouter d'abord</strong> — chercher à comprendre le contexte du client avant de répondre</li>
+                    <li><strong>Ramener aux faits</strong> — capacité réelle, périmètre convenu, impacts concrets</li>
+                    <li><strong>Écrire les décisions</strong> — un courriel récapitulatif vaut mieux qu'un malentendu</li>
+                    <li><strong>Escalader sans honte</strong> — impliquer un facilitateur quand c'est nécessaire</li>
+                    <li><strong>Passer la main si besoin</strong> — le projet prime sur l'ego</li>
+                    <li><strong>Surveiller votre propre état</strong> — l'anxiété chronique avant les réunions n'est pas une fatalité</li>
+                    <li><strong>Chercher du soutien</strong> — professionnel si besoin, sans attendre que ça devienne urgent</li>
+                </ul>
+
+                <div class="cta-box">
+                    <h3>Vous vivez une situation difficile en TI ?</h3>
+                    <p>Partagez votre expérience ou posez vos questions. Je réponds à tous les messages.</p>
+                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Question - Tensions client agile - Ponts TI">goutas.hilal@gmail.com</a></p>
+                </div>
+
+            </div>
+
+            <div class="related-box">
+                <h3>Articles liés</h3>
+                <a href="specialisation-vs-fondamentaux.html" class="related-link">
+                    <strong>La course technologique</strong>
+                    <span>Spécialisation vs fondamentaux en informatique</span>
+                </a>
+                <a href="ia-outils-programmation.html" class="related-link">
+                    <strong>L'IA en TI</strong>
+                    <span>Outils de programmation, Java et analyse de logs</span>
+                </a>
+                <a href="parcours-algerie-quebec.html" class="related-link">
+                    <strong>Mon parcours</strong>
+                    <span>Algérie, France, Québec — s'adapter à une nouvelle culture de travail</span>
+                </a>
+            </div>
+
+        </article>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p><strong>Ponts TI</strong> — Aide gratuite emploi informatique Québec</p>
+            <p>Un projet bénévole de <strong>Hilal Goutas</strong> · Analyste informatique · Montréal, Québec</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: var(--space-4); line-height: 1.8;">
+                Ponts TI aide les <strong>immigrants francophones</strong>, les <strong>PVTistes</strong> et les personnes en
+                <strong>reconversion professionnelle</strong> à trouver un <strong>emploi en informatique au Québec</strong>.
+            </p>
+            <p style="font-size: 0.8rem; margin-top: var(--space-3);">
+                <a href="../articles/marche-ti-quebec-2026.html">Marché TI Québec 2026</a> ·
+                <a href="../index.html#articles">Articles</a> ·
+                <a href="../ressources.html">Ressources</a> ·
+                <a href="../index.html#faq">Questions</a> ·
+                <a href="../index.html#contact">Contact</a>
+            </p>
+            <p>© 2025-2026 Ponts TI. Contenu original.</p>
+        </div>
+    </footer>
+
+    <button class="back-top" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script>
+    const nav = document.querySelector('nav');
+    if (nav) { window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive:true }); }
+    const backTop = document.querySelector('.back-top');
+    if (backTop) { window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); }, { passive:true }); }
+    const progressBar = document.getElementById('read-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const pct = Math.min(100, (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+            progressBar.style.width = pct + '%';
+        }, { passive:true });
+    }
+    </script>
+
+</body>
+</html>

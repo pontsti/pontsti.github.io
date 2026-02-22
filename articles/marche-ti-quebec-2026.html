@@ -48,13 +48,8 @@
     
     <link rel="stylesheet" href="../style.css">
     
-    <style>
-    #read-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#1a5fb4,#5eead4); width:0%; z-index:9999; transition:width 0.1s linear; }
-    </style>
 </head>
 <body>
-    <div id="read-progress"></div>
-
     <a href="#main" class="skip-link">Aller au contenu</a>
     
     <header class="header">
@@ -293,18 +288,9 @@
 
 <script>
 const nav = document.querySelector('nav');
-if (nav) { window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive:true }); }
+if (nav) { window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true }); }
 const backTop = document.querySelector('.back-top');
-if (backTop) { window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); }, { passive:true }); }
-const progressBar = document.getElementById('read-progress');
-if (progressBar) {
-    window.addEventListener('scroll', () => {
-        const pct = Math.min(100, (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
-        progressBar.style.width = pct + '%';
-    }, { passive:true });
-}
-
+if (backTop) { window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); }, { passive: true }); }
 </script>
-
 </body>
 </html>
