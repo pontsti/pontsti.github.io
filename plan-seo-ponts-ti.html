@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan SEO Ponts TI — Stratégie pour augmenter le trafic organique</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, system-ui, sans-serif; font-size: 15px; line-height: 1.6; color: #1a1a1a; background: #f8f9fa; }
+  .header { background: #0d1b2a; color: #fff; padding: 2rem; text-align: center; }
+  .header h1 { font-size: 1.6rem; margin-bottom: .5rem; }
+  .header p { color: rgba(255,255,255,0.7); font-size: .9rem; }
+  .header .date { display: inline-block; background: rgba(94,234,212,0.2); color: #5eead4; border: 1px solid rgba(94,234,212,0.3); padding: 4px 14px; border-radius: 20px; font-size: .8rem; margin-top: .75rem; }
+  .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+  h2 { font-size: 1.25rem; color: #0d1b2a; margin: 2.5rem 0 1rem; padding-bottom: .5rem; border-bottom: 3px solid #1a5fb4; display: inline-block; }
+  h3 { font-size: 1rem; font-weight: 700; color: #1a1a1a; margin: 1.5rem 0 .75rem; }
+  p { color: #444; margin-bottom: .75rem; }
+  a { color: #1a5fb4; }
+  /* Verdict actuel */
+  .verdict { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0; }
+  .verdict-card { background: #fff; border-radius: 10px; padding: 1.25rem; text-align: center; border: 1px solid #e0e0e0; }
+  .verdict-card .score { font-size: 2rem; font-weight: 800; }
+  .verdict-card .label { font-size: .8rem; color: #666; margin-top: .25rem; }
+  .green { color: #2d6a2d; }
+  .orange { color: #c64600; }
+  .red { color: #a02020; }
+  /* Tableau requêtes */
+  table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: .85rem; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+  th { background: #0d1b2a; color: #fff; padding: .6rem .9rem; text-align: left; font-weight: 600; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; }
+  td { padding: .6rem .9rem; border-bottom: 1px solid #eee; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f5f8ff; }
+  .vol { font-size: .75rem; font-weight: 700; }
+  .vol-h { color: #2d6a2d; }
+  .vol-m { color: #c64600; }
+  .vol-l { color: #888; }
+  .status-ok { background: #e8f5e9; color: #2d6a2d; padding: 2px 8px; border-radius: 12px; font-size: .75rem; font-weight: 600; }
+  .status-no { background: #ffebee; color: #a02020; padding: 2px 8px; border-radius: 12px; font-size: .75rem; font-weight: 600; }
+  .status-partial { background: #fff3e0; color: #c64600; padding: 2px 8px; border-radius: 12px; font-size: .75rem; font-weight: 600; }
+  /* Actions */
+  .actions { counter-reset: action; }
+  .action { display: flex; gap: 1.25rem; background: #fff; border-radius: 10px; padding: 1.25rem; margin-bottom: 1rem; border: 1px solid #e0e0e0; border-left: 4px solid #1a5fb4; }
+  .action.urgent { border-left-color: #c62828; }
+  .action.important { border-left-color: #e65100; }
+  .action.medium { border-left-color: #1565c0; }
+  .action.longterm { border-left-color: #2e7d32; }
+  .action-num { min-width: 36px; height: 36px; background: #0d1b2a; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .9rem; flex-shrink: 0; margin-top: 2px; }
+  .action-content h4 { font-size: .95rem; color: #0d1b2a; margin-bottom: .4rem; }
+  .action-content p { font-size: .85rem; margin-bottom: .3rem; }
+  .action-badge { display: inline-block; font-size: .72rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: .5rem; }
+  .badge-urgent { background: #ffebee; color: #c62828; }
+  .badge-important { background: #fff3e0; color: #e65100; }
+  .badge-medium { background: #e3f2fd; color: #1565c0; }
+  .badge-long { background: #e8f5e9; color: #2e7d32; }
+  /* Articles manquants */
+  .articles-plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin: 1.25rem 0; }
+  .article-plan-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 1.1rem; }
+  .article-plan-card h4 { font-size: .9rem; color: #0d1b2a; margin-bottom: .5rem; }
+  .article-plan-card .kw { font-size: .78rem; color: #1a5fb4; margin-bottom: .35rem; }
+  .article-plan-card .impact { font-size: .75rem; font-weight: 700; color: #2d6a2d; }
+  .article-plan-card .effort { font-size: .75rem; color: #888; }
+  /* Tips */
+  .tip { background: #e8f4fc; border-left: 4px solid #1a5fb4; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1rem 0; font-size: .88rem; }
+  .tip strong { color: #134a8a; }
+  .warning { background: #fff3e0; border-left: 4px solid #e65100; border-radius: 0 8px 8px 0; padding: 1rem 1.25rem; margin: 1rem 0; font-size: .88rem; }
+  /* Liens internes */
+  .internal-links { background: #fff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 1.25rem; margin: 1rem 0; }
+  .internal-links table { box-shadow: none; margin: .5rem 0 0; }
+  /* Footer */
+  .footer { background: #0d1b2a; color: rgba(255,255,255,0.6); text-align: center; padding: 1.5rem; font-size: .8rem; margin-top: 3rem; }
+  @media print {
+    body { background: #fff; font-size: 12px; }
+    .header { background: #0d1b2a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📊 Plan SEO Ponts TI — Stratégie trafic organique</h1>
+  <p>Document de référence pour augmenter la visibilité de pontsti.github.io sur Google</p>
+  <div class="date">Établi en mai 2026 — À réviser tous les 6 mois</div>
+</div>
+
+<div class="container">
+
+  <!-- ═══════════════ ÉTAT ACTUEL ═══════════════ -->
+  <h2>1. État actuel du site</h2>
+
+  <div class="verdict">
+    <div class="verdict-card">
+      <div class="score green">✅</div>
+      <div class="label">Déjà en 1ère position sur la requête principale</div>
+    </div>
+    <div class="verdict-card">
+      <div class="score orange">11</div>
+      <div class="label">Apparitions dans les résultats de recherche (7 jours)</div>
+    </div>
+    <div class="verdict-card">
+      <div class="score green">9</div>
+      <div class="label">Articles publiés (bon rythme)</div>
+    </div>
+    <div class="verdict-card">
+      <div class="score red">0</div>
+      <div class="label">Pages dédiées aux requêtes à fort volume</div>
+    </div>
+    <div class="verdict-card">
+      <div class="score orange">⚠️</div>
+      <div class="label">Domaine github.io — autorité limitée</div>
+    </div>
+    <div class="verdict-card">
+      <div class="score orange">⚠️</div>
+      <div class="label">Peu de backlinks externes</div>
+    </div>
+  </div>
+
+  <p><strong>Diagnostic :</strong> Votre site existe et est bien structuré. Le problème est que vous n'êtes visible que sur <em>une</em> requête principale. Il manque des pages dédiées aux dizaines de requêtes que vos visiteurs tapent réellement sur Google.</p>
+
+  <div class="warning">
+    <strong>Point de limite réel :</strong> Le domaine <code>pontsti.github.io</code> cumule peu d'autorité de domaine (Domain Authority). Google favorise les domaines propres (.com, .ca, .org) pour les positions élevées sur les requêtes compétitives. Un domaine propre comme <code>pontsti.ca</code> (~15-20$/an sur Namecheap ou Hover) serait le levier le plus impactant à long terme.
+  </div>
+
+  <!-- ═══════════════ REQUÊTES CIBLES ═══════════════ -->
+  <h2>2. Requêtes cibles — Opportunités identifiées</h2>
+
+  <p>Requêtes que vos visiteurs idéaux tapent sur Google, classées par volume estimé :</p>
+
+  <table>
+    <thead>
+      <tr><th>Requête</th><th>Volume</th><th>Intention</th><th>Page actuelle</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>emploi informatique québec immigrant aide gratuite</td>
+        <td><span class="vol vol-h">★★★ Fort</span></td>
+        <td>Aide directe</td>
+        <td><span class="status-ok">✓ Index</span></td>
+      </tr>
+      <tr>
+        <td>cv format québécois développeur informatique</td>
+        <td><span class="vol vol-h">★★★ Fort</span></td>
+        <td>Guide pratique</td>
+        <td><span class="status-ok">✓ Nouveau</span></td>
+      </tr>
+      <tr>
+        <td>cv développeur java québec</td>
+        <td><span class="vol vol-m">★★ Moyen</span></td>
+        <td>Guide pratique</td>
+        <td><span class="status-ok">✓ Nouveau</span></td>
+      </tr>
+      <tr>
+        <td>cv informaticien sans expérience canadienne</td>
+        <td><span class="vol vol-h">★★★ Fort</span></td>
+        <td>Aide directe</td>
+        <td><span class="status-ok">✓ Nouveau</span></td>
+      </tr>
+      <tr>
+        <td>entrevue technique informatique québec</td>
+        <td><span class="vol vol-h">★★★ Fort</span></td>
+        <td>Guide pratique</td>
+        <td><span class="status-no">✗ Manquant</span></td>
+      </tr>
+      <tr>
+        <td>questions entrevue développeur montréal</td>
+        <td><span class="vol vol-m">★★ Moyen</span></td>
+        <td>Guide pratique</td>
+        <td><span class="status-no">✗ Manquant</span></td>
+      </tr>
+      <tr>
+        <td>premier emploi TI montréal nouvel arrivant</td>
+        <td><span class="vol vol-h">★★★ Fort</span></td>
+        <td>Aide directe</td>
+        <td><span class="status-no">✗ Manquant</span></td>
+      </tr>
+      <tr>
+        <td>différence travail france québec informatique</td>
+        <td><span class="vol vol-m">★★ Moyen</span></td>
+        <td>Information</td>
+        <td><span class="status-no">✗ Manquant</span></td>
+      </tr>
+      <tr>
+        <td>reconversion informatique québec adulte</td>
+        <td><span class="vol vol-h">★★★ Fort</span></td>
+        <td>Guide pratique</td>
+        <td><span class="status-no">✗ Manquant</span></td>
+      </tr>
+      <tr>
+        <td>linkedin profil développeur québec</td>
+        <td><span class="vol vol-m">★★ Moyen</span></td>
+        <td>Guide pratique</td>
+        <td><span class="status-no">✗ Manquant</span></td>
+      </tr>
+      <tr>
+        <td>marché emploi TI québec 2026</td>
+        <td><span class="vol vol-h">★★★ Fort</span></td>
+        <td>Information</td>
+        <td><span class="status-ok">✓ Marché TI</span></td>
+      </tr>
+      <tr>
+        <td>salaire développeur montréal 2026</td>
+        <td><span class="vol vol-h">★★★ Fort</span></td>
+        <td>Information</td>
+        <td><span class="status-partial">~ Marché TI</span></td>
+      </tr>
+      <tr>
+        <td>certifications aws azure valeur emploi québec</td>
+        <td><span class="vol vol-m">★★ Moyen</span></td>
+        <td>Information</td>
+        <td><span class="status-ok">✓ Certifications</span></td>
+      </tr>
+      <tr>
+        <td>github profil emploi développeur québec</td>
+        <td><span class="vol vol-m">★★ Moyen</span></td>
+        <td>Guide pratique</td>
+        <td><span class="status-no">✗ Manquant</span></td>
+      </tr>
+      <tr>
+        <td>recyclage ordinateur données personnelles québec</td>
+        <td><span class="vol vol-l">★ Faible</span></td>
+        <td>Information</td>
+        <td><span class="status-ok">✓ Recyclage</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════════════ ARTICLES PRIORITAIRES ═══════════════ -->
+  <h2>3. Articles à créer — Priorités de contenu</h2>
+
+  <p>Les 6 articles qui auraient le plus d'impact sur votre trafic organique, dans l'ordre de priorité :</p>
+
+  <div class="articles-plan">
+
+    <div class="article-plan-card">
+      <h4>🏆 Entrevue technique TI au Québec : guide complet</h4>
+      <div class="kw">Requêtes cibles : "entrevue technique informatique québec", "questions entrevue développeur", "comment se préparer entrevue TI montréal"</div>
+      <div class="impact">Impact trafic : ★★★★★ Très fort</div>
+      <div class="effort">Effort : 3-4h · Fichier : entrevue-technique-ti-quebec.html</div>
+    </div>
+
+    <div class="article-plan-card">
+      <h4>🏆 Reconversion en informatique au Québec : guide pratique</h4>
+      <div class="kw">Requêtes cibles : "reconversion informatique québec", "changer de carrière TI adulte", "formations TI Montréal adultes"</div>
+      <div class="impact">Impact trafic : ★★★★★ Très fort</div>
+      <div class="effort">Effort : 3h · Fichier : reconversion-informatique-quebec.html</div>
+    </div>
+
+    <div class="article-plan-card">
+      <h4>🥈 Trouver son premier emploi TI à Montréal : guide nouvel arrivant</h4>
+      <div class="kw">Requêtes cibles : "premier emploi TI montréal immigrant", "trouver travail informatique québec sans expérience", "emploi TI PVT Canada"</div>
+      <div class="impact">Impact trafic : ★★★★ Fort</div>
+      <div class="effort">Effort : 3h · Fichier : premier-emploi-ti-montreal-immigrant.html</div>
+    </div>
+
+    <div class="article-plan-card">
+      <h4>🥈 Optimiser son profil LinkedIn pour l'emploi TI au Québec</h4>
+      <div class="kw">Requêtes cibles : "linkedin développeur québec", "profil linkedin informatique canada", "linkedin emploi TI montréal"</div>
+      <div class="impact">Impact trafic : ★★★★ Fort</div>
+      <div class="effort">Effort : 2h · Fichier : linkedin-profil-emploi-ti-quebec.html</div>
+    </div>
+
+    <div class="article-plan-card">
+      <h4>🥉 Culture de travail TI : France vs Québec — ce qui change</h4>
+      <div class="kw">Requêtes cibles : "différence travail france québec", "culture entreprise québécoise vs française", "s'adapter milieu travail québec"</div>
+      <div class="impact">Impact trafic : ★★★ Moyen</div>
+      <div class="effort">Effort : 2-3h · Fichier : culture-travail-france-quebec-ti.html</div>
+    </div>
+
+    <div class="article-plan-card">
+      <h4>🥉 GitHub : comment construire un profil qui attire les recruteurs TI</h4>
+      <div class="kw">Requêtes cibles : "github profil emploi développeur", "projets github emploi TI", "portfolio développeur québec"</div>
+      <div class="impact">Impact trafic : ★★★ Moyen</div>
+      <div class="effort">Effort : 2h · Fichier : github-profil-emploi-developpeur-quebec.html</div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════ ACTIONS TECHNIQUES ═══════════════ -->
+  <h2>4. Actions techniques — Par ordre de priorité</h2>
+
+  <div class="actions">
+
+    <div class="action urgent">
+      <div class="action-num">1</div>
+      <div class="action-content">
+        <span class="action-badge badge-urgent">🔴 URGENT — 5 minutes</span>
+        <h4>Soumettre le sitemap.xml dans Google Search Console</h4>
+        <p>Allez sur <a href="https://search.google.com/search-console" target="_blank">search.google.com/search-console</a> → Propriété <code>pontsti.github.io</code> → menu "Sitemaps" → soumettez <code>https://pontsti.github.io/sitemap.xml</code></p>
+        <p>Sans cette étape, Google découvre vos pages lentement et incomplètement. C'est la priorité absolue.</p>
+      </div>
+    </div>
+
+    <div class="action urgent">
+      <div class="action-num">2</div>
+      <div class="action-content">
+        <span class="action-badge badge-urgent">🔴 URGENT — 10 minutes</span>
+        <h4>Mettre à jour le sitemap.xml avec le nouvel article CV</h4>
+        <p>Ajoutez <code>cv-developpeur-analyste-format-quebecois.html</code> au fichier sitemap.xml. Soumettez-le à nouveau dans Search Console après chaque nouvel article publié.</p>
+      </div>
+    </div>
+
+    <div class="action important">
+      <div class="action-num">3</div>
+      <div class="action-content">
+        <span class="action-badge badge-important">🟠 IMPORTANT — 30 minutes</span>
+        <h4>Publier un post LinkedIn pour chaque article</h4>
+        <p>Vous avez 7 367 impressions/semaine sur LinkedIn — c'est votre canal le plus fort. Pour chaque article, rédigez un post avec une observation personnelle ou une question, pas juste un lien. Exemple : "J'ai revu 50 CV en TI cette année. L'erreur n°1 est toujours la même..." + lien vers l'article.</p>
+        <p><strong>Fréquence recommandée :</strong> 1 post LinkedIn par semaine, basé sur un article existant ou une observation du terrain.</p>
+      </div>
+    </div>
+
+    <div class="action important">
+      <div class="action-num">4</div>
+      <div class="action-content">
+        <span class="action-badge badge-important">🟠 IMPORTANT — 1 heure</span>
+        <h4>Ajouter des liens internes entre articles</h4>
+        <p>Chaque article doit pointer vers au moins 2-3 autres articles de votre site avec des ancres descriptives (ex : "notre guide CV TI" plutôt que "cliquez ici"). Google suit ces liens pour comprendre la structure de votre site. Plus vos articles sont liés entre eux, plus Google comprend que vous êtes une référence sur le sujet.</p>
+        <p>L'article CV créé inclut déjà 3 liens internes pertinents. Intégrez des renvois vers cet article dans les articles existants qui mentionnent le CV.</p>
+      </div>
+    </div>
+
+    <div class="action important">
+      <div class="action-num">5</div>
+      <div class="action-content">
+        <span class="action-badge badge-important">🟠 IMPORTANT — 2 heures</span>
+        <h4>Ajouter le nouvel article CV dans index.html et sitemap</h4>
+        <p>L'article CV a été créé. Il faut maintenant l'ajouter dans la grille d'articles de index.html (en premier, Mai 2026), et l'ajouter dans sitemap.xml avec <code>&lt;lastmod&gt;2026-05-01&lt;/lastmod&gt;</code> et priority <code>0.9</code>.</p>
+      </div>
+    </div>
+
+    <div class="action medium">
+      <div class="action-num">6</div>
+      <div class="action-content">
+        <span class="action-badge badge-medium">🔵 MOYEN TERME — 1 semaine</span>
+        <h4>Obtenir des backlinks depuis des sites communautaires</h4>
+        <p>Les backlinks (liens depuis d'autres sites vers le vôtre) sont le facteur SEO #2 après le contenu. Sources pertinentes pour Ponts TI :</p>
+        <p>• Groupes Facebook d'immigrants francophones au Québec (partagez vos articles)<br>
+        • Forum Maplr.co (communauté tech francophone Canada)<br>
+        • Immigrantquebec.com — contact pour un partenariat ou mention<br>
+        • Groupes LinkedIn "Immigrants TI Québec", "PVT Canada Tech"<br>
+        • Forum expat.com section Québec<br>
+        • Reddit r/Quebec, r/ImmigrationCanada</p>
+      </div>
+    </div>
+
+    <div class="action medium">
+      <div class="action-num">7</div>
+      <div class="action-content">
+        <span class="action-badge badge-medium">🔵 MOYEN TERME — 2 semaines</span>
+        <h4>Créer les 2 articles prioritaires manquants</h4>
+        <p>Dans l'ordre : (1) Guide entrevue technique TI Québec, (2) Guide reconversion informatique Québec. Ces deux sujets ont le plus fort volume de recherche dans votre niche et ne sont couverts par aucune page de votre site actuellement.</p>
+        <p>Chaque article doit faire au minimum 1 500 mots, avec des exemples concrets, une FAQ Schema.org, et 3+ liens internes.</p>
+      </div>
+    </div>
+
+    <div class="action longterm">
+      <div class="action-num">8</div>
+      <div class="action-content">
+        <span class="action-badge badge-long">🟢 LONG TERME — 1-3 mois</span>
+        <h4>Migrer vers un domaine propre</h4>
+        <p><code>pontsti.github.io</code> → <code>pontsti.ca</code> ou <code>pontsti.com</code></p>
+        <p>Coût : ~15-20$/an (Namecheap, Hover, ou Cloudflare Registrar). GitHub Pages supporte les domaines personnalisés gratuitement — aucun frais d'hébergement. C'est le levier structural le plus important pour votre positionnement à long terme. Un domaine propre accumule l'autorité beaucoup plus vite qu'un sous-domaine github.io.</p>
+        <p>Avec une redirection 301 depuis l'ancien domaine, vous ne perdez pas le référencement acquis.</p>
+      </div>
+    </div>
+
+    <div class="action longterm">
+      <div class="action-num">9</div>
+      <div class="action-content">
+        <span class="action-badge badge-long">🟢 LONG TERME — 3-6 mois</span>
+        <h4>Créer une page "Témoignages"</h4>
+        <p>Google accorde beaucoup de poids aux signaux E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness). Des témoignages réels de personnes que vous avez aidées, avec leur prénom et leur poste actuel, renforcent considérablement la crédibilité de votre site aux yeux de Google — et des visiteurs.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════ LIENS INTERNES ═══════════════ -->
+  <h2>5. Carte des liens internes recommandés</h2>
+
+  <p>Pour chaque article, voici les liens internes à ajouter dans les prochaines mises à jour :</p>
+
+  <div class="internal-links">
+    <table>
+      <thead><tr><th>Article source</th><th>Liens à ajouter vers</th><th>Ancre suggérée</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>index.html (À propos)</td>
+          <td>marche-ti-quebec-2026.html</td>
+          <td>"le marché de l'emploi TI au Québec"</td>
+        </tr>
+        <tr>
+          <td>marche-ti-quebec-2026.html</td>
+          <td>cv-developpeur-analyste-format-quebecois.html</td>
+          <td>"notre guide CV TI format québécois"</td>
+        </tr>
+        <tr>
+          <td>parcours-algerie-quebec.html</td>
+          <td>cv-developpeur-analyste-format-quebecois.html<br>marche-ti-quebec-2026.html</td>
+          <td>"adapter son CV au format québécois"<br>"marché TI à Montréal"</td>
+        </tr>
+        <tr>
+          <td>carriere-developpeur-analyste.html</td>
+          <td>cv-developpeur-analyste-format-quebecois.html<br>certifications-ti-valeur-ou-mode.html</td>
+          <td>"bien rédiger son CV selon le rôle visé"<br>"les certifications pertinentes"</td>
+        </tr>
+        <tr>
+          <td>certifications-ti-valeur-ou-mode.html</td>
+          <td>marche-ti-quebec-2026.html<br>cv-developpeur-analyste-format-quebecois.html</td>
+          <td>"demande du marché TI québécois"<br>"votre CV TI"</td>
+        </tr>
+        <tr>
+          <td>ia-outils-programmation.html</td>
+          <td>carriere-developpeur-analyste.html<br>marche-ti-quebec-2026.html</td>
+          <td>"progression de carrière en TI"<br>"marché TI Québec 2026"</td>
+        </tr>
+        <tr>
+          <td>fin-de-vie-ordinateur-donnees-recyclage.html</td>
+          <td>marche-ti-quebec-2026.html<br>cv-developpeur-analyste-format-quebecois.html</td>
+          <td>"professionnels TI au Québec"<br>"trouver un emploi en TI"</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══════════════ CALENDRIER ═══════════════ -->
+  <h2>6. Calendrier éditorial suggéré</h2>
+
+  <table>
+    <thead><tr><th>Période</th><th>Article à créer</th><th>Requête principale ciblée</th></tr></thead>
+    <tbody>
+      <tr><td>Mai 2026 ✓</td><td>CV développeur format québécois</td><td>cv format québécois développeur</td></tr>
+      <tr><td>Juin 2026</td><td>Guide entrevue technique TI Québec</td><td>entrevue technique informatique québec</td></tr>
+      <tr><td>Juillet 2026</td><td>Reconversion informatique Québec adulte</td><td>reconversion informatique québec</td></tr>
+      <tr><td>Août 2026</td><td>Premier emploi TI Montréal — guide nouvel arrivant</td><td>premier emploi TI immigrant montréal</td></tr>
+      <tr><td>Sept. 2026</td><td>LinkedIn profil développeur Québec</td><td>linkedin profil emploi TI québec</td></tr>
+      <tr><td>Oct. 2026</td><td>Culture travail France vs Québec en TI</td><td>différence travail france québec informatique</td></tr>
+      <tr><td>Nov. 2026</td><td>GitHub profil emploi développeur</td><td>github profil emploi développeur québec</td></tr>
+      <tr><td>Jan. 2027</td><td>Mise à jour Portrait marché TI 2027</td><td>marché emploi TI québec 2027</td></tr>
+    </tbody>
+  </table>
+
+  <div class="tip">
+    <strong>💡 Cadence réaliste :</strong> Un article par mois est amplement suffisant si chaque article est de qualité (1 500+ mots, exemples concrets, FAQ, liens internes). Mieux vaut un bon article par mois que cinq articles superficiels. La régularité et la profondeur comptent plus que la fréquence.
+  </div>
+
+  <!-- ═══════════════ RÉSUMÉ ═══════════════ -->
+  <h2>7. Résumé — Ce qui fera vraiment la différence</h2>
+
+  <p>Par ordre d'impact réel sur votre trafic :</p>
+
+  <table>
+    <thead><tr><th>#</th><th>Action</th><th>Impact trafic</th><th>Effort</th><th>Délai résultats</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Soumettre sitemap dans Search Console</td><td><span class="vol vol-h">★★★★★</span></td><td>5 min</td><td>2-4 semaines</td></tr>
+      <tr><td>2</td><td>Créer articles sur requêtes manquantes (CV, entrevue, reconversion)</td><td><span class="vol vol-h">★★★★★</span></td><td>3-4h chacun</td><td>2-4 mois</td></tr>
+      <tr><td>3</td><td>Posts LinkedIn réguliers pour chaque article</td><td><span class="vol vol-h">★★★★</span></td><td>30 min/semaine</td><td>Immédiat</td></tr>
+      <tr><td>4</td><td>Liens internes entre articles</td><td><span class="vol vol-m">★★★</span></td><td>1-2h</td><td>1-2 mois</td></tr>
+      <tr><td>5</td><td>Backlinks (groupes communautaires)</td><td><span class="vol vol-m">★★★</span></td><td>30 min/semaine</td><td>2-6 mois</td></tr>
+      <tr><td>6</td><td>Domaine propre (pontsti.ca)</td><td><span class="vol vol-h">★★★★</span></td><td>15$/an + 1h setup</td><td>3-6 mois</td></tr>
+      <tr><td>7</td><td>Page témoignages</td><td><span class="vol vol-m">★★★</span></td><td>2-3h</td><td>3-6 mois</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warning">
+    <strong>Expectatives réalistes :</strong> Le SEO prend du temps. Avec ces actions, vous pouvez raisonnablement espérer 3x à 5x plus de trafic organique en 6 mois. Les résultats commenceront à apparaître 6-10 semaines après la soumission du sitemap et la publication des articles prioritaires. Il n'y a pas de raccourci — mais votre niche (immigrants TI Québec) est peu concurrentielle, ce qui est une vraie opportunité.
+  </div>
+
+</div>
+
+<div class="footer">
+  Plan SEO — Ponts TI (pontsti.github.io) · Établi en mai 2026 · Par Claude (Anthropic) pour Hilal Goutas
+</div>
+
+</body>
+</html>

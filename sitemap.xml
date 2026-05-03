@@ -1,12 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url><loc>https://pontsti.github.io/</loc><lastmod>2026-02-21</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-    <url><loc>https://pontsti.github.io/ressources.html</loc><lastmod>2026-02-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://pontsti.github.io/articles/marche-ti-quebec-2026.html</loc><lastmod>2026-02-17</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-    <url><loc>https://pontsti.github.io/articles/carriere-developpeur-analyste.html</loc><lastmod>2026-02-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://pontsti.github.io/articles/ia-outils-programmation.html</loc><lastmod>2026-02-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://pontsti.github.io/articles/specialisation-vs-fondamentaux.html</loc><lastmod>2026-02-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://pontsti.github.io/articles/ihm-ergonomie-cognitive.html</loc><lastmod>2026-02-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-    <url><loc>https://pontsti.github.io/articles/parcours-algerie-quebec.html</loc><lastmod>2026-02-17</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-    <url><loc>https://pontsti.github.io/articles/gestion-tensions-clients-agile.html</loc><lastmod>2026-02-21</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Page d'accueil -->
+  <url>
+    <loc>https://pontsti.github.io/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/"/>
+  </url>
+
+  <!-- Page ressources -->
+  <url>
+    <loc>https://pontsti.github.io/ressources.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Articles — du plus récent au plus ancien -->
+  <url>
+    <loc>https://pontsti.github.io/articles/cv-developpeur-analyste-format-quebecois.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/cv-developpeur-analyste-format-quebecois.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/cv-developpeur-analyste-format-quebecois.html"/>
+  </url>
+
+
+  <url>
+    <loc>https://pontsti.github.io/articles/fin-de-vie-ordinateur-donnees-recyclage.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/fin-de-vie-ordinateur-donnees-recyclage.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/fin-de-vie-ordinateur-donnees-recyclage.html"/>
+  </url>
+
+  <url>
+    <loc>https://pontsti.github.io/articles/certifications-ti-valeur-ou-mode.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/certifications-ti-valeur-ou-mode.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/certifications-ti-valeur-ou-mode.html"/>
+  </url>
+
+  <url>
+    <loc>https://pontsti.github.io/articles/gestion-tensions-clients-agile.html</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/gestion-tensions-clients-agile.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/gestion-tensions-clients-agile.html"/>
+  </url>
+
+  <url>
+    <loc>https://pontsti.github.io/articles/carriere-developpeur-analyste.html</loc>
+    <lastmod>2026-02-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/carriere-developpeur-analyste.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/carriere-developpeur-analyste.html"/>
+  </url>
+
+  <url>
+    <loc>https://pontsti.github.io/articles/marche-ti-quebec-2026.html</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/marche-ti-quebec-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/marche-ti-quebec-2026.html"/>
+  </url>
+
+  <url>
+    <loc>https://pontsti.github.io/articles/ia-outils-programmation.html</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/ia-outils-programmation.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/ia-outils-programmation.html"/>
+  </url>
+
+  <url>
+    <loc>https://pontsti.github.io/articles/specialisation-vs-fondamentaux.html</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/specialisation-vs-fondamentaux.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/specialisation-vs-fondamentaux.html"/>
+  </url>
+
+  <url>
+    <loc>https://pontsti.github.io/articles/ihm-ergonomie-cognitive.html</loc>
+    <lastmod>2026-01-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/ihm-ergonomie-cognitive.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/ihm-ergonomie-cognitive.html"/>
+  </url>
+
+  <url>
+    <loc>https://pontsti.github.io/articles/parcours-algerie-quebec.html</loc>
+    <lastmod>2025-12-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/parcours-algerie-quebec.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/parcours-algerie-quebec.html"/>
+  </url>
+
 </urlset>
