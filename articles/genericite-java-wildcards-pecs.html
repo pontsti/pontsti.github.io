@@ -300,27 +300,58 @@ Rapport r = rapports.get(<span class="str">0</span>); <span class="ok">// ✓</s
         </div>
 
         <!-- ══════════════════════════════════════════════════════ -->
-        <h3>2. Le type paramétré et le contrat à l'instanciation</h3>
+        <h3>2. Le contrat de la variable et la liberté de l'instance</h3>
 
         <p>
-            Quand vous écrivez <code>new ArrayList&lt;Rapport&gt;()</code>, vous créez un objet en mémoire avec un <strong>type paramétré</strong> (<em>parameterized type</em>) fixé une fois pour toutes : cet objet ne contiendra que des <code>Rapport</code>. Ce contrat est établi à l'<strong>instanciation</strong> (<em>instantiation</em> — la création avec <code>new</code>) et ne peut plus changer.
-        </p>
-
-        <p>
-            La <strong>variable</strong> qui pointe vers cet objet est une chose distincte. On peut réassigner la variable (elle pointera vers un nouvel objet), mais l'objet original reste inchangé jusqu'à ce que le <strong>ramasse-miettes</strong> (<em>garbage collector</em> — le mécanisme automatique de Java qui libère la mémoire inutilisée) le récupère.
+            C'est le point que beaucoup de développeurs n'ont jamais vu clairement expliqué.
+            Dans une déclaration Java, le <code>=</code> sépare deux choses de nature très différente.
         </p>
 
         <div class="code-block">
-            <span class="lang-label">Java — variable ≠ objet</span>
-<pre><span class="cm">// L'objet créé par "new" porte le contrat : contient des Rapport</span>
+            <span class="lang-label">Java — ce que le = sépare vraiment</span>
+<pre><span class="cm">//    ① le contrat (fixe)          ② l'instance (peut changer)
+//           ↓                              ↓</span>
+List&lt;<span class="tp">Rapport</span>&gt;  liste  =  <span class="kw">new</span> ArrayList&lt;<span class="tp">Rapport</span>&gt;();
+<span class="cm">//     ↑
+// type de la variable :
+// exprime la POSSIBILITÉ — cette variable peut référencer
+// tout objet compatible avec List&lt;Rapport&gt;</span></pre>
+        </div>
+
+        <p>
+            <strong>① À gauche : le type de la variable — c'est le contrat.</strong><br>
+            <code>List&lt;Rapport&gt;</code> exprime une <strong>possibilité</strong> : cette variable peut référencer n'importe quel objet qui implémente <code>List&lt;Rapport&gt;</code> — un <code>ArrayList&lt;Rapport&gt;</code>, un <code>LinkedList&lt;Rapport&gt;</code>, etc. Ce type est <strong>fixé à la déclaration</strong> et ne change pas. Il définit ce que le compilateur autorisera ou refusera sur cette variable.
+        </p>
+
+        <p>
+            <strong>② À droite : l'instance — elle peut changer.</strong><br>
+            <code>new ArrayList&lt;Rapport&gt;()</code> crée un objet concret en mémoire. Mais la variable peut à tout moment être redirigée vers une autre instance compatible. C'est parfaitement légal — c'est même courant.
+        </p>
+
+        <div class="code-block">
+            <span class="lang-label">Java — l'instance change, le contrat de la variable reste</span>
+<pre><span class="cm">// Le contrat est déclaré : List&lt;Rapport&gt;</span>
+<span class="cm">// L'instance initiale : un ArrayList</span>
 List&lt;<span class="tp">Rapport</span>&gt; liste = <span class="kw">new</span> ArrayList&lt;<span class="tp">Rapport</span>&gt;();
 liste.add(<span class="kw">new</span> Rapport());
 
-<span class="cm">// Réassigner la variable crée un NOUVEL objet — l'ancien sera libéré par le GC</span>
-liste = <span class="kw">new</span> ArrayList&lt;<span class="tp">Rapport</span>&gt;(); <span class="cm">// nouvel objet vide</span>
+<span class="cm">// On change l'instance — "liste" pointe maintenant vers un LinkedList</span>
+<span class="cm">// C'est valide : LinkedList&lt;Rapport&gt; est compatible avec List&lt;Rapport&gt;</span>
+liste = <span class="kw">new</span> LinkedList&lt;<span class="tp">Rapport</span>&gt;(); <span class="ok">// ✓ l'instance change</span>
 
-<span class="cm">// Ce qu'on ne peut PAS faire : changer le type paramétré d'un objet existant</span>
-<span class="cm">// Une fois créé en ArrayList&lt;Rapport&gt;, il le reste pour toujours</span></pre>
+<span class="cm">// Le contrat de la variable n'a pas changé : elle reste de type List&lt;Rapport&gt;</span>
+<span class="cm">// Ce que le compilateur refuse toujours via cette variable :</span>
+liste.add(<span class="str">"texte"</span>);             <span class="err">// ✗ String ≠ Rapport — le contrat l'interdit</span>
+liste.add(<span class="kw">new</span> Facture());        <span class="err">// ✗ Facture ≠ Rapport — le contrat l'interdit</span></pre>
+        </div>
+
+        <div class="info-box">
+            <h4>En une phrase</h4>
+            <p>
+                Le <strong>type à gauche</strong> définit le contrat de la variable — ce qu'elle accepte ou refuse — et ce contrat est <strong>fixe</strong>.
+                L'<strong>instance à droite</strong> peut changer : on peut pointer la variable vers n'importe quel objet compatible avec ce contrat.
+                C'est la séparation entre <em>ce qui est permis</em> (le type) et <em>ce qui existe en mémoire</em> (l'instance).
+            </p>
         </div>
 
         <!-- ══════════════════════════════════════════════════════ -->
