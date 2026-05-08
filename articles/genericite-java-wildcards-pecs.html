@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MENPL52956"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MENPL52956');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <title>Généricité Java : wildcards, PECS et invariance expliqués | Ponts TI</title>
+    <meta name="description" content="Comprendre la généricité Java : ? extends T, ? super T, la règle PECS, l'invariance, le type paramétré et le contrat à l'instanciation. Guide pédagogique complet avec exemples réels, diagrammes et tous les termes expliqués.">
+    <meta name="keywords" content="généricité Java, wildcards Java, PECS Java, extends super Java, invariance généricité, List extends T, List super T, Java generics, développeur Java Québec, programmation Java Montréal, type paramétré Java">
+    <meta name="author" content="Hilal Goutas">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://pontsti.github.io/articles/genericite-java-wildcards-pecs.html">
+    <link rel="sitemap" type="application/xml" href="https://pontsti.github.io/sitemap.xml">
+    <meta http-equiv="content-language" content="fr-CA">
+    <link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/genericite-java-wildcards-pecs.html">
+    <link rel="alternate" hreflang="fr" href="https://pontsti.github.io/articles/genericite-java-wildcards-pecs.html">
+    <link rel="alternate" hreflang="x-default" href="https://pontsti.github.io/articles/genericite-java-wildcards-pecs.html">
+    <meta name="geo.region" content="CA-QC">
+    <meta name="geo.placename" content="Montréal, Québec, Canada">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.json">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pontsti.github.io/articles/genericite-java-wildcards-pecs.html">
+    <meta property="og:title" content="Généricité Java : wildcards, PECS et invariance expliqués | Ponts TI">
+    <meta property="og:description" content="Comprendre ? extends T et ? super T en Java. La règle PECS, l'invariance, le type paramétré — guide pédagogique complet avec exemples réels.">
+    <meta property="og:locale" content="fr_CA">
+    <meta property="og:site_name" content="Ponts TI">
+    <meta property="og:image" content="https://pontsti.github.io/og-image.png">
+    <meta property="article:published_time" content="2026-05-07">
+    <meta property="article:author" content="Hilal Goutas">
+    <meta property="article:tag" content="Java">
+    <meta property="article:tag" content="Généricité">
+    <meta property="article:tag" content="Développement logiciel">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Généricité Java : wildcards, PECS et invariance expliqués | Ponts TI">
+    <meta name="twitter:description" content="Comprendre ? extends T et ? super T en Java. La règle PECS, l'invariance — guide pédagogique complet.">
+    <meta name="twitter:image" content="https://pontsti.github.io/og-image.png">
+    <meta name="theme-color" content="#0d1b2a">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Généricité Java : wildcards, PECS et invariance expliqués",
+      "description": "Guide pédagogique complet sur la généricité Java : ? extends T, ? super T, la règle PECS, l'invariance et le contrat à l'instanciation. Tous les termes sont expliqués.",
+      "author": {"@type": "Person", "name": "Hilal Goutas", "url": "https://pontsti.github.io/"},
+      "publisher": {"@type": "Organization", "name": "Ponts TI", "url": "https://pontsti.github.io/"},
+      "datePublished": "2026-05-07",
+      "dateModified": "2026-05-07",
+      "url": "https://pontsti.github.io/articles/genericite-java-wildcards-pecs.html",
+      "inLanguage": "fr-CA",
+      "keywords": ["Java", "généricité", "wildcards", "PECS", "extends", "super", "invariance", "type paramétré", "développement logiciel"],
+      "proficiencyLevel": "Intermediate"
+    }
+    </script>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+    #read-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#1a5fb4,#5eead4); width:0%; z-index:9999; transition:width 0.1s linear; }
+
+    /* ── Blocs de code ── */
+    .code-block {
+        background: #0d1b2a;
+        color: #e2e8f0;
+        padding: 1.25rem 1.5rem;
+        border-radius: 10px;
+        font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+        font-size: 0.875rem;
+        line-height: 1.75;
+        margin: 1.25rem 0;
+        overflow-x: auto;
+        border-left: 3px solid #5eead4;
+        position: relative;
+    }
+    .code-block .lang-label {
+        position: absolute; top: 0.5rem; right: 0.75rem;
+        font-size: 0.7rem; color: #5eead4; font-family: var(--font-body);
+        font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.7;
+    }
+    .code-block .kw  { color: #93c5fd; }
+    .code-block .tp  { color: #5eead4; }
+    .code-block .cm  { color: #6b7280; font-style: italic; }
+    .code-block .str { color: #fbbf24; }
+    .code-block .err { color: #f87171; }
+    .code-block .ok  { color: #86efac; }
+
+    /* ── Diagrammes SVG ── */
+    .diagram-container { margin: 1.75rem 0; overflow-x: auto; }
+    .diagram-container svg { max-width: 100%; height: auto; display: block; margin: 0 auto; }
+    .diagram-caption { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; font-style: italic; }
+
+    /* ── Encadré PECS ── */
+    .pecs-box {
+        background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 100%);
+        color: #fff; padding: 1.75rem 2rem; border-radius: 14px; margin: 2rem 0;
+        display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
+    }
+    @media (max-width: 600px) { .pecs-box { grid-template-columns: 1fr; } }
+    .pecs-box h4 { color: #5eead4; margin: 0 0 0.75rem; font-size: 1.05rem; grid-column: 1 / -1; }
+    .pecs-half { background: rgba(255,255,255,0.06); padding: 1.25rem; border-radius: 10px; border-left: 3px solid; }
+    .pecs-half.ext { border-color: #5eead4; }
+    .pecs-half.sup { border-color: #fbbf24; }
+    .pecs-half strong { display: block; font-size: 1rem; margin-bottom: 0.6rem; }
+    .pecs-half.ext strong { color: #5eead4; }
+    .pecs-half.sup strong { color: #fbbf24; }
+    .pecs-half p { margin: 0; font-size: 0.875rem; color: rgba(255,255,255,0.85); line-height: 1.6; }
+    .pecs-half ul { margin: 0.5rem 0 0; padding-left: 1.25rem; color: rgba(255,255,255,0.85); font-size: 0.875rem; line-height: 1.7; }
+
+    /* ── Encadré définition de terme ── */
+    .term-box {
+        background: #f0f7ff;
+        border: 1px solid #bfdbfe;
+        border-left: 4px solid #1a5fb4;
+        border-radius: 0 10px 10px 0;
+        padding: 1rem 1.25rem;
+        margin: 1rem 0;
+        font-size: 0.9rem;
+    }
+    .term-box .term-title {
+        font-weight: 700; color: #1a5fb4; font-family: var(--font-heading);
+        margin-bottom: 0.35rem; font-size: 0.95rem;
+    }
+    .term-box p { margin: 0; color: var(--text-light); line-height: 1.6; }
+
+    /* ── Tableau récap ── */
+    .compare-table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.875rem; }
+    .compare-table th { background: var(--bg-alt); padding: 0.75rem 1rem; border: 1px solid var(--border); text-align: left; font-weight: 600; }
+    .compare-table td { padding: 0.75rem 1rem; border: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+    .compare-table tr:nth-child(even) td { background: var(--bg-alt); }
+    .compare-table .yes { color: #16a34a; font-weight: 600; }
+    .compare-table .no  { color: #dc2626; font-weight: 600; }
+
+    /* ── Erreur compilation ── */
+    .compile-error {
+        background: #fff5f5; border-left: 4px solid #dc2626;
+        border-radius: 0 10px 10px 0; padding: 1rem 1.25rem; margin: 1rem 0;
+        font-size: 0.875rem; color: #7f1d1d; font-family: monospace; line-height: 1.6;
+    }
+    .compile-error::before { content: "⛔ Erreur de compilation — "; font-weight: 700; }
+
+    /* ── Numéro d'étape ── */
+    .step-heading {
+        display: flex; align-items: center; gap: 0.75rem; margin: 2.5rem 0 1rem;
+    }
+    .step-num {
+        display: flex; align-items: center; justify-content: center;
+        width: 2rem; height: 2rem; border-radius: 50%;
+        background: var(--accent); color: #fff;
+        font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
+    }
+    .step-heading h3 { margin: 0; font-family: var(--font-heading); font-size: 1.2rem; }
+    </style>
+</head>
+<body>
+<div id="read-progress"></div>
+<a href="#main" class="skip-link">Aller au contenu</a>
+
+<header class="header">
+<div class="container">
+    <div class="logo">
+        <a href="../index.html" aria-label="Retour à l'accueil">
+            <svg class="logo-icon" viewBox="0 0 96 58" fill="none" aria-hidden="true" role="img">
+                <title>Logo Ponts TI</title>
+                <path d="M6 48 Q48 8 90 48" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <line x1="6" y1="48" x2="90" y2="48" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+                <line x1="26" y1="32" x2="26" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+                <line x1="48" y1="16" x2="48" y2="48" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round"/>
+                <line x1="70" y1="32" x2="70" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="48" cy="12" r="4" fill="#5eead4"/>
+            </svg>
+            <h1>Ponts <span>TI</span></h1>
+        </a>
+    </div>
+    <p class="tagline-main">Trouver un emploi en informatique au Québec</p>
+    <p class="tagline-services">
+        <span>CV</span><span class="separator" aria-hidden="true">•</span>
+        <span>Entrevue</span><span class="separator" aria-hidden="true">•</span>
+        <span>Intégration</span><span class="dash" aria-hidden="true">—</span>
+        <span class="target">Pour tous les parcours</span>
+    </p>
+    <div class="header-actions">
+        <span class="badge">Bénévole</span>
+        <a href="https://www.linkedin.com/in/hilal-goutas-65a7383b/" target="_blank" rel="noopener" class="linkedin-link" aria-label="Profil LinkedIn de Hilal Goutas">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+        </a>
+    </div>
+</div>
+</header>
+
+<nav aria-label="Navigation principale">
+    <ul>
+        <li><a href="../index.html#apropos">À propos</a></li>
+        <li><a href="../index.html#pourquoi-ponts">Pourquoi « Ponts »</a></li>
+        <li><a href="../articles/marche-ti-quebec-2026.html">Marché TI</a></li>
+        <li><a href="../index.html#articles" class="active">Articles</a></li>
+        <li><a href="../ressources.html">Liens utiles</a></li>
+        <li><a href="../index.html#faq">Questions</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<main id="main" class="container">
+
+<nav class="breadcrumb" aria-label="Fil d'Ariane">
+    <a href="../index.html">Accueil</a><span aria-hidden="true">›</span>
+    <a href="../index.html#articles">Articles</a><span aria-hidden="true">›</span>
+    <strong>Généricité Java : wildcards et PECS</strong>
+</nav>
+
+<article class="section">
+
+    <h2>Généricité Java : wildcards, PECS et invariance — guide complet</h2>
+
+    <div class="article-meta">
+        <span>Par Hilal Goutas</span>
+        <time datetime="2026-05">Mai 2026</time>
+        <span class="read-time">12 min</span>
+    </div>
+
+    <div class="share-buttons">
+        <a href="https://www.linkedin.com/feed/update/urn:li:activity:7457199112220798976/"
+           target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Voir le post LinkedIn original">
+            <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            Post LinkedIn original
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pontsti.github.io/articles/genericite-java-wildcards-pecs.html"
+           target="_blank" rel="noopener" class="share-btn share-linkedin" style="background:#005e93;" aria-label="Partager cet article sur LinkedIn">
+            <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            Partager l'article
+        </a>
+        <a href="mailto:?subject=Article Ponts TI - Généricité Java wildcards PECS&body=https://pontsti.github.io/articles/genericite-java-wildcards-pecs.html"
+           class="share-btn share-email" aria-label="Partager par courriel">
+            <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+            Courriel
+        </a>
+    </div>
+
+    <!-- ── Image hero : développeur + code Java ── -->
+    <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=1200&q=80"
+         alt="Développeur écrivant du code Java — généricité wildcards PECS programmation"
+         class="article-hero-img" loading="eager" decoding="async" width="1200" height="600">
+    <p class="article-img-credit">Photo : Unsplash (libre de droits)</p>
+
+    <div class="article-full">
+
+        <p>
+            Sur LinkedIn, j'ai posté sur <code>&lt;? extends T&gt;</code> et <code>&lt;? super T&gt;</code>. Beaucoup de développeurs connaissent la syntaxe, mais ne savent pas vraiment <strong>pourquoi</strong> on choisit l'un plutôt que l'autre. J'ai moi-même deviné pendant longtemps — quand ça compilait, je passais à autre chose.
+        </p>
+
+        <p>
+            Cet article part du début : pourquoi ces notions existent, ce qu'elles signifient concrètement, et comment les reconnaître d'instinct. Chaque terme est expliqué en contexte.
+        </p>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <h3>1. Pourquoi la généricité existe en Java</h3>
+
+        <p>
+            Avant Java 5 (2004), les collections (<code>List</code>, <code>Set</code>, <code>Map</code>) ne portaient aucune information sur le type de leurs éléments. Tout était stocké comme un <code>Object</code> — la classe mère de toutes les classes Java — et récupéré avec un <strong>transtypage forcé</strong> (<em>cast</em>). Si le type était mauvais, le programme plantait à <strong>l'exécution</strong> (<em>runtime</em>), parfois des semaines après l'écriture du code.
+        </p>
+
+        <div class="code-block">
+            <span class="lang-label">Avant Java 5 — sans généricité</span>
+<pre><span class="cm">// Aucun contrôle de type : la liste accepte n'importe quoi</span>
+List rapports = <span class="kw">new</span> ArrayList();
+rapports.add(<span class="kw">new</span> Rapport());
+rapports.add(<span class="str">"erreur"</span>); <span class="cm">// accepté sans avertissement</span>
+
+<span class="cm">// Le cast (transtypage) peut planter à l'exécution</span>
+Rapport r = (Rapport) rapports.get(<span class="str">1</span>); <span class="err">// ClassCastException à l'exécution !</span></pre>
+        </div>
+
+        <p>
+            Les <strong>génériques</strong> (<em>Generics</em>), introduits en Java 5, ont réglé ce problème. On déclare le type entre chevrons <code>&lt; &gt;</code>, et le <strong>compilateur</strong> (<em>compiler</em> — le programme qui transforme votre code Java en bytecode) vérifie la cohérence à la <strong>compilation</strong> (<em>compile time</em>). Les erreurs sont détectées avant même de lancer le programme.
+        </p>
+
+        <div class="code-block">
+            <span class="lang-label">Java 5+ — avec généricité</span>
+<pre><span class="cm">// Le type est déclaré : le compilateur veille</span>
+List&lt;<span class="tp">Rapport</span>&gt; rapports = <span class="kw">new</span> ArrayList&lt;&gt;();
+rapports.add(<span class="kw">new</span> Rapport()); <span class="ok">// ✓</span>
+rapports.add(<span class="str">"erreur"</span>);       <span class="err">// ✗ erreur de COMPILATION — String ≠ Rapport</span>
+
+<span class="cm">// Plus besoin de cast — le type est garanti</span>
+Rapport r = rapports.get(<span class="str">0</span>); <span class="ok">// ✓</span></pre>
+        </div>
+
+        <div class="info-box">
+            <h4>L'apport fondamental</h4>
+            <p>Les génériques déplacent les erreurs de type de l'<strong>exécution</strong> vers la <strong>compilation</strong>. Un bug détecté pendant le développement coûte infiniment moins cher qu'un bug en production.</p>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <h3>2. Le type paramétré et le contrat à l'instanciation</h3>
+
+        <p>
+            Quand vous écrivez <code>new ArrayList&lt;Rapport&gt;()</code>, vous créez un objet en mémoire avec un <strong>type paramétré</strong> (<em>parameterized type</em>) fixé une fois pour toutes : cet objet ne contiendra que des <code>Rapport</code>. Ce contrat est établi à l'<strong>instanciation</strong> (<em>instantiation</em> — la création avec <code>new</code>) et ne peut plus changer.
+        </p>
+
+        <p>
+            La <strong>variable</strong> qui pointe vers cet objet est une chose distincte. On peut réassigner la variable (elle pointera vers un nouvel objet), mais l'objet original reste inchangé jusqu'à ce que le <strong>ramasse-miettes</strong> (<em>garbage collector</em> — le mécanisme automatique de Java qui libère la mémoire inutilisée) le récupère.
+        </p>
+
+        <div class="code-block">
+            <span class="lang-label">Java — variable ≠ objet</span>
+<pre><span class="cm">// L'objet créé par "new" porte le contrat : contient des Rapport</span>
+List&lt;<span class="tp">Rapport</span>&gt; liste = <span class="kw">new</span> ArrayList&lt;<span class="tp">Rapport</span>&gt;();
+liste.add(<span class="kw">new</span> Rapport());
+
+<span class="cm">// Réassigner la variable crée un NOUVEL objet — l'ancien sera libéré par le GC</span>
+liste = <span class="kw">new</span> ArrayList&lt;<span class="tp">Rapport</span>&gt;(); <span class="cm">// nouvel objet vide</span>
+
+<span class="cm">// Ce qu'on ne peut PAS faire : changer le type paramétré d'un objet existant</span>
+<span class="cm">// Une fois créé en ArrayList&lt;Rapport&gt;, il le reste pour toujours</span></pre>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <h3>3. L'invariance : pourquoi <code>List&lt;Facture&gt;</code> ≠ <code>List&lt;Document&gt;</code></h3>
+
+        <p>
+            Prenons une hiérarchie classique : <code>Facture extends Document</code>, et <code>FactureAvoir extends Facture</code>. En Java orienté objet, une <code>Facture</code> peut être utilisée partout où un <code>Document</code> est attendu — c'est l'<strong>héritage</strong> (<em>inheritance</em>) et le principe de <strong>substitution</strong>.
+        </p>
+
+        <p>
+            L'intuition naturelle : puisque <code>Facture</code> est un sous-type de <code>Document</code>, une <code>List&lt;Facture&gt;</code> devrait pouvoir aller là où une <code>List&lt;Document&gt;</code> est attendue. Mais Java refuse catégoriquement :
+        </p>
+
+        <div class="compile-error">
+            List&lt;Document&gt; docs = new ArrayList&lt;Facture&gt;(); — incompatible types
+        </div>
+
+        <p>
+            La généricité Java est <strong>invariante</strong> (<em>invariant</em>) : il n'existe aucune relation de sous-typage entre <code>List&lt;Facture&gt;</code> et <code>List&lt;Document&gt;</code>, même si <code>Facture extends Document</code>. Voici pourquoi c'est une protection nécessaire :
+        </p>
+
+        <div class="code-block">
+            <span class="lang-label">Java — pourquoi l'invariance protège (scénario hypothétique)</span>
+<pre><span class="cm">// Imaginons que ceci soit autorisé — ça ne l'est PAS</span>
+List&lt;<span class="tp">Document</span>&gt; docs = <span class="kw">new</span> ArrayList&lt;<span class="tp">Facture</span>&gt;(); <span class="err">// ← IMPOSSIBLE</span>
+
+<span class="cm">// Si c'était possible, on pourrait ensuite ajouter n'importe quel Document...</span>
+docs.add(<span class="kw">new</span> Devis()); <span class="cm">// Devis est un Document, mais PAS une Facture</span>
+<span class="err">// Résultat : un Devis dans une liste qui est physiquement un ArrayList&lt;Facture&gt;</span>
+<span class="err">// → ClassCastException à l'exécution. On revient au problème d'avant Java 5.</span></pre>
+        </div>
+
+        <!-- Diagramme invariance -->
+        <div class="diagram-container">
+            <svg viewBox="0 0 660 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Invariance Java : Document et ses sous-types vs types génériques sans relation">
+                <rect width="660" height="270" fill="#f8fafc" rx="12"/>
+                <!-- Gauche -->
+                <text x="155" y="22" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="12" font-weight="700" fill="#1a1a1a">Héritage — relation ✓</text>
+                <rect x="95" y="32" width="120" height="30" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+                <text x="155" y="52" text-anchor="middle" font-family="Consolas,monospace" font-size="12" fill="#475569" font-weight="600">Object</text>
+                <line x1="155" y1="62" x2="155" y2="80" stroke="#1a5fb4" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a1)"/>
+                <rect x="95" y="82" width="120" height="30" rx="6" fill="#dbeafe" stroke="#1a5fb4" stroke-width="1.5"/>
+                <text x="155" y="102" text-anchor="middle" font-family="Consolas,monospace" font-size="12" fill="#1e40af" font-weight="600">Document</text>
+                <line x1="155" y1="112" x2="155" y2="130" stroke="#1a5fb4" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a1)"/>
+                <rect x="95" y="132" width="120" height="30" rx="6" fill="#dbeafe" stroke="#1a5fb4" stroke-width="1.5"/>
+                <text x="155" y="152" text-anchor="middle" font-family="Consolas,monospace" font-size="12" fill="#1e40af" font-weight="600">Facture</text>
+                <line x1="155" y1="162" x2="155" y2="180" stroke="#1a5fb4" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#a1)"/>
+                <rect x="78" y="182" width="154" height="30" rx="6" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+                <text x="155" y="202" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#065f46" font-weight="600">FactureAvoir</text>
+                <text x="155" y="240" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="10" fill="#666" font-style="italic">sous-type → substitution possible</text>
+                <!-- Séparateur -->
+                <line x1="330" y1="20" x2="330" y2="255" stroke="#e2e8f0" stroke-width="1.5"/>
+                <!-- Droite -->
+                <text x="500" y="22" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="12" font-weight="700" fill="#1a1a1a">Génériques — invariance ✕</text>
+                <rect x="380" y="82" width="160" height="30" rx="6" fill="#dbeafe" stroke="#1a5fb4" stroke-width="1.5"/>
+                <text x="460" y="102" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#1e40af" font-weight="600">List&lt;Document&gt;</text>
+                <line x1="460" y1="112" x2="460" y2="160" stroke="#dc2626" stroke-width="2.5"/>
+                <circle cx="460" cy="136" r="14" fill="#fff" stroke="#dc2626" stroke-width="2"/>
+                <text x="460" y="142" text-anchor="middle" font-size="16" fill="#dc2626" font-weight="700">✕</text>
+                <text x="478" y="131" font-family="Source Sans 3,sans-serif" font-size="10" fill="#dc2626" font-weight="600">aucune</text>
+                <text x="478" y="143" font-family="Source Sans 3,sans-serif" font-size="10" fill="#dc2626">relation</text>
+                <rect x="355" y="162" width="210" height="30" rx="6" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+                <text x="460" y="182" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#065f46" font-weight="600">List&lt;FactureAvoir&gt;</text>
+                <text x="460" y="240" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="10" fill="#dc2626" font-style="italic">types distincts, même si Facture hérite de Document</text>
+                <defs>
+                    <marker id="a1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                        <path d="M0 0 L10 5 L0 10z" fill="#1a5fb4"/>
+                    </marker>
+                </defs>
+            </svg>
+            <p class="diagram-caption">L'héritage entre classes ne se transfère pas aux types génériques — c'est l'invariance.</p>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <h3>4. Les wildcards : dépasser l'invariance avec souplesse</h3>
+
+        <p>
+            L'invariance est nécessaire, mais parfois trop rigide. Comment écrire une méthode qui calcule la somme des montants d'une <code>List&lt;Facture&gt;</code> <em>et</em> d'une <code>List&lt;FactureAvoir&gt;</code> sans dupliquer le code ?
+        </p>
+
+        <p>
+            C'est le rôle des <strong>wildcards</strong> (jokers) — représentés par <code>?</code>. Plutôt que de déclarer un type exact, on exprime une <em>contrainte</em> sur ce type. Il en existe deux formes, et les confondre produit soit une erreur de compilation, soit un code fragile.
+        </p>
+
+        <!-- ── extends ── -->
+        <h4><code>? extends T</code> — je veux lire depuis la liste</h4>
+
+        <p>
+            <code>List&lt;? extends Document&gt;</code> signifie : <em>une liste dont les éléments sont de type <code>Document</code> ou d'un sous-type quelconque de <code>Document</code></em>. Le compilateur garantit que chaque élément lu est au moins un <code>Document</code> — d'où le droit de lire. Mais comme il ne sait pas quel sous-type exact est présent, il interdit tout ajout.
+        </p>
+
+        <div class="code-block">
+            <span class="lang-label">Java — ? extends : lecture (Producer)</span>
+<pre><span class="cm">// On LIT la liste → extends — elle PRODUIT des données pour nous</span>
+<span class="kw">static double</span> totalMontants(List&lt;<span class="tp">? extends Document</span>&gt; docs) {
+    <span class="kw">double</span> total = <span class="str">0</span>;
+    <span class="kw">for</span> (<span class="tp">Document</span> d : docs) <span class="cm">// ✓ garanti : au moins un Document</span>
+        total += d.getMontant();
+    <span class="kw">return</span> total;
+}
+
+List&lt;<span class="tp">Facture</span>&gt;     factures = List.of(<span class="kw">new</span> Facture());
+List&lt;<span class="tp">FactureAvoir</span>&gt; avoirs   = List.of(<span class="kw">new</span> FactureAvoir());
+
+totalMontants(factures); <span class="ok">// ✓</span>
+totalMontants(avoirs);   <span class="ok">// ✓</span>
+
+<span class="cm">// L'écriture est interdite à l'intérieur de la méthode</span>
+docs.add(<span class="kw">new</span> Facture()); <span class="err">// ✗ compilation — la liste pourrait être List&lt;FactureAvoir&gt;</span>
+<span class="cm">// Le compilateur ne peut pas garantir qu'une Facture y est acceptable</span></pre>
+        </div>
+
+        <!-- ── super ── -->
+        <h4><code>? super T</code> — je veux écrire dans la liste</h4>
+
+        <p>
+            <code>List&lt;? super Facture&gt;</code> signifie : <em>une liste dont le type d'élément est <code>Facture</code> ou l'une de ses super-classes</em>. Le compilateur sait qu'on peut y insérer des <code>Facture</code> et ses sous-types (toute super-classe de <code>Facture</code> peut les accueillir par polymorphisme). En contrepartie, la lecture ne peut garantir que <code>Object</code>.
+        </p>
+
+        <div class="code-block">
+            <span class="lang-label">Java — ? super : écriture (Consumer)</span>
+<pre><span class="cm">// On ÉCRIT dans la liste → super — elle CONSOMME nos données</span>
+<span class="kw">static void</span> ajouterFactures(List&lt;<span class="tp">? super Facture</span>&gt; liste) {
+    liste.add(<span class="kw">new</span> Facture());    <span class="ok">// ✓</span>
+    liste.add(<span class="kw">new</span> FactureAvoir()); <span class="ok">// ✓ FactureAvoir est un sous-type de Facture</span>
+}
+
+ajouterFactures(<span class="kw">new</span> ArrayList&lt;<span class="tp">Facture</span>&gt;());  <span class="ok">// ✓</span>
+ajouterFactures(<span class="kw">new</span> ArrayList&lt;<span class="tp">Document</span>&gt;()); <span class="ok">// ✓</span>
+ajouterFactures(<span class="kw">new</span> ArrayList&lt;<span class="tp">Object</span>&gt;());   <span class="ok">// ✓</span>
+
+<span class="cm">// En lecture, seul Object est garanti</span>
+Object  o = liste.get(<span class="str">0</span>); <span class="ok">// ✓</span>
+Facture f = liste.get(<span class="str">0</span>); <span class="err">// ✗ compilation — la liste pourrait être List&lt;Document&gt;</span></pre>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <h3>5. La règle PECS — la clé pour ne plus jamais hésiter</h3>
+
+        <p>
+            Joshua Bloch, dans <em>Effective Java</em>, a résumé les deux cas en une formule mémnémotechnique (aide-mémoire) : <strong>PECS — Producer Extends, Consumer Super</strong>. La seule question à se poser : est-ce que la collection <em>produit</em> des données (vous lisez dedans) ou les <em>consomme</em> (vous y écrivez) ?
+        </p>
+
+        <div class="pecs-box">
+            <h4>PECS — Producer Extends, Consumer Super (Producteur Étend, Consommateur Super)</h4>
+            <div class="pecs-half ext">
+                <strong><code>? extends T</code> → Producer (producteur)</strong>
+                <p>Vous <strong>lisez</strong> depuis cette liste.<br>Elle produit des <code>T</code> pour vous.</p>
+                <ul>
+                    <li>Lecture garantie : retourne un <code>T</code></li>
+                    <li>Écriture interdite (sauf <code>null</code>)</li>
+                </ul>
+                <p style="margin-top:0.6rem;font-style:italic;font-size:0.82rem;">Ex : calculer, transformer, afficher</p>
+            </div>
+            <div class="pecs-half sup">
+                <strong><code>? super T</code> → Consumer (consommateur)</strong>
+                <p>Vous <strong>écrivez</strong> dans cette liste.<br>Elle consomme vos <code>T</code>.</p>
+                <ul>
+                    <li>Écriture de <code>T</code> et sous-types</li>
+                    <li>Lecture retourne <code>Object</code> seulement</li>
+                </ul>
+                <p style="margin-top:0.6rem;font-style:italic;font-size:0.82rem;">Ex : remplir, alimenter, copier</p>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <h3>6. Les deux ensemble : la méthode de copie</h3>
+
+        <p>
+            La méthode <code>Collections.copy()</code> de la bibliothèque standard Java illustre PECS dans sa forme la plus complète. La source <em>produit</em>, la destination <em>consomme</em> :
+        </p>
+
+        <div class="code-block">
+            <span class="lang-label">Java — PECS combiné</span>
+<pre><span class="cm">// source → on lit dedans     → Producer → extends</span>
+<span class="cm">// dest   → on y écrit        → Consumer → super</span>
+<span class="kw">static</span> &lt;<span class="tp">T</span>&gt; <span class="kw">void</span> copier(
+    List&lt;<span class="tp">? super T</span>&gt;   dest,   <span class="cm">// Consumer</span>
+    List&lt;<span class="tp">? extends T</span>&gt; source  <span class="cm">// Producer</span>
+) {
+    <span class="kw">for</span> (<span class="tp">T</span> elem : source)
+        dest.add(elem); <span class="ok">// ✓</span>
+}
+
+List&lt;<span class="tp">FactureAvoir</span>&gt; src  = List.of(<span class="kw">new</span> FactureAvoir());
+List&lt;<span class="tp">Facture</span>&gt;      dest = <span class="kw">new</span> ArrayList&lt;&gt;();
+
+copier(dest, src); <span class="ok">// ✓ T est inféré comme FactureAvoir par le compilateur</span></pre>
+        </div>
+
+        <!-- Diagramme extends vs super -->
+        <div class="diagram-container">
+            <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Différence entre ? extends Facture et ? super Facture">
+                <rect width="680" height="300" fill="#f8fafc" rx="12"/>
+                <text x="340" y="20" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="11" fill="#666">Point de référence : Facture</text>
+                <!-- Hiérarchie centrale -->
+                <rect x="290" y="28" width="100" height="28" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+                <text x="340" y="47" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#475569" font-weight="600">Object</text>
+                <line x1="340" y1="56" x2="340" y2="74" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a2)"/>
+                <rect x="280" y="76" width="120" height="28" rx="6" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+                <text x="340" y="95" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#475569" font-weight="600">Document</text>
+                <line x1="340" y1="104" x2="340" y2="122" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a2)"/>
+                <rect x="278" y="124" width="124" height="30" rx="6" fill="#dbeafe" stroke="#1a5fb4" stroke-width="2.5"/>
+                <text x="340" y="144" text-anchor="middle" font-family="Consolas,monospace" font-size="12" fill="#1e40af" font-weight="700">Facture</text>
+                <text x="340" y="155" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="9" fill="#1a5fb4">← référence</text>
+                <line x1="315" y1="162" x2="268" y2="182" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a2)"/>
+                <line x1="365" y1="162" x2="412" y2="182" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#a2)"/>
+                <rect x="208" y="184" width="120" height="28" rx="6" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+                <text x="268" y="203" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#065f46" font-weight="600">FactureAvoir</text>
+                <rect x="352" y="184" width="120" height="28" rx="6" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+                <text x="412" y="203" text-anchor="middle" font-family="Consolas,monospace" font-size="11" fill="#065f46" font-weight="600">FacturePro</text>
+                <!-- Zone extends (bas) -->
+                <rect x="12" y="118" width="195" height="152" rx="10" fill="rgba(94,234,212,0.1)" stroke="#0d9488" stroke-width="2" stroke-dasharray="5,3"/>
+                <text x="109" y="137" text-anchor="middle" font-family="Consolas,monospace" font-size="10" fill="#0d9488" font-weight="700">&lt;? extends Facture&gt;</text>
+                <text x="109" y="150" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="10" fill="#0d6b63">Facture + sous-classes</text>
+                <text x="109" y="205" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="11" fill="#0d9488" font-weight="700">→ LECTURE</text>
+                <text x="109" y="220" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="10" fill="#0d9488">Producer</text>
+                <text x="109" y="258" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="10" fill="#666" font-style="italic">Facture, FactureAvoir,<tspan x="109" dy="13">FacturePro</tspan></text>
+                <!-- Zone super (haut) -->
+                <rect x="473" y="22" width="195" height="148" rx="10" fill="rgba(251,191,36,0.1)" stroke="#d97706" stroke-width="2" stroke-dasharray="5,3"/>
+                <text x="570" y="41" text-anchor="middle" font-family="Consolas,monospace" font-size="10" fill="#d97706" font-weight="700">&lt;? super Facture&gt;</text>
+                <text x="570" y="54" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="10" fill="#92400e">Facture + super-classes</text>
+                <text x="570" y="105" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="11" fill="#d97706" font-weight="700">→ ÉCRITURE</text>
+                <text x="570" y="120" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="10" fill="#d97706">Consumer</text>
+                <text x="570" y="155" text-anchor="middle" font-family="Source Sans 3,sans-serif" font-size="10" fill="#666" font-style="italic">Object, Document, Facture</text>
+                <!-- Légende -->
+                <rect x="12" y="278" width="12" height="12" rx="2" fill="rgba(94,234,212,0.3)" stroke="#0d9488" stroke-width="1.5"/>
+                <text x="30" y="289" font-family="Source Sans 3,sans-serif" font-size="11" fill="#444">extends = Facture et en dessous → lecture</text>
+                <rect x="348" y="278" width="12" height="12" rx="2" fill="rgba(251,191,36,0.3)" stroke="#d97706" stroke-width="1.5"/>
+                <text x="366" y="289" font-family="Source Sans 3,sans-serif" font-size="11" fill="#444">super = Facture et au-dessus → écriture</text>
+                <defs>
+                    <marker id="a2" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                        <path d="M0 0 L10 5 L0 10z" fill="#94a3b8"/>
+                    </marker>
+                </defs>
+            </svg>
+            <p class="diagram-caption"><strong>extends</strong> (borne supérieure, <em>upper bound</em>) — Facture et ce qui est en dessous · <strong>super</strong> (borne inférieure, <em>lower bound</em>) — Facture et ce qui est au-dessus</p>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <h3>7. Tableau récapitulatif</h3>
+
+        <div style="overflow-x:auto;">
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th>Forme</th>
+                        <th>Nom</th>
+                        <th>Lecture</th>
+                        <th>Écriture</th>
+                        <th>Utiliser quand</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>List&lt;T&gt;</code></td>
+                        <td>Type exact</td>
+                        <td class="yes">✓ T</td>
+                        <td class="yes">✓ T</td>
+                        <td>Vous lisez ET écrivez des <code>T</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>List&lt;? extends T&gt;</code></td>
+                        <td>Borne supérieure<br><small><em>upper bound</em></small></td>
+                        <td class="yes">✓ T garanti</td>
+                        <td class="no">✕ interdit</td>
+                        <td>Vous <strong>lisez</strong> depuis la liste (Producer)</td>
+                    </tr>
+                    <tr>
+                        <td><code>List&lt;? super T&gt;</code></td>
+                        <td>Borne inférieure<br><small><em>lower bound</em></small></td>
+                        <td class="no">Object seulement</td>
+                        <td class="yes">✓ T et sous-types</td>
+                        <td>Vous <strong>écrivez</strong> dans la liste (Consumer)</td>
+                    </tr>
+                    <tr>
+                        <td><code>List&lt;?&gt;</code></td>
+                        <td>Non borné<br><small><em>unbounded</em></small></td>
+                        <td class="yes">Object</td>
+                        <td class="no">✕ interdit</td>
+                        <td>Vous parcourez sans connaître le type</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <h3>8. Ce que ça change avec l'IA</h3>
+
+        <p>
+            GitHub Copilot et Claude génèrent ces wildcards sans sourciller. Pour des méthodes classiques, ils ont souvent raison. Mais dans un contexte métier plus complexe — hiérarchies profondes, génériques imbriqués (<em>nested generics</em>) — l'IA peut confondre <code>extends</code> et <code>super</code> avec la même assurance qu'elle a quand elle a raison. L'erreur est silencieuse : le code compile, mais son comportement est fragile.
+        </p>
+
+        <div class="info-box">
+            <h4>Le réflexe en revue de code</h4>
+            <p>
+                Quand vous voyez un wildcard dans du code — généré par l'IA ou écrit par un collègue — posez une seule question : <em>est-ce que ce paramètre est utilisé en lecture ou en écriture ?</em>
+                Lecture → <code>extends</code>. Écriture → <code>super</code>. Les deux → type exact <code>T</code>.
+            </p>
+        </div>
+
+        <div class="quote-box">
+            PECS n'est pas une règle à mémoriser. C'est une conséquence naturelle du raisonnement du compilateur. Une fois qu'on comprend le pourquoi, la règle vient d'elle-même.
+        </div>
+
+    </div><!-- /article-full -->
+
+    <div class="cta-box">
+        <h3>Des questions sur la généricité Java ou votre parcours TI au Québec ?</h3>
+        <p>Je réponds à tous les messages — généralement en 2-3 jours.</p>
+        <p><a href="mailto:goutas.hilal@gmail.com?subject=Question - Généricité Java - Ponts TI">goutas.hilal@gmail.com</a></p>
+    </div>
+
+    <div class="related-box">
+        <h3>Articles liés</h3>
+        <a href="ia-outils-programmation.html" class="related-link">
+            <strong>L'IA en TI</strong>
+            <span>Outils de programmation, Java et analyse de logs</span>
+        </a>
+        <a href="specialisation-vs-fondamentaux.html" class="related-link">
+            <strong>La course technologique</strong>
+            <span>Spécialisation vs fondamentaux</span>
+        </a>
+        <a href="carriere-developpeur-analyste.html" class="related-link">
+            <strong>Carrière développeur / analyste</strong>
+            <span>Évoluer dans le marché TI québécois</span>
+        </a>
+    </div>
+
+</article>
+</main>
+
+<footer>
+    <div class="container">
+        <p><strong>Ponts TI</strong> — Aide gratuite emploi informatique Québec</p>
+        <p>Un projet bénévole de <strong>Hilal Goutas</strong> · Analyste informatique · Montréal, Québec</p>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:1rem;line-height:1.8;">
+            Ponts TI aide les <strong>immigrants francophones</strong>, les <strong>PVTistes</strong> et les personnes en
+            <strong>reconversion professionnelle</strong> à trouver un <strong>emploi en informatique au Québec</strong>.
+        </p>
+        <p style="font-size:0.8rem;margin-top:0.75rem;">
+            <a href="../articles/marche-ti-quebec-2026.html">Marché TI Québec 2026</a> ·
+            <a href="../index.html#articles">Articles</a> ·
+            <a href="../ressources.html">Ressources</a> ·
+            <a href="../index.html#faq">FAQ</a> ·
+            <a href="../index.html#contact">Contact</a>
+        </p>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-top:0.5rem;">© 2026 Hilal Goutas — Projet bénévole</p>
+    </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Retour en haut de page">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+</button>
+
+<script>
+(function(){
+    const progress = document.getElementById('read-progress');
+    const backTop  = document.getElementById('backTop');
+    const nav      = document.querySelector('nav');
+    window.addEventListener('scroll', function(){
+        const s = window.scrollY;
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        if (progress) progress.style.width = (h > 0 ? (s/h*100) : 0) + '%';
+        if (backTop)  backTop.classList.toggle('visible', s > 400);
+        if (nav)      nav.classList.toggle('scrolled', s > 10);
+    }, {passive:true});
+    if (backTop) backTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+})();
+</script>
+</body>
+</html>
