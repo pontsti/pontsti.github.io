@@ -1,0 +1,134 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Premier emploi en TI au Québec en 2026 — marché, récession technique et IA">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1b2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3a5c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="barGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#5eead4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a5fb4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="barGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5eead4;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#5eead4;stop-opacity:0.2" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Fond -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+
+  <!-- Grille de fond subtile -->
+  <g stroke="rgba(94,234,212,0.06)" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Zone gauche : Titre et contexte -->
+  <text x="60" y="90" font-family="Georgia, serif" font-size="38" font-weight="700" fill="white" letter-spacing="-0.5">Premier emploi en TI</text>
+  <text x="60" y="135" font-family="Georgia, serif" font-size="38" font-weight="700" fill="#5eead4" letter-spacing="-0.5">au Québec en 2026</text>
+
+  <text x="60" y="180" font-family="Arial, sans-serif" font-size="17" fill="rgba(255,255,255,0.7)">Marché, récession technique et impact de l'IA</text>
+
+  <!-- Ligne décorative -->
+  <rect x="60" y="200" width="120" height="3" fill="#5eead4" rx="2"/>
+
+  <!-- Statistiques clés — boîtes -->
+  <!-- Stat 1 -->
+  <rect x="60" y="225" width="200" height="90" rx="10" fill="rgba(94,234,212,0.1)" stroke="rgba(94,234,212,0.3)" stroke-width="1"/>
+  <text x="160" y="265" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#5eead4" text-anchor="middle">−18 %</text>
+  <text x="160" y="290" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">emplois juniors TI</text>
+  <text x="160" y="306" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">2022–2025 (IdQ)</text>
+
+  <!-- Stat 2 -->
+  <rect x="278" y="225" width="200" height="90" rx="10" fill="rgba(94,234,212,0.1)" stroke="rgba(94,234,212,0.3)" stroke-width="1"/>
+  <text x="378" y="265" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#5eead4" text-anchor="middle">3 %</text>
+  <text x="378" y="290" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">chômage tech Canada</text>
+  <text x="378" y="306" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">oct. 2025 (Stat. Canada)</text>
+
+  <!-- Stat 3 — récession -->
+  <rect x="60" y="330" width="200" height="90" rx="10" fill="rgba(248,113,113,0.1)" stroke="rgba(248,113,113,0.3)" stroke-width="1"/>
+  <text x="160" y="370" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#f87171" text-anchor="middle">−0,1 %</text>
+  <text x="160" y="393" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">PIB réel, T1 2026</text>
+  <text x="160" y="409" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">récession technique (Stat. Can.)</text>
+
+  <!-- Stat 4 -->
+  <rect x="278" y="330" width="200" height="90" rx="10" fill="rgba(94,234,212,0.1)" stroke="rgba(94,234,212,0.3)" stroke-width="1"/>
+  <text x="378" y="370" font-family="Georgia, serif" font-size="32" font-weight="700" fill="#5eead4" text-anchor="middle">+0,4 %</text>
+  <text x="378" y="393" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">rebond prévu PIB</text>
+  <text x="378" y="409" font-family="Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.6)" text-anchor="middle">avril 2026 (Stat. Can.)</text>
+
+  <!-- Mention Ponts TI -->
+  <text x="60" y="490" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.5)">Ponts TI — pontsti.github.io</text>
+  <text x="60" y="510" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.4)">Aide gratuite emploi informatique Québec</text>
+
+  <!-- Zone droite : graphique barres comparatif -->
+  <g transform="translate(560, 50)">
+    <!-- Titre du graphique -->
+    <text x="300" y="35" font-family="Georgia, serif" font-size="18" font-weight="600" fill="white" text-anchor="middle">Emplois TI au Québec : 2022 → 2025</text>
+    <text x="300" y="58" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.5)" text-anchor="middle">Source : Institut du Québec, octobre 2025</text>
+
+    <!-- Axe Y -->
+    <line x1="70" y1="80" x2="70" y2="420" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+    <!-- Axe X -->
+    <line x1="70" y1="420" x2="540" y2="420" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+    <!-- Labels axe Y -->
+    <text x="60" y="85" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.4)" text-anchor="end">+10 %</text>
+    <text x="60" y="165" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.4)" text-anchor="end">+5 %</text>
+    <text x="60" y="250" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.4)" text-anchor="end">0 %</text>
+    <text x="60" y="335" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.4)" text-anchor="end">−10 %</text>
+    <text x="60" y="415" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.4)" text-anchor="end">−20 %</text>
+
+    <!-- Lignes de grille horizontales -->
+    <line x1="70" y1="85" x2="540" y2="85" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="70" y1="165" x2="540" y2="165" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="70" y1="250" x2="540" y2="250" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+    <line x1="70" y1="335" x2="540" y2="335" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4,4"/>
+
+    <!-- Barre 1 : Économie générale +6% -->
+    <rect x="100" y="202" width="80" height="48" rx="5" fill="url(#barGrad1)" filter="url(#glow)"/>
+    <text x="140" y="196" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#5eead4" text-anchor="middle">+6 %</text>
+    <text x="140" y="445" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle">Économie</text>
+    <text x="140" y="460" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle">générale</text>
+
+    <!-- Barre 2 : TI global −1% -->
+    <rect x="220" y="250" width="80" height="8" rx="3" fill="rgba(248,180,0,0.8)"/>
+    <text x="260" y="243" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#fbbf24" text-anchor="middle">−1 %</text>
+    <text x="260" y="445" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle">TI global</text>
+    <text x="260" y="460" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle">(315 000)</text>
+
+    <!-- Barre 3 : TI 30 ans+ +3% -->
+    <rect x="340" y="226" width="80" height="24" rx="5" fill="url(#barGrad1)" opacity="0.7"/>
+    <text x="380" y="220" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#5eead4" text-anchor="middle">+3 %</text>
+    <text x="380" y="445" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle">TI 30 ans</text>
+    <text x="380" y="460" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle">et plus</text>
+
+    <!-- Barre 4 : TI jeunes −18% -->
+    <rect x="460" y="250" width="80" height="144" rx="5" fill="url(#barGrad2)" filter="url(#glow)"/>
+    <text x="500" y="410" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#f87171" text-anchor="middle">−18 %</text>
+    <text x="500" y="445" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle">TI 15–29</text>
+    <text x="500" y="460" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.6)" text-anchor="middle">ans</text>
+  </g>
+
+  <!-- Badge récession en bas à droite -->
+  <rect x="850" y="540" width="300" height="60" rx="12" fill="rgba(248,113,113,0.15)" stroke="rgba(248,113,113,0.4)" stroke-width="1"/>
+  <text x="1000" y="563" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#f87171" text-anchor="middle">⚠ RÉCESSION TECHNIQUE</text>
+  <text x="1000" y="582" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">2 trimestres consécutifs de contraction</text>
+  <text x="1000" y="596" font-family="Arial, sans-serif" font-size="11" fill="rgba(255,255,255,0.55)" text-anchor="middle">Statistique Canada, 29 mai 2026</text>
+</svg>
