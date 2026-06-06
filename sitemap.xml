@@ -5,7 +5,7 @@
   <!-- Page d'accueil -->
   <url>
     <loc>https://pontsti.github.io/</loc>
-    <lastmod>2026-05-30</lastmod>
+    <lastmod>2026-06-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/"/>
@@ -24,7 +24,17 @@
 
   <!-- Articles — du plus récent au plus ancien -->
 
-  <!-- NOUVEAU — Mai 2026 — Récession et IA -->
+  <!-- NOUVEAU — Juin 2026 — Entrevue TI + vibe coding -->
+  <url>
+    <loc>https://pontsti.github.io/articles/preparation-entrevue-ti-quebec.html</loc>
+    <lastmod>2026-06-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/preparation-entrevue-ti-quebec.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/preparation-entrevue-ti-quebec.html"/>
+  </url>
+
+  <!-- Mai 2026 — Récession et IA -->
   <url>
     <loc>https://pontsti.github.io/articles/premier-emploi-ti-recession-2026.html</loc>
     <lastmod>2026-05-30</lastmod>
