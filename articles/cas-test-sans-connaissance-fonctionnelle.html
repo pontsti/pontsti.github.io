@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MENPL52956"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MENPL52956');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <title>Écrire des cas de test sans connaissance fonctionnelle : ma façon de faire | Ponts TI</title>
+    <meta name="description" content="Comment écrire des cas de test sur un projet inconnu, sans documentation fonctionnelle : s'appuyer sur l'équipe, être honnête sur les lacunes, et en tenir compte dans l'estimation des délais.">
+    <meta name="keywords" content="cas de test sans documentation, tests logiciels Québec, estimation délai test, analyste assurance qualité, reverse engineering test, IA génération cas de test, dossier fonctionnel manquant, communication équipe agile">
+    <meta name="author" content="Hilal Goutas">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://pontsti.github.io/articles/cas-test-sans-connaissance-fonctionnelle.html">
+    <link rel="sitemap" type="application/xml" href="https://pontsti.github.io/sitemap.xml">
+
+    <meta http-equiv="content-language" content="fr-CA">
+    <link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/cas-test-sans-connaissance-fonctionnelle.html">
+    <link rel="alternate" hreflang="fr" href="https://pontsti.github.io/articles/cas-test-sans-connaissance-fonctionnelle.html">
+    <link rel="alternate" hreflang="x-default" href="https://pontsti.github.io/articles/cas-test-sans-connaissance-fonctionnelle.html">
+
+    <meta name="geo.region" content="CA-QC">
+    <meta name="geo.placename" content="Montréal, Québec, Canada">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.json">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://pontsti.github.io/articles/cas-test-sans-connaissance-fonctionnelle.html">
+    <meta property="og:title" content="Écrire des cas de test sans connaissance fonctionnelle : ma façon de faire | Ponts TI">
+    <meta property="og:description" content="Comment écrire des cas de test sur un projet inconnu, sans documentation fonctionnelle : s'appuyer sur l'équipe, être honnête sur les lacunes, et en tenir compte dans l'estimation des délais.">
+    <meta property="og:locale" content="fr_CA">
+    <meta property="og:site_name" content="Ponts TI">
+    <meta property="og:image" content="https://pontsti.github.io/og-image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Écrire des cas de test sans connaissance fonctionnelle : ma façon de faire | Ponts TI">
+    <meta name="twitter:description" content="Comment écrire des cas de test sur un projet inconnu, sans documentation fonctionnelle, et en tenir compte dans l'estimation des délais.">
+
+    <meta name="theme-color" content="#0d1b2a">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Cas de test sans connaissance fonctionnelle : comment je gère ça",
+      "description": "Comment écrire des cas de test sur un projet inconnu, sans documentation fonctionnelle : s'appuyer sur l'équipe, être honnête sur les lacunes, et en tenir compte dans l'estimation des délais.",
+      "url": "https://pontsti.github.io/articles/cas-test-sans-connaissance-fonctionnelle.html",
+      "datePublished": "2026-09-05",
+      "dateModified": "2026-09-05",
+      "author": {"@type": "Person", "name": "Hilal Goutas"},
+      "publisher": {"@type": "Person", "name": "Hilal Goutas"},
+      "keywords": "cas de test, documentation fonctionnelle manquante, estimation délai, communication équipe, reverse engineering, assurance qualité"
+    }
+    </script>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+    #read-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#1a5fb4,#5eead4); width:0%; z-index:9999; transition:width 0.1s linear; }
+    </style>
+</head>
+<body>
+    <div id="read-progress"></div>
+
+    <a href="#main" class="skip-link">Aller au contenu</a>
+
+    <header class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="../index.html" aria-label="Retour à l'accueil">
+                <svg class="logo-icon" viewBox="0 0 96 58" fill="none" aria-hidden="true" role="img">
+    <title>Logo Ponts TI</title>
+    <path d="M6 48 Q48 8 90 48" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <line x1="6" y1="48" x2="90" y2="48" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="26" y1="32" x2="26" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="48" y1="16" x2="48" y2="48" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round"/>
+    <line x1="70" y1="32" x2="70" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="48" cy="12" r="4" fill="#5eead4"/>
+</svg>
+                <h1>Ponts <span>TI</span></h1>
+            </a>
+        </div>
+        <p class="tagline-main">Trouver un emploi en informatique au Québec</p>
+        <p class="tagline-services">
+            <span>CV</span><span class="separator" aria-hidden="true">•</span>
+            <span>Entrevue</span><span class="separator" aria-hidden="true">•</span>
+            <span>Intégration</span><span class="dash" aria-hidden="true">—</span>
+            <span class="target">Pour tous les parcours</span>
+        </p>
+        <div class="header-actions">
+            <span class="badge">Bénévole</span>
+            <a href="https://www.linkedin.com/in/hilal-goutas-65a7383b/" target="_blank" rel="noopener" class="linkedin-link" aria-label="Profil LinkedIn de Hilal Goutas">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn
+            </a>
+        </div>
+    </div>
+</header>
+
+    <nav aria-label="Navigation principale">
+    <ul><li><a href="../index.html#apropos">À propos</a></li>
+<li><a href="../index.html#pourquoi-ponts">Pourquoi « Ponts »</a></li>
+<li><a href="../articles/marche-ti-quebec-2026.html">Marché TI</a></li>
+<li><a href="../index.html#articles" class="active">Articles</a></li>
+<li><a href="../ressources.html">Liens utiles</a></li>
+<li><a href="../index.html#faq">Questions</a></li>
+<li><a href="../index.html#contact">Contact</a></li>
+</ul>
+</nav>
+
+    <main id="main" class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane"><a href="../index.html">Accueil</a><span aria-hidden="true">›</span><a href="../index.html#articles">Articles</a><span aria-hidden="true">›</span><strong>Cas de test sans connaissance fonctionnelle</strong></nav>
+<article class="section">
+
+            <h2>Cas de test sans connaissance fonctionnelle : comment je gère ça</h2>
+            <div class="article-meta">
+                <span>Par Hilal Goutas</span>
+                <time datetime="2026-09">Septembre 2026</time>
+                <span class="read-time">4 min</span>
+            </div>
+
+            <div class="share-buttons">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pontsti.github.io/articles/cas-test-sans-connaissance-fonctionnelle.html" target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Partager sur LinkedIn">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:?subject=Article Ponts TI - Cas de test sans connaissance fonctionnelle&body=Je te partage cet article : https://pontsti.github.io/articles/cas-test-sans-connaissance-fonctionnelle.html" class="share-btn share-email" aria-label="Partager par courriel"><svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                    Courriel
+                </a>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80"
+                 alt="Carnet de notes et documents de travail sur un bureau — analyse et prise de notes pour comprendre un projet"
+                 class="article-hero-img" loading="eager" decoding="async" width="1200" height="600">
+            <p class="article-img-credit">Photo: Unsplash (libre de droits)</p>
+
+            <div class="article-full">
+                <p>
+                    Arriver sur un projet qu'on ne connaît pas, sans avoir vécu son historique fonctionnel,
+                    et devoir écrire des cas de test — ça arrive plus souvent qu'on le pense. Pas de dossier
+                    fonctionnel à jour, pas d'historique des décisions, parfois juste le code et quelques
+                    tickets épars. Voici, humblement, ma façon d'aborder ça.
+                </p>
+
+                <h3>S'appuyer sur l'équipe plutôt que deviner</h3>
+                <p>
+                    Le réflexe le plus utile reste de poser les bonnes questions aux bonnes personnes — 
+                    surtout les développeurs qui connaissent le code, mais aussi les analystes ou les
+                    personnes déjà présentes lors des décisions passées. Deviner un comportement attendu
+                    est risqué : ça peut donner des cas de test qui valident le mauvais comportement.
+                </p>
+
+                <h3>Chercher la documentation existante, même incomplète</h3>
+                <p>
+                    Même partielle, même désuète, la documentation qui existe donne des indices précieux :
+                    tickets fermés, anciens courriels, notes de réunion, commentaires dans le code. 
+                    Ce n'est jamais suffisant en soi, mais ça réduit la part de devinette.
+                </p>
+
+                <h3>Être honnête sur ce qu'on sait — et ce qu'on ne sait pas encore</h3>
+                <p>
+                    C'est probablement le point le plus important. Accepter la tâche ne veut pas dire
+                    prétendre qu'on a toute l'information. Je préfère le dire clairement à l'équipe : voici
+                    ce que je comprends du comportement attendu, voici les zones grises, voici ce qui manque
+                    pour être vraiment confiant dans les cas de test que je vais écrire.
+                </p>
+
+                <h3>Le reverse engineering, une aide, pas une solution miracle</h3>
+                <p>
+                    Quand on a des connaissances en code, relire la logique existante peut aider à déduire
+                    le comportement attendu. Mais ce n'est pas toujours possible, ni suffisant : le code
+                    montre ce que le système fait, pas nécessairement ce qu'il devrait faire. Une même
+                    ligne de code peut cacher un bug qui existe depuis des années.
+                </p>
+
+                <h3>S'appuyer sur les outils IA, avec discipline</h3>
+                <p>
+                    Les outils d'intelligence artificielle peuvent aider à générer des cas de test à partir
+                    du code existant, d'une description ou d'un ticket. C'est un bon point de départ, surtout
+                    quand on manque de repères. Mais je ne les utilise jamais en une seule passe : je procède
+                    par itérations, je reformule, je précise le contexte, et je compare ce qui ressort d'une
+                    itération à l'autre.
+                </p>
+                <p>
+                    Le plus important reste de <strong>comprendre</strong> ce que l'IA propose, pas seulement
+                    de le copier. Un cas de test généré peut sembler cohérent alors qu'il valide un comportement
+                    qui n'a jamais été confirmé par personne. Je garde donc le même réflexe qu'avec le reverse
+                    engineering : l'IA m'aide à explorer des hypothèses plus vite, mais la validation finale
+                    reste humaine — avec l'équipe, si possible.
+                </p>
+
+                <h3>Parler des délais dès le départ</h3>
+                <p>
+                    Le point qu'on oublie parfois : ce manque de documentation a un coût en temps, et ce
+                    coût doit être nommé avant de s'engager sur une estimation. J'accepte la tâche, mais je
+                    prends soin d'expliquer à l'équipe qu'il manque un dossier fonctionnel clair, et que ça
+                    va nécessairement rallonger le travail — le temps de comprendre s'ajoute au temps
+                    d'écrire les cas de test. Une estimation qui ignore cette lacune n'est pas réaliste,
+                    et elle finit par créer de la pression inutile plus tard dans le projet.
+                </p>
+
+                <div class="quote-box">
+                    Ce n'est pas une méthode parfaite. C'est une réalité du métier qu'on apprend à gérer
+                    avec l'expérience et l'humilité.
+                </div>
+
+                <p>
+                    En résumé : s'appuyer sur l'équipe, chercher ce qui existe déjà, être transparent sur
+                    les zones d'incertitude, utiliser le reverse engineering et les outils IA comme des aides
+                    à explorer plutôt que des réponses toutes faites, et surtout intégrer ces lacunes dans
+                    l'estimation des délais plutôt que les subir en cours de route.
+                </p>
+
+                <div class="cta-box">
+                    <h3>Vous vivez une situation semblable ?</h3>
+                    <p>Écrivez-moi, j'aime échanger sur ces réalités du métier.</p>
+                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Question - Cas de test sans documentation - Ponts TI">goutas.hilal@gmail.com</a></p>
+                </div>
+            </div>
+
+            <div class="related-box">
+                <h3>Articles liés</h3>
+                <a href="gestion-tensions-clients-agile.html" class="related-link">
+                    <strong>Gérer les tensions avec les clients en mode agile</strong>
+                    <span>Communication et soutien en équipe</span>
+                </a>
+                <a href="carriere-developpeur-analyste.html" class="related-link">
+                    <strong>Développeur, analyste, architecte</strong>
+                    <span>Comment choisir sa carrière TI</span>
+                </a>
+            </div>
+
+</article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>Ponts TI</strong> — Aide gratuite emploi informatique Québec</p>
+            <p>Un projet bénévole de <strong>Hilal Goutas</strong> · Analyste informatique · Montréal, Québec</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: var(--space-4); line-height: 1.8;">
+                Ponts TI aide les <strong>immigrants francophones</strong>, les <strong>PVTistes</strong> et les personnes en
+                <strong>reconversion professionnelle</strong> à trouver un <strong>emploi en informatique au Québec</strong>.
+            </p>
+            <p style="font-size: 0.8rem; margin-top: var(--space-3);">
+                <a href="../articles/marche-ti-quebec-2026.html">Marché TI Québec 2026</a> ·
+                <a href="../index.html#articles">Articles</a> ·
+                <a href="../ressources.html">Ressources</a> ·
+                <a href="../index.html#faq">Questions</a> ·
+                <a href="../index.html#contact">Contact</a>
+            </p>
+            <p>© 2025-2026 Ponts TI. Contenu original.</p>
+        </div>
+    </footer>
+
+    <button class="back-top" aria-label="Retour en haut" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script>
+    const nav = document.querySelector('nav');
+    if (nav) { window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive:true }); }
+    const backTop = document.querySelector('.back-top');
+    if (backTop) { window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); }, { passive:true }); }
+    const progressBar = document.getElementById('read-progress');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const pct = Math.min(100, (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+            progressBar.style.width = pct + '%';
+        }, { passive:true });
+    }
+    </script>
+
+</body>
+</html>
