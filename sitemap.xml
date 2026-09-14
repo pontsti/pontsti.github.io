@@ -24,6 +24,16 @@
 
   <!-- Articles — du plus récent au plus ancien -->
 
+  <!-- NOUVEAU — Septembre 2026 — Reconversion informatique -->
+  <url>
+    <loc>https://pontsti.github.io/articles/reconversion-informatique-quebec.html</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/reconversion-informatique-quebec.html"/>
+    <xhtml:link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/reconversion-informatique-quebec.html"/>
+  </url>
+
   <!-- NOUVEAU — Juin 2026 — Entrevue TI + vibe coding -->
   <url>
     <loc>https://pontsti.github.io/articles/preparation-entrevue-ti-quebec.html</loc>
