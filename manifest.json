@@ -1,0 +1,13 @@
+{
+  "name": "Ponts TI — Aide emploi informatique Québec",
+  "short_name": "Ponts TI",
+  "lang": "fr-CA",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#0d1b2a",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
