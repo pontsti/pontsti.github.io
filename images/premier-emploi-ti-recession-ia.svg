@@ -75,7 +75,7 @@
 
   <!-- Mention Ponts TI -->
   <text x="60" y="490" font-family="Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.5)">Ponts TI — pontsti.github.io</text>
-  <text x="60" y="510" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.4)">Aide gratuite emploi informatique Québec</text>
+  <text x="60" y="510" font-family="Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.4)">Aide bénévole emploi informatique Québec</text>
 
   <!-- Zone droite : graphique barres comparatif -->
   <g transform="translate(560, 50)">
