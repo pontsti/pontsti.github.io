@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MENPL52956"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-MENPL52956');</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <title>Panne Microsoft 365 du 12 novembre 2026 : ce qu'elle révèle de notre dépendance au cloud | Ponts TI</title>
+    <meta name="description" content="Le 12 novembre 2026, une panne mondiale de Microsoft 365 a bloqué Outlook, Teams et Copilot dans 74 pays. Ce n'était pas une cyberattaque. Retour d'expérience sur la dépendance au cloud et sur la façon de s'y préparer.">
+    <meta name="keywords" content="panne Microsoft 365 novembre 2026, panne Outlook Teams Copilot, dépendance cloud entreprise, continuité des activités TI, plan de continuité panne fournisseur, résilience informatique Québec, compétences internes TI">
+    <meta name="author" content="Hilal Goutas">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://pontsti.github.io/articles/panne-microsoft-365-dependance-cloud.html">
+    <link rel="sitemap" type="application/xml" href="https://pontsti.github.io/sitemap.xml">
+
+    <link rel="alternate" hreflang="fr-CA" href="https://pontsti.github.io/articles/panne-microsoft-365-dependance-cloud.html">
+    <link rel="alternate" hreflang="fr"    href="https://pontsti.github.io/articles/panne-microsoft-365-dependance-cloud.html">
+    <link rel="alternate" hreflang="x-default" href="https://pontsti.github.io/articles/panne-microsoft-365-dependance-cloud.html">
+
+    <meta name="geo.region" content="CA-QC">
+    <meta name="geo.placename" content="Montréal, Québec, Canada">
+
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="manifest" href="../manifest.json">
+
+    <meta property="og:type"        content="article">
+    <meta property="og:url"         content="https://pontsti.github.io/articles/panne-microsoft-365-dependance-cloud.html">
+    <meta property="og:title"       content="Panne Microsoft 365 du 12 novembre 2026 : ce qu'elle révèle de notre dépendance au cloud | Ponts TI">
+    <meta property="og:description" content="Outlook, Teams et Copilot bloqués dans 74 pays, et ce n'était pas une cyberattaque. Ce que cette panne m'a fait réaliser, et comment s'y préparer.">
+    <meta property="og:locale"      content="fr_CA">
+    <meta property="og:site_name"   content="Ponts TI">
+    <meta property="og:image"       content="https://pontsti.github.io/images/panne-cloud-dependance-og.png">
+    <meta property="og:image:width"  content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt"   content="Illustration : un nuage en panne relié par des liens rompus au courriel, à la messagerie, à l'agenda, aux documents et à un assistant IA">
+
+    <meta name="twitter:card"        content="summary_large_image">
+    <meta name="twitter:title"       content="Panne Microsoft 365 du 12 novembre 2026 : notre dépendance au cloud | Ponts TI">
+    <meta name="twitter:description" content="Outlook, Teams et Copilot bloqués dans 74 pays, sans cyberattaque. Ce que ça révèle, et comment s'y préparer.">
+    <meta name="twitter:image"       content="https://pontsti.github.io/images/panne-cloud-dependance-og.png">
+
+    <meta name="article:published_time" content="2026-11-17">
+    <meta name="article:author"         content="Hilal Goutas">
+    <meta name="article:section"        content="Réalités du métier TI">
+
+    <meta name="theme-color" content="#0d1b2a">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Panne Microsoft 365 du 12 novembre 2026 : ce qu'elle révèle de notre dépendance au cloud",
+      "description": "Le 12 novembre 2026, une panne mondiale de Microsoft 365 a bloqué Outlook, Teams et Copilot dans 74 pays. Ce n'était pas une cyberattaque. Retour d'expérience sur la dépendance au cloud et sur la façon de s'y préparer.",
+      "url": "https://pontsti.github.io/articles/panne-microsoft-365-dependance-cloud.html",
+      "datePublished": "2026-11-17",
+      "dateModified": "2026-11-17",
+      "author": {
+        "@type": "Person",
+        "name": "Hilal Goutas",
+        "url": "https://pontsti.github.io/",
+        "jobTitle": "Analyste informatique — Mentor bénévole"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Hilal Goutas",
+        "url": "https://pontsti.github.io/"
+      },
+      "keywords": "panne Microsoft 365, dépendance au cloud, continuité des activités, résilience informatique, compétences internes TI",
+      "inLanguage": "fr-CA",
+      "image": "https://pontsti.github.io/images/panne-cloud-dependance-og.png"
+    }
+    </script>
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+    #read-progress { position:fixed; top:0; left:0; height:3px; background:linear-gradient(90deg,#1a5fb4,#5eead4); width:0%; z-index:9999; transition:width 0.1s linear; }
+    .article-hero-img.svg-hero { height:auto; object-fit:contain; background:#0d1b2a; }
+    </style>
+</head>
+<body>
+    <div id="read-progress"></div>
+    <a href="#main" class="skip-link">Aller au contenu</a>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="../index.html" aria-label="Retour à l'accueil Ponts TI">
+                    <svg class="logo-icon" viewBox="0 0 96 58" fill="none" aria-hidden="true" role="img">
+                        <title>Logo Ponts TI</title>
+                        <path d="M6 48 Q48 8 90 48" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/>
+                        <line x1="6" y1="48" x2="90" y2="48" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+                        <line x1="26" y1="32" x2="26" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="48" y1="16" x2="48" y2="48" stroke="rgba(255,255,255,0.8)" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="70" y1="32" x2="70" y2="48" stroke="rgba(255,255,255,0.7)" stroke-width="2.5" stroke-linecap="round"/>
+                        <circle cx="48" cy="12" r="4" fill="#5eead4"/>
+                    </svg>
+                    <p class="site-title">Ponts <span>TI</span></p>
+                </a>
+            </div>
+            <p class="tagline-main">Trouver un emploi en informatique au Québec</p>
+            <p class="tagline-services">
+                <span>CV</span><span class="separator" aria-hidden="true">•</span>
+                <span>Entrevue</span><span class="separator" aria-hidden="true">•</span>
+                <span>Intégration</span><span class="dash" aria-hidden="true">—</span>
+                <span class="target">Pour tous les parcours</span>
+            </p>
+            <div class="header-actions">
+                <span class="badge">Bénévole</span>
+                <a href="https://www.linkedin.com/in/hilal-goutas-65a7383b/" target="_blank" rel="noopener" class="linkedin-link" aria-label="Profil LinkedIn de Hilal Goutas">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav aria-label="Navigation principale">
+        <ul>
+            <li><a href="../index.html#apropos">À propos</a></li>
+            <li><a href="../index.html#pourquoi-ponts">Pourquoi « Ponts »</a></li>
+            <li><a href="../articles/marche-ti-quebec-2026.html">Marché TI</a></li>
+            <li><a href="../index.html#articles" class="active">Articles</a></li>
+            <li><a href="../ressources.html">Liens utiles</a></li>
+            <li><a href="../index.html#faq">Questions</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main" class="container">
+        <nav class="breadcrumb" aria-label="Fil d'Ariane">
+            <a href="../index.html">Accueil</a>
+            <span aria-hidden="true">›</span>
+            <a href="../index.html#articles">Articles</a>
+            <span aria-hidden="true">›</span>
+            <strong>Panne Microsoft 365 et dépendance au cloud</strong>
+        </nav>
+
+        <article class="section">
+
+            <h1>Panne Microsoft 365 du 12 novembre 2026 : ce qu'elle révèle de notre dépendance au cloud</h1>
+
+            <div class="article-meta">
+                <span>Par <strong>Hilal Goutas</strong></span>
+                <time datetime="2026-11-17">17 novembre 2026</time>
+                <span class="read-time">5 min</span>
+            </div>
+
+            <div class="share-buttons">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://pontsti.github.io/articles/panne-microsoft-365-dependance-cloud.html"
+                   target="_blank" rel="noopener" class="share-btn share-linkedin" aria-label="Partager sur LinkedIn">
+                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="mailto:?subject=Article%20Ponts%20TI%20-%20Panne%20Microsoft%20365%20et%20d%C3%A9pendance%20au%20cloud&body=Je%20te%20partage%20cet%20article%20:%20https://pontsti.github.io/articles/panne-microsoft-365-dependance-cloud.html"
+                   class="share-btn share-email" aria-label="Partager par courriel">
+                    <svg fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/></svg>
+                    Courriel
+                </a>
+            </div>
+
+            <img src="../images/panne-cloud-dependance.svg"
+                 alt="Illustration : un nuage en panne relié par des liens rompus au courriel, à la messagerie d'équipe, à l'agenda, aux documents partagés et à un assistant IA"
+                 class="article-hero-img svg-hero" loading="eager" decoding="async" width="800" height="420">
+            <p class="article-img-credit">Illustration : Ponts TI</p>
+
+            <div class="article-full">
+
+                <p>
+                    Le jeudi 12 novembre 2026, j'étais complètement bloqué dans mon travail. Plus de courriel,
+                    plus de réunions, plus d'assistant IA, plus d'accès à certains documents partagés.
+                    J'ai d'abord partagé cette réflexion sur LinkedIn. Je la reprends ici, un peu plus développée.
+                </p>
+
+                <div class="info-box">
+                    <h4>Ce qui s'est passé</h4>
+                    <p>
+                        Le <strong>jeudi 12 novembre 2026</strong>, vers 11 h (heure de Montréal), une panne mondiale a touché
+                        Microsoft 365 : Outlook et Exchange Online d'abord, puis Teams, SharePoint, OneDrive et Microsoft 365 Copilot.
+                        Des utilisateurs de <strong>74 pays et territoires</strong> ont été touchés. Microsoft a confirmé le rétablissement
+                        complet le <strong>samedi 14 novembre</strong>.
+                    </p>
+                    <p>
+                        Microsoft a indiqué que la panne <strong>n'était pas une cyberattaque</strong>. Selon l'entreprise, elle venait
+                        d'un problème introduit lors d'une mise à niveau antérieure de la capacité de son réseau, révélé par un
+                        changement réseau ultérieur. <em>(Sources : BleepingComputer, 12 novembre 2026 ; Al Jazeera, 13 novembre 2026 ;
+                        Windows Central, 14 novembre 2026 — voir la liste à la fin.)</em>
+                    </p>
+                </div>
+
+                <h3>Une dépendance qu'on ne voit qu'au moment où tout s'arrête</h3>
+
+                <p>
+                    Cette panne montre bien la dépendance de plusieurs systèmes aux mêmes solutions : Copilot, Outlook, Teams,
+                    le cloud. Au quotidien, on ne la remarque pas. Tout fonctionne, tout est connecté. C'est au moment où
+                    un seul maillon tombe qu'on réalise que la messagerie, l'agenda, les réunions, les documents et
+                    l'assistant IA reposaient tous sur la même infrastructure.
+                </p>
+
+                <p>
+                    Quand cette question était soulevée il y a quelques années, elle trouvait peu d'écho. Le mouvement
+                    vers le cloud était fort, et je le comprends : il apporte de vrais avantages. Mais il s'est parfois
+                    fait au prix des compétences internes — la connaissance fine de ses propres systèmes, de la façon
+                    dont ils sont construits et de ce qu'on peut faire quand l'outil principal ne répond plus.
+                </p>
+
+                <div class="quote-box">
+                    Le cloud n'est pas le problème. Le problème, c'est de ne plus savoir comment travailler
+                    le jour où il n'est pas là.
+                </div>
+
+                <h3>Ce n'était pas une cyberattaque — et c'est justement ce qui me frappe</h3>
+
+                <p>
+                    Microsoft a été clair : aucune activité malveillante. Une erreur technique, liée à une mise à niveau
+                    du réseau. Et pourtant, d'après ce que j'observe, la plupart des exercices de préparation —
+                    tests de confinement, simulations d'incident — restent surtout centrés sur les cyberattaques.
+                </p>
+
+                <p>
+                    Une panne d'un fournisseur, sans attaquant, sans rançon, sans intrusion, a pourtant des effets très
+                    semblables pour les personnes qui travaillent : on ne peut plus communiquer, ni accéder à ses outils.
+                    Il me semble qu'il est temps d'intégrer aussi ce type de scénario dans les plans de continuité.
+                </p>
+
+                <div class="warning-box">
+                    <p>
+                        <strong>Fait vérifié :</strong> la panne du 12 novembre 2026 a touché 74 pays et territoires, et Microsoft
+                        a exclu une cyberattaque. <strong>Mon observation :</strong> les exercices de préparation que je connais visent
+                        surtout les attaques. <strong>Mon opinion :</strong> avec le contexte géopolitique actuel et la concentration
+                        des services chez quelques grands fournisseurs, je pense qu'on verra probablement d'autres pannes
+                        de ce genre. C'est une impression, pas une prévision appuyée par des données.
+                    </p>
+                </div>
+
+                <h3>🧭 Se préparer, concrètement</h3>
+
+                <p>Quelques pistes, sans prétendre avoir la solution complète :</p>
+
+                <ul class="feature-list">
+                    <li><strong>Pour les organisations :</strong> ajouter un scénario « panne majeure d'un fournisseur cloud » aux exercices de continuité, au même titre que les scénarios de cyberattaque.</li>
+                    <li><strong>Prévoir un canal de communication de secours</strong> qui ne dépend pas du même fournisseur : une liste de numéros de téléphone, un groupe de messagerie alternatif, une procédure simple connue de tous.</li>
+                    <li><strong>Garder accessibles hors ligne</strong> les documents dont on a besoin pour fonctionner une journée : procédures critiques, contacts clés, informations de projet essentielles.</li>
+                    <li><strong>Préserver les compétences internes :</strong> des personnes qui comprennent comment les systèmes sont construits, et pas seulement comment utiliser l'outil.</li>
+                    <li><strong>Pour vous, à titre individuel :</strong> savoir à qui téléphoner et quoi faire si vos outils habituels ne répondent plus. Ce réflexe simple évite beaucoup de stress.</li>
+                </ul>
+
+                <p>
+                    Pour les personnes qui débutent en TI ou qui sont en reconversion, je retiens aussi ceci : comprendre
+                    ce qui se trouve <em>derrière</em> les outils — réseau, authentification, messagerie, dépendances entre
+                    services — reste une base précieuse. C'est le même message que dans mon article sur
+                    <a href="specialisation-vs-fondamentaux.html">la spécialisation et les fondamentaux</a> :
+                    les outils changent, la compréhension des systèmes dure.
+                </p>
+
+                <h3>Et vous ?</h3>
+
+                <p>
+                    Avez-vous été bloqués vous aussi le 12 novembre ? Votre organisation avait-elle un plan pour ce genre
+                    de situation ? Je serais curieux de lire vos expériences.
+                </p>
+
+                <div class="cta-box">
+                    <h3>Vous avez vécu cette panne au travail ?</h3>
+                    <p>Partagez votre expérience ou vos questions. Je lis chaque message et j'y réponds dès que je le peux.</p>
+                    <p><a href="mailto:goutas.hilal@gmail.com?subject=Panne%20Microsoft%20365%20-%20Ponts%20TI">goutas.hilal@gmail.com</a></p>
+                </div>
+
+                <h3>📚 Sources</h3>
+                <ul class="feature-list">
+                    <li><a href="https://bleepingcomputer.com/news/microsoft/massive-microsoft-365-outage-disrupts-outlook-teams-copilot-worldwide" target="_blank" rel="noopener">BleepingComputer</a> — Massive Microsoft 365 outage disrupts Outlook, Teams, Copilot worldwide (12 novembre 2026)</li>
+                    <li><a href="https://aljazeera.com/news/2026/11/13/microsoft-hit-by-global-outages-what-happened-and-why" target="_blank" rel="noopener">Al Jazeera</a> — Microsoft hit by global outages: What happened and why? (13 novembre 2026)</li>
+                    <li><a href="https://www.windowscentral.com/microsoft/we-are-deeply-sorry-microsoft-apologizes-for-major-outage-that-knocked-outlook-teams-and-microsoft-365-offline-for-24-hours-insists-it-wasnt-ai-that-caused-it" target="_blank" rel="noopener">Windows Central</a> — Microsoft s'excuse et attribue la panne à une mise à niveau réseau (14 novembre 2026)</li>
+                    <li>Microsoft 365 — avis d'incident EX1550543 et MO1550821 (centre d'administration Microsoft 365)</li>
+                </ul>
+
+            </div><!-- fin article-full -->
+
+            <div class="related-box">
+                <h3>Articles liés</h3>
+                <a href="ia-avons-nous-encore-besoin-des-autres.html" class="related-link">
+                    <div>
+                        <strong>Aurons-nous encore besoin les uns des autres, avec l'IA ?</strong>
+                        <span>Ce que nos outils changent dans le travail d'équipe</span>
+                    </div>
+                </a>
+                <a href="specialisation-vs-fondamentaux.html" class="related-link">
+                    <div>
+                        <strong>Spécialisation vs fondamentaux</strong>
+                        <span>Les outils changent, la compréhension des systèmes dure</span>
+                    </div>
+                </a>
+                <a href="ia-casser-chiffrement-rsa.html" class="related-link">
+                    <div>
+                        <strong>L'IA peut-elle casser un chiffrement RSA ?</strong>
+                        <span>Sécurité, risques réels et compétences en cybersécurité</span>
+                    </div>
+                </a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>Ponts TI</strong> — Aide bénévole emploi informatique Québec</p>
+            <p>Un projet bénévole de <strong>Hilal Goutas</strong> · Analyste informatique · Montréal, Québec</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: var(--space-4); line-height: 1.8;">
+                Ponts TI accompagne <strong>toute personne qui souhaite intégrer le marché de l'emploi en informatique au Québec</strong> :
+            nouveaux arrivants, PVTistes, personnes en reconversion, finissants et débutants en TI.
+            </p>
+            <p style="font-size: 0.8rem; margin-top: var(--space-3);">
+                <a href="marche-ti-quebec-2026.html">Marché TI Québec 2026</a> ·
+                <a href="../index.html#articles">Articles</a> ·
+                <a href="../ressources.html">Ressources</a> ·
+                <a href="../index.html#faq">FAQ</a> ·
+                <a href="../index.html#contact">Contact</a>
+            </p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: var(--space-3);">
+                © 2026 Hilal Goutas — <a href="https://www.linkedin.com/in/hilal-goutas-65a7383b/" target="_blank" rel="noopener">LinkedIn</a>
+            </p>
+        </div>
+    </footer>
+
+    <button class="back-top" aria-label="Retour en haut de page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+
+    <script>
+        const progress = document.getElementById('read-progress');
+        const backTop = document.querySelector('.back-top');
+        const nav = document.querySelector('nav');
+
+        window.addEventListener('scroll', () => {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.scrollY / docHeight) * 100;
+            if (progress) progress.style.width = Math.min(scrolled, 100) + '%';
+            if (backTop) backTop.classList.toggle('visible', window.scrollY > 400);
+            if (nav) nav.classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        if (backTop) {
+            backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        }
+    </script>
+</body>
+</html>
