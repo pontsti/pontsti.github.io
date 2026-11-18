@@ -31,7 +31,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
     <link rel="manifest" href="../manifest.json">
     
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="article">
     <meta property="og:url" content="https://pontsti.github.io/articles/ia-outils-programmation.html">
     <meta property="og:title" content="L'IA en TI : outils de programmation, Java et analyse de logs | Ponts TI">
     <meta property="og:description" content="Guide pratique sur l'IA appliquée au développement : GitHub Copilot, Claude, Cursor. Cas pratiques Java, analyse de logs avec IA, limites à connaître. Par un professionnel TI à Montréal.">
@@ -323,6 +323,14 @@
                     <strong>IHM et ergonomie cognitive</strong>
                     <span>Concevoir pour l'utilisateur</span>
                 </a>
+                <a href="ia-avons-nous-encore-besoin-des-autres.html" class="related-link">
+                    <strong>Aurons-nous encore besoin les uns des autres ?</strong>
+                    <span>Ce que l'IA change dans le travail d'équipe</span>
+                </a>
+                <a href="ia-casser-chiffrement-rsa.html" class="related-link">
+                    <strong>L'IA peut-elle casser un chiffrement RSA ?</strong>
+                    <span>Ce que dit la science en 2026</span>
+                </a>
             </div>
         
 </article>
@@ -330,11 +338,11 @@
     
     <footer>
     <div class="container">
-        <p><strong>Ponts TI</strong> — Aide gratuite emploi informatique Québec</p>
+        <p><strong>Ponts TI</strong> — Aide bénévole emploi informatique Québec</p>
         <p>Un projet bénévole de <strong>Hilal Goutas</strong> · Analyste informatique · Montréal, Québec</p>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: var(--space-4); line-height: 1.8;">
-            Ponts TI aide les <strong>immigrants francophones</strong>, les <strong>PVTistes</strong> et les personnes en
-            <strong>reconversion professionnelle</strong> à trouver un <strong>emploi en informatique au Québec</strong>.
+            Ponts TI accompagne <strong>toute personne qui souhaite intégrer le marché de l'emploi en informatique au Québec</strong> :
+            nouveaux arrivants, PVTistes, personnes en reconversion, finissants et débutants en TI.
         </p>
         <p style="font-size: 0.8rem; margin-top: var(--space-3);">
             <a href="../articles/marche-ti-quebec-2026.html">Marché TI Québec 2026</a> ·
@@ -342,4 +350,27 @@
             <a href="../ressources.html">Ressources</a> ·
             <a href="../index.html#faq">FAQ</a> ·
             <a href="../index.html#contact">Contact</a>
-     
+        </p>
+        <p>© 2025-2026 Ponts TI. Contenu original.</p>
+    </div>
+</footer>
+
+<button class="back-top" aria-label="Retour en haut de page" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+const nav = document.querySelector('nav');
+if (nav) { window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 10); }, { passive: true }); }
+const backTop = document.querySelector('.back-top');
+if (backTop) { window.addEventListener('scroll', () => { backTop.classList.toggle('visible', window.scrollY > 400); }, { passive: true }); }
+const progressBar = document.getElementById('read-progress');
+if (progressBar) {
+    window.addEventListener('scroll', () => {
+        const pct = Math.min(100, (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+        progressBar.style.width = pct + '%';
+    }, { passive: true });
+}
+</script>
+</body>
+</html>
